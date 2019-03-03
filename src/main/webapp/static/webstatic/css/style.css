@@ -1,0 +1,377 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#slider {}
+#bg-img {
+    background-image: url("../img/2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position :50%;
+    width: 100%;
+    overflow: hidden;
+}
+.mltr {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.conntent {
+    text-align: center;
+    color: white;
+    padding-top: 20%;
+    padding-bottom: 20%;
+}
+.conntent h1 {
+    font-size: 49px;
+    width: 100%;
+    color: black;
+}
+.conntent p {letter-spacing: 3px;}
+#bg-img1 {
+    background-image: url("../img/a.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position :50%;
+    width: 100%;
+    overflow: hidden;
+}
+#bg-img2 {
+    background-image: url("../img/ped.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position :50%;
+    width: 100%;
+    overflow: hidden;
+}
+#slider {
+  position: relative;
+}
+#story {
+    overflow: hidden;
+    clear: both;
+}
+#info1 {
+    width: 46%;
+    float: left;
+    margin-top: 5%;
+}
+#our {}
+#our h3 {
+    font-size: 18px;
+    margin-bottom: -16px;
+    color: #6c6c6c;
+}#our p {
+    color: #6c6c6c;
+    padding-bottom: 39px;
+    width: 115%;
+    line-height: 30px;
+}
+#our h1 {
+    padding-bottom: 3%;
+    font-size: 25px;
+    padding-top: 20px;
+}
+
+#button {}
+#myBtn {
+    margin-left: 30%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    background-color: black;
+    color: white;
+    border: 1px solid transparent;
+    padding: 15px 25px 15px 25px;
+}
+.btn-danger {}
+#submit {width: 50%;float: right;}
+#color {
+    background-color: blue;
+    width: 94%;
+    margin-left: 12px;
+    padding: 30px 0px 20px 1px;
+}
+.icon1 {margin-left: 11%;color: white;}
+.icon {
+    background-color: #f7f0f0;
+    width: 82%;
+    margin-left: 15%;
+}
+.icon input[type=text] {
+    padding: 65px 317px 10px 1px;
+    border: 1px solid transparent;
+    border-bottom: 2px solid #b7b7b7;
+    margin-left: 11px;
+}
+.icon textarea {
+    
+padding: 65px 327px 10px 1px;
+    
+border: 1px solid transparent;
+    
+border-bottom: 2px solid #b7b7b7;
+    
+margin-left: 11px;
+}
+.btn-danger3 {
+    margin-left: 30%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    background-color: black;
+    color: white;
+    border: 1px solid transparent;
+    padding: 15px 25px 15px 25px;
+}
+#num2 {
+    clear:  both;
+    background-color: blue;
+}
+#box {
+    overflow:  hidden;
+}
+.date-box {
+    width:  22%;
+    float:  left;
+    padding-top: 2%;
+    padding-bottom: 1%;
+    margin-left: 3%;
+    text-align:  center;
+    color: white;
+} 
+.date-box i {
+    color: white;
+}
+.date-box h2 {
+    font-size: 13px;
+}
+.numscroller {
+    font-size: 40px;
+    margin: 20px 0 5px;
+    color: #ffffff;
+    letter-spacing: 1px;
+    font-family: 'Lato', sans-serif;
+}
+#services {
+    overflow: hidden;
+    padding-top: 2%;
+    padding-bottom: 5%;
+}
+#top {
+    text-align: center;
+}
+#top hr {
+    width: 5%;
+    margin-left: 48%;
+    padding-bottom: 85px;
+    margin-bottom: -70px;
+    border: 2px solid #0100fe;
+}
+#top span {
+    color: #0100fe;
+    font-size: 50px;
+}
+#top h4 {
+    color: #ababab;
+    font-size: 17px;
+}
+#top h1 {
+    font-size: 35px;
+    margin-top: -11px;
+}
+#top p {
+    color: #ababab;
+    padding-top: 10px;
+}
+#testimonials {
+    overflow: hidden;
+}
+#top1 {
+    text-align: center;
+    padding-bottom: 50px;
+}
+#top1 hr {
+    width: 5%;
+    margin-left: 48%;
+    padding-bottom: 85px;
+    margin-bottom: -70px;
+    border: 2px solid #0100fe;
+}
+#top1 h1 {
+    font-size: 35px;
+}
+#top1 h2 {
+    color: #ababab;
+    font-size: 17px;
+}
+#video1 {
+    /* overflow: hidden; */
+    /* padding-bottom: 5%; */
+    background-color: black;
+    padding-top: 0%;
+    height: 48%;
+}
+#video {}
+#video video {
+    width: 70%;
+    margin-left: 19%;
+    margin-top: -17%;
+}
+#video hr {
+}
+#clients {
+    overflow: hidden;
+    padding-bottom: 5%;
+    padding-top: 5%;
+}
+#top2 {
+    text-align: center;
+}
+#top2 hr {
+    width: 5%;
+    margin-left: 48%;
+    padding-bottom: 85px;
+    margin-bottom: -70px;
+    border: 2px solid #0100fe;
+}
+#top2 p {
+    color: #ababab;
+    font-size: 17px;
+    padding-bottom: 15px;
+}
+#top2 h1 {
+    font-size: 35px;
+    margin-top: -11px;
+}
+#row8-img {
+}
+.row8-img {margin-top: 2%;text-align: center;}
+.row8-img img {
+}
+.row8-img img {
+    width: 20%;
+}
+#cont {
+    /* overflow: hidden; */
+    padding-bottom: 0%;
+}
+#img-info {}
+#img-info hr {
+    padding-bottom: 15%;
+    background-color: blue;
+    margin-bottom: -204px;
+}
+.img-info1 {
+    width: 31%;
+    float: left;
+}
+.img-info1 img {
+    width: 30%;
+}
+.img-info1 p {
+    margin-left: -180px;
+    margin-top: 80px;
+    font-size: 20px;
+    color: white;
+}
+.img-info1 h1 {
+    width: 174%;
+    margin-left: -180px;
+    color: white;
+}
+.btn-danger5 {
+    margin-left: 65%;
+    margin-top: 30%;
+    padding: 10px 25px 10px 25px;
+    background-color: rgba(0,0,0,.0);
+    border: 1px solid white;
+    color: white;
+}
+#fotter {
+    overflow: hidden;
+    padding-bottom: 5%;
+    background-color: #1f1f1f;
+    margin-top: 203px;
+}
+#add {
+    background-color: #161616;
+    color: white;
+    overflow: hidden;
+}
+.add1 {width: 30%;float: left;margin-left: 3%;}
+.add2 {
+    width: 14%;
+    float: left;
+    margin-top: 25px;
+}
+.add2 i {}
+.add3 {float: left;}
+.add3 p {
+    padding-top: 25px;
+}
+.add3 h3 {
+    font-size: 15px;
+    padding-top: 10px;
+    padding-bottom: 25px;
+}
+#info2 {
+    color: white;
+    overflow: hidden;
+    padding-top: 5%;
+}
+.info3 {
+    width: 30%;
+    float: left;
+}
+.info3 img {
+    width: 40%;
+    margin-left: 6%;
+}
+.info3 a {
+        color: white;
+    border: 1px solid transparent;
+    text-decoration: none;    color: white;
+    border: 1px solid transparent;
+    text-decoration: none;
+}
+.info3 h3 {
+    margin-left: 6%;
+    padding-top: 12px;
+    letter-spacing: 1px;
+    padding-bottom: 15px;
+}
+.info3 p {
+    padding-bottom: 15px;
+    margin-left: 30%;
+}
+.info3 h2 {
+    width: 41%;
+    margin-left: 37%;
+    padding-bottom: 20px;
+}
+.co {
+    width: 19%;
+    float: left;
+    padding-top: 16px;
+    margin-left: 24%;
+}
+.co p {
+    padding-bottom: 13px;
+    width: 131%;
+}
+.design {
+    background-color: black;
+    overflow: hidden;
+    color: white;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    clear: both;
+}
+.contentC {
+    width: 50%;
+    float: left;
+}
+.contentD {
+    width: 50%;
+    float: right;
+    margin-right: -18%;
+}

@@ -1,0 +1,39 @@
+ * {
+    margin: 0;
+    box-sizing: border-box;
+}
+#search {
+    overflow: hidden;
+    padding-bottom: 165px;
+    background-color: #EFF1F6;
+}
+.mltr {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+#heading {
+    text-align: center;
+    padding-bottom: 55;
+    padding-top: 5%;
+}
+#heading h1 {}
+.img-info {
+    width: 48%;
+    float: left;
+    margin-left: 2%;
+}
+.img-info img {
+    width: 100%;
+    box-shadow: 10px 10px 5px rgba(24, 39, 45, 0.58);
+}
+.img-info p {
+    padding-bottom: 8px;
+    font-size: 17px;
+    line-height: 24px;
+    color: 3D3D3D;
+}
+.img-info span {
+	margin-left: 8%;
+}
+.btn-danger2 {margin-left: 45%;margin-top: 5%;padding: 5px 25px 5px 25px;}
+

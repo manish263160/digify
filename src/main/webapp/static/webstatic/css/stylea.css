@@ -1,0 +1,39 @@
+ * {
+    margin: 0;
+    box-sizing: border-box;
+}
+.mltr {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+#header1 {
+    overflow: hidden;
+    padding-bottom: 5%;
+}
+#head2 {
+    text-align: center;
+    padding-bottom: 55;
+    padding-top: 5%;
+}
+#head2 h1 {
+    text-shadow: 2px 2px rgba(0,0,0,0.5);
+    font-family: 'Alegreya', sans-serif;
+}
+.img-cont1 {}
+.img7 {
+    width: 47%;
+    float: left;
+    margin-left: 2%;
+}
+.img7 img {
+    width: 100%;
+    box-shadow: 10px 10px 5px rgba(24, 39, 45, 0.58);
+}
+.img7 p {
+    font-size: 20px;
+    margin-top: 33px;
+    color: #8E8D8D;
+}
+.img7 span {
+    color: green;
+}
