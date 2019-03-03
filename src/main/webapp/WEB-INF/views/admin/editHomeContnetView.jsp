@@ -141,10 +141,11 @@
 	                    required: true,
 	                   
 	                }, */
-	                file :{
+	               
+	                imageLink :{
 	                	required: true,
 	                },
-	                type :{
+	                contentDescription :{
 	                	required: true,
 	                },
 	           },

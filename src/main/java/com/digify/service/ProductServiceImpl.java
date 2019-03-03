@@ -44,7 +44,7 @@ public class ProductServiceImpl implements ProductService {
 		for (Products products : list) {
 			String ImgUrl = this.applicationProperties.getProperty("appPath")+BASIC_STRINGS.ADMIN.getStringName()+this.applicationProperties.getProperty("products")
 			+products.getProductImage();
-			products.setProductImage(ImgUrl);
+			products.setImageUrl(ImgUrl);
 		}
 		return (List<T>) list;
 		}
@@ -53,7 +53,7 @@ public class ProductServiceImpl implements ProductService {
 			for (Services products : list) {
 				String ImgUrl = this.applicationProperties.getProperty("appPath")+BASIC_STRINGS.ADMIN.getStringName()+this.applicationProperties.getProperty("services")
 				+products.getServiceImage();
-				products.setServiceImage(ImgUrl);
+				products.setImageUrl(ImgUrl);
 			}
 			return (List<T>) list;
 		}

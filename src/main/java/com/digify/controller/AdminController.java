@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,8 +42,8 @@ public class AdminController {
 	
 	@RequestMapping(value = { "/dashboard" }, method = { RequestMethod.GET })
 	public String bookedservice(ModelMap model, HttpServletRequest request) {
-		adminService.addUserInModel(model); 
-		adminService.addListHomePageContent(model);
+		model=adminService.addUserInModel(model); 
+		model=adminService.addListHomePageContent(model);
 		model.addAttribute("active", "admin");
 		model.addAttribute("themecolor", this.applicationProperties.getProperty("themecolor"));
 		return "admin/dashboard";
@@ -50,8 +51,8 @@ public class AdminController {
 	
 	@RequestMapping(value = { "/home/{pathVar}/{viewsFolder}/{id}" }, method = { RequestMethod.GET })
 	public String openHomeContent(ModelMap model, HttpServletRequest request, @PathVariable("pathVar") String pathVar ,@PathVariable("id") long id , @PathVariable("viewsFolder") String viewsFolder) {
-		adminService.addUserInModel(model); 
-		adminService.addListHomePageContent(model);
+		model=adminService.addUserInModel(model); 
+		model=adminService.addListHomePageContent(model);
 		model.addAttribute("active", pathVar);
 		logger.debug("path var and id"+ pathVar +" :"+id);
 		model.addAttribute("themecolor", this.applicationProperties.getProperty("themecolor"));
@@ -65,8 +66,8 @@ public class AdminController {
 	@RequestMapping(value = { "/add/addHomeContentView/{id}/{viewsFolder}" }, method = { RequestMethod.GET })
 	public String addCarauser(ModelMap model, HttpServletRequest request , @PathVariable("id") String homeContenMastertId , 
 			@PathVariable("viewsFolder") String viewsFolder) {
-		adminService.addUserInModel(model); 
-		adminService.addListHomePageContent(model);
+		model=adminService.addUserInModel(model); 
+		model=adminService.addListHomePageContent(model);
 		model.addAttribute("active", "carousel");
 		model.addAttribute("themecolor", this.applicationProperties.getProperty("themecolor"));
 		model.addAttribute("id", homeContenMastertId);
@@ -80,8 +81,8 @@ public class AdminController {
 		try {
 			String tableName = "homepage_content";
 //			String filepath = extractservice.extracted(file, uploadNews, tableName);
-			adminService.addUserInModel(model); 
-			adminService.addListHomePageContent(model);
+			model=adminService.addUserInModel(model); 
+			model=adminService.addListHomePageContent(model);
 			model.addAttribute("active", "carousel");
 			model.addAttribute("themecolor", this.applicationProperties.getProperty("themecolor"));
 			String filePath = adminService.insertUpdateHomeComponent(file , homeComponent , tableName , "insert");
@@ -89,15 +90,15 @@ public class AdminController {
 			return "admin/insertContentSuccessfull";
 		} catch (Exception e) {
 			logger.error("error in file upload==" + e);
-			return "redirect:admin//carousel/addHomeContentView/"+homeComponent.getHomeContentId()+"?error=" + e.getMessage();
+			return "redirect:add/addHomeContentView/"+homeComponent.getHomeContentId()+"/"+homeComponent.getViewsFolder()+"?error=" + e.getMessage();
 		}
 	}
 
 	@RequestMapping(value = { "/editHomeContnetView/{contentId}/{viewsFolder}/{table}" }, method = { RequestMethod.GET })
 	public String addCarauser(ModelMap model, HttpServletRequest request , @PathVariable("contentId") long contentId, @PathVariable("table") String tableName
 			,@PathVariable("viewsFolder") String viewsFolder) {
-		adminService.addUserInModel(model); 
-		adminService.addListHomePageContent(model);
+		model=adminService.addUserInModel(model); 
+		model=adminService.addListHomePageContent(model);
 		model.addAttribute("active", "editPage");
 		model.addAttribute("themecolor", this.applicationProperties.getProperty("themecolor"));
 		HomepageContent obj = adminService.getHomeComponentById(contentId , viewsFolder);
@@ -117,24 +118,33 @@ public class AdminController {
 		try {
 			String tableName = "homepage_content";
 //			String filepath = extractservice.extracted(file, uploadNews, tableName);
-			adminService.addUserInModel(model); 
-			adminService.addListHomePageContent(model);
+			model=adminService.addUserInModel(model); 
+			model=adminService.addListHomePageContent(model);
 			model.addAttribute("active", "carousel");
 			model.addAttribute("themecolor", this.applicationProperties.getProperty("themecolor"));
 			homeComponent.setId(contentId);
-			if(oldImageURL != null) {
+			if(file != null && !file.isEmpty()) {
 				String imagePath = this.applicationProperties.getProperty("imageFolder");
 				oldImageURL = imagePath +BASIC_STRINGS.ADMIN.getStringName()+this.applicationProperties.getProperty("homePageContent")+homeComponent.getViewsFolder()+"/"+oldImageURL;
 				File oldFile =new File(oldImageURL);
 				GenUtilities.delete(oldFile);
+			}else {
+				homeComponent.setImageUrl(oldImageURL);
 			}
 			String filePath = adminService.insertUpdateHomeComponent(file , homeComponent , tableName , "update");
 			model.addAttribute("imagepath", filePath);
-			return "admin/insertContentSuccessfull";
+			return "redirect:insertContentSuccessfull";
 		} catch (Exception e) {
 			logger.error("error in file upload==" + e);
 			return "redirect:updateHomeContent/"+homeComponent.getHomeContentId()+"?error=" + e.getMessage();
 		}
+	}
+	
+	@RequestMapping(value = { "/insertContentSuccessfull" }, method = { RequestMethod.DELETE})
+	public String insertContentSuccessfull(ModelMap model) {
+		model=adminService.addUserInModel(model); 
+		model=adminService.addListHomePageContent(model);
+		return "admin/insertContentSuccessfull";
 	}
 
 	@RequestMapping(value = { "/deleteContent/{contentId}/{imageName}/{viewFolder}/{tableName}" }, method = { RequestMethod.DELETE})

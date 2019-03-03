@@ -46,18 +46,18 @@
 					</p>
 					<c:forEach items="${list }" var="l" varStatus="loop">
 						<div class="row">
-							<div class="col s6 m6 l6">
+							<div class="col s12 m12 l12">
 								<div class="card">
 									<div class="card-image">
-										<img src="${l.productImage }" alt="sample"> <span class="card-title">${l.productName}</span>
+										<img src="${l.imageUrl }" alt="sample"> <span class="card-title">${l.productName}</span>
 									</div>
 									<div class="card-content">
-										<p class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="${l.productDescription}">
-											${fn:substring(l.productDescription, 0, 50)}.</p>
+										<p  class="tooltipped" data-position="bottom" data-delay="50" >
+										${l.productDescription}	</p>
 									</div>
 									<div class="card-action">
 										<a href="${digify}/admin/product/editProductServiceView/${tableName }/${l.id}">Edit</a> <a href="#"
-											onclick="deleteAllImg('${l.id }','${l.productImage}')">Delete</a>
+											onclick="deleteAllImg('${l.id }','${l.productImage}' ,'${tableName }')">Delete</a>
 									</div>
 								</div>
 							</div>
@@ -77,11 +77,11 @@
 							<div class="col s6 m6 l6">
 								<div class="card">
 									<div class="card-image">
-										<img src="${l.serviceImage }" alt="sample"> <span class="card-title">${l.serviceName}</span>
+										<img src="${l.imageUrl }" alt="sample"> <span class="card-title">${l.serviceName}</span>
 									</div>
 									<div class="card-content">
-										<p class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="${l.serviceDescription}">
-											${fn:substring(l.serviceDescription, 0, 50)}.</p>
+										<p class="tooltipped" data-position="bottom" data-delay="50" >
+											${l.serviceDescription }</p>
 									</div>
 									<div class="card-action">
 										<a href="${digify}/admin/product/editProductServiceView/${tableName}/${l.id}">Edit</a> <a href="#"
@@ -148,7 +148,7 @@
     	  imageName=imageName.trim();
     	  $(".progress").show();
     	  $.ajax({
-    		    url: '${digify}/admin/product/deleteProduct/'+contentId+'/'+imageName+'/'+tableName,
+    		    url: '${digify}/admin/product/deleteContent/'+contentId+'/'+imageName+'/'+tableName,
     		    type: 'DELETE',
     		    success: function(result) {
     		        // Do something with the result

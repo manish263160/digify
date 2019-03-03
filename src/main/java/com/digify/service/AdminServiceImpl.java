@@ -52,93 +52,115 @@ public class AdminServiceImpl implements AdminService {
 		User user = GenUtilities.getLoggedInUser();
 		
 		try {
-			String fileExtension = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."),
-					file.getOriginalFilename().length());
-			SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd_hh-mm-ss");
-			Date date = new Date();
-			String fileName = formatter.format(date) +"_"+ file.getOriginalFilename();
-			String imagePath = this.applicationProperties.getProperty("imageFolder");
-			if(tableName.equals("homepage_content")) {
-				HomepageContent homeComponent = (HomepageContent) content;
-			imagePath = imagePath +BASIC_STRINGS.ADMIN.getStringName()+this.applicationProperties.getProperty("homePageContent")+homeComponent.getViewsFolder()+"/";
-			}
-			else if(tableName.equals("products")) {
-				imagePath = imagePath +BASIC_STRINGS.ADMIN.getStringName()+this.applicationProperties.getProperty("products");
-			}
-			else if(tableName.equals("services")) {
-				imagePath = imagePath +BASIC_STRINGS.ADMIN.getStringName()+this.applicationProperties.getProperty("services");
-			}
-			File newFile = GenUtilities.uploadFile(imagePath, fileName, file);
-			if (newFile != null) {
-				fileExtension = fileExtension.replaceFirst("\\.", "");
-//				GenUtilities.resizeImage(newFile, fileExtension, 206, 206);
-				BufferedImage originalImage = ImageIO.read(newFile);
-				/*BufferedImage profileMain = GenUtilities.getScaledInstance(originalImage, 206, 206,
-						RenderingHints.VALUE_INTERPOLATION_BILINEAR, true);*/
-				boolean isUploaded = ImageIO.write(originalImage, fileExtension, new File(imagePath + fileName));
-				if (isUploaded) {
-					if (actionName.equals("insert")) {
-						String status = null;
-						if(content instanceof HomepageContent) {
-							HomepageContent homeComponent = (HomepageContent) content;
-						status = adminDao.insertFile(user, fileName, tableName, homeComponent);
-						
-						if ("success".equals(status)) {
-							String filepath = setUserUploadedFilePath(user, fileName, "homePageContent");
-							return filepath;
-						}
-						}
-						else if(content instanceof Products) {
-							Products products = (Products) content;
-						status = adminDao.insertFile(user, fileName, tableName, products);
-						if ("success".equals(status)) {
-							String filepath = setUserUploadedFilePath(user, fileName, "products");
-							return filepath;
-						}
-						}
-						else if(content instanceof Services) {
-							Services service = (Services) content;
-						status = adminDao.insertFile(user, fileName, tableName, service);
-						if ("success".equals(status)) {
-							String filepath = setUserUploadedFilePath(user, fileName, "services");
-							return filepath;
-						}
-						}
-						
-					} else if (actionName.equals("update")) {
-						String status = null;
-						if(content instanceof HomepageContent) {
-							HomepageContent homeComponent = (HomepageContent) content;
-						status = adminDao.updateFile(user, fileName, tableName, homeComponent);
-						if ("success".equals(status)) {
-							String filepath = setUserUploadedFilePath(user, fileName, "homePageContent");
-							return filepath;
-						}
-						}
-						else if(content instanceof Products) {
-							Products products = (Products) content;
-						status = adminDao.updateFile(user, fileName, tableName, products);
-						if ("success".equals(status)) {
-							String filepath = setUserUploadedFilePath(user, fileName, "products");
-							return filepath;
-						}
-						}
-						else if(content instanceof Services) {
-							Services service = (Services) content;
-						status = adminDao.updateFile(user, fileName, tableName, service );
-						if ("success".equals(status)) {
-							String filepath = setUserUploadedFilePath(user, fileName, "services");
-							return filepath;
-						}
-						}
-						
+			if(file != null && !file.isEmpty()) {
+				String fileExtension = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."),
+						file.getOriginalFilename().length());
+				SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd_hh-mm-ss");
+				Date date = new Date();
+				String fileName = formatter.format(date) +"_"+ file.getOriginalFilename();
+				String imagePath = this.applicationProperties.getProperty("imageFolder");
+				if(tableName.equals("homepage_content")) {
+					HomepageContent homeComponent = (HomepageContent) content;
+				imagePath = imagePath +BASIC_STRINGS.ADMIN.getStringName()+this.applicationProperties.getProperty("homePageContent")+homeComponent.getViewsFolder()+"/";
+				}
+				else if(tableName.equals("products")) {
+					imagePath = imagePath +BASIC_STRINGS.ADMIN.getStringName()+this.applicationProperties.getProperty("products");
+				}
+				else if(tableName.equals("services")) {
+					imagePath = imagePath +BASIC_STRINGS.ADMIN.getStringName()+this.applicationProperties.getProperty("services");
+				}
+				File newFile = GenUtilities.uploadFile(imagePath, fileName, file);
+				if (newFile != null) {
+					fileExtension = fileExtension.replaceFirst("\\.", "");
+//					GenUtilities.resizeImage(newFile, fileExtension, 206, 206);
+					BufferedImage originalImage = ImageIO.read(newFile);
+					/*BufferedImage profileMain = GenUtilities.getScaledInstance(originalImage, 206, 206,
+							RenderingHints.VALUE_INTERPOLATION_BILINEAR, true);*/
+					boolean isUploaded = ImageIO.write(originalImage, fileExtension, new File(imagePath + fileName));
+					if (isUploaded) {
+						return actionInDb(content, tableName, actionName, user, fileName);
 					}
 				}
 			}
-			
+			else {
+				String fileName=  "";
+				if(tableName.equals("homepage_content")) {
+					fileName = ((HomepageContent)content).getImageName();
+				}else if(tableName.equals("products")) {
+					fileName = ((Products)content).getProductImage();
+				}else if(tableName.equals("services")) {
+					fileName = ((Services)content).getServiceImage();
+				}
+				return actionInDb(content, tableName, actionName, user, fileName);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
+		}
+		return null;
+	}
+	/**
+	 * @param content
+	 * @param tableName
+	 * @param actionName
+	 * @param user
+	 * @param fileName
+	 */
+	private String actionInDb(Object content, String tableName, String actionName, User user, String fileName) {
+		if (actionName.equals("insert")) {
+			String status = null;
+			if(content instanceof HomepageContent) {
+				HomepageContent homeComponent = (HomepageContent) content;
+			status = adminDao.insertFile(user, fileName, tableName, homeComponent);
+			
+			if ("success".equals(status)) {
+				String filepath = setUserUploadedFilePath(user, fileName, "homePageContent");
+				return filepath;
+			}
+			}
+			else if(content instanceof Products) {
+				Products products = (Products) content;
+			status = adminDao.insertFile(user, fileName, tableName, products);
+			if ("success".equals(status)) {
+				String filepath = setUserUploadedFilePath(user, fileName, "products");
+				return filepath;
+			}
+			}
+			else if(content instanceof Services) {
+				Services service = (Services) content;
+			status = adminDao.insertFile(user, fileName, tableName, service);
+			if ("success".equals(status)) {
+				String filepath = setUserUploadedFilePath(user, fileName, "services");
+				return filepath;
+			}
+			}
+			
+		} else if (actionName.equals("update")) {
+			String status = null;
+			if(content instanceof HomepageContent) {
+				HomepageContent homeComponent = (HomepageContent) content;
+			status = adminDao.updateFile(user, fileName, tableName, homeComponent);
+			if ("success".equals(status)) {
+				String filepath = setUserUploadedFilePath(user, fileName, "homePageContent");
+				return filepath;
+			}
+			}
+			else if(content instanceof Products) {
+				Products products = (Products) content;
+			status = adminDao.updateFile(user, fileName, tableName, products);
+			if ("success".equals(status)) {
+				String filepath = setUserUploadedFilePath(user, fileName, "products");
+				return filepath;
+			}
+			}
+			else if(content instanceof Services) {
+				Services service = (Services) content;
+			status = adminDao.updateFile(user, fileName, tableName, service );
+			if ("success".equals(status)) {
+				String filepath = setUserUploadedFilePath(user, fileName, "services");
+				return filepath;
+			}
+			}
 		}
 		return null;
 	}
@@ -179,16 +201,18 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	
-	public void addUserInModel(ModelMap model) {
+	public ModelMap addUserInModel(ModelMap model) {
 		logger.debug("addUserInModel here:");
 		User user = GenUtilities.getLoggedInUser();
-		model.addAttribute("user", user);		
+		model.addAttribute("user", user);
+		return model;
 	}
 	
-	public void addListHomePageContent(ModelMap model) {
+	public ModelMap addListHomePageContent(ModelMap model) {
 		logger.debug("addListHomePageContent add here:");
 		List<HomepageContentMaster> listHomePgcontMaster = getHomePageContentMaster();
 		model.addAttribute("listHomePgcontMaster", listHomePgcontMaster);
+		return model;
 		
 	}
 }

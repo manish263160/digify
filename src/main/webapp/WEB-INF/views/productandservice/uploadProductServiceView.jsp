@@ -31,7 +31,6 @@
 		</c:when>
 	</c:choose>
 	</c:if>
-	=========================${tableName }  ===========================${productService }
 	<div class="container">
 		<c:if test="${not empty error}">
 			<div id="card-alert" class="card red">
@@ -98,7 +97,7 @@
 				</div>
 
 				<div class="input-field col s8 m4 l7">
-					<textarea id="description" type="text" class="materialize-textarea" maxlength="250" autocomplete="off"
+					<textarea id="description" type="text" class="materialize-textarea" maxlength="2000" autocomplete="off"
 						name="${productService}Description"></textarea>
 					<label for="description" class="">${productService} Description</label>
 				</div>

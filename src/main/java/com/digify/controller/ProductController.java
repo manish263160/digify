@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.digify.Enums.BASIC_STRINGS;
-import com.digify.model.HomepageContent;
 import com.digify.model.Products;
 import com.digify.model.Services;
 import com.digify.service.AdminService;
@@ -44,11 +43,14 @@ public class ProductController {
 	
 	@RequestMapping(value = { "/{tableName}" } ,method = { RequestMethod.GET })
 	public String bookedservice(ModelMap model, HttpServletRequest request , @PathVariable("tableName") String tableName) {
-		adminService.addUserInModel(model); 
-		
+		model=adminService.addUserInModel(model); 
+		model=adminService.addListHomePageContent(model);
 		model.addAttribute("themecolor", this.applicationProperties.getProperty("themecolor"));
 		if(tableName.equals("products")) {
 		List<Products> list = productService.getAllProductServices(tableName);
+		for (Products products : list) {
+			logger.info("desc:  "+products.getProductDescription());
+		}
 		model.addAttribute("list", list);
 		}
 		else if(tableName.equals("services")) {
@@ -64,7 +66,8 @@ public class ProductController {
 	public String addProductView(ModelMap model, HttpServletRequest request ,
 			@PathVariable("tableName") String tableName,@RequestParam(value ="error" ,required = false) String error) {
 		logger.info("addProductView::");
-		adminService.addUserInModel(model); 
+		model=adminService.addUserInModel(model); 
+		model=adminService.addListHomePageContent(model);
 		setActiveScreen(tableName,model);
 		model.addAttribute("error", error);
 		model.addAttribute("tableName", tableName);
@@ -77,8 +80,8 @@ public class ProductController {
 			@ModelAttribute("products") Products products , @ModelAttribute("services") Services services  ,@RequestParam("tableName") String tableName) {			
 		try {
 //			String filepath = extractservice.extracted(file, uploadNews, tableName);
-			adminService.addUserInModel(model); 
-			adminService.addListHomePageContent(model);
+			model=adminService.addUserInModel(model); 
+			model=adminService.addListHomePageContent(model);
 			setActiveScreen(tableName,model);
 			model.addAttribute("themecolor", this.applicationProperties.getProperty("themecolor"));
 			String filePath = null;
@@ -105,9 +108,9 @@ public class ProductController {
 	
 	@RequestMapping(value = { "/editProductServiceView/{tableName}/{contentId}" }, method = { RequestMethod.GET })
 	public String addCarauser(ModelMap model, HttpServletRequest request , @PathVariable("contentId") long contentId
-			,@PathVariable("tableName") String tableName , @RequestParam("error") String error) {
-		adminService.addUserInModel(model); 
-		adminService.addListHomePageContent(model);
+			,@PathVariable("tableName") String tableName , @RequestParam(value="error" , required= false) String error) {
+		model=adminService.addUserInModel(model); 
+		model=adminService.addListHomePageContent(model);
 		setActiveScreen(tableName,model);
 		model.addAttribute("themecolor", this.applicationProperties.getProperty("themecolor"));
 		if(tableName.equals("products")) {
@@ -131,44 +134,51 @@ public class ProductController {
 			@RequestParam("oldImageURL") String oldImageURL) {	
 		
 		try {
-			adminService.addUserInModel(model); 
-			adminService.addListHomePageContent(model);
+			model=adminService.addUserInModel(model); 
+			model=adminService.addListHomePageContent(model);
 			model.addAttribute("active", "carousel");
 			model.addAttribute("themecolor", this.applicationProperties.getProperty("themecolor"));
 			if(tableName.equals("products")) {
 			products.setId(contentId);
-			if(oldImageURL != null) {
+			if(file != null && !file.isEmpty()) {
 				String imagePath = this.applicationProperties.getProperty("imageFolder");
 				oldImageURL = imagePath +BASIC_STRINGS.ADMIN.getStringName()+this.applicationProperties.getProperty("products")+oldImageURL;
 				File oldFile =new File(oldImageURL);
 				GenUtilities.delete(oldFile);
+			}else {
+				products.setProductImage(oldImageURL);
 			}
 			String filePath = adminService.insertUpdateHomeComponent(file , products , tableName , "update");
 			model.addAttribute("imagepath", filePath);
+			return "admin/insertContentSuccessfull";
 			}
-			else if(tableName.equals("service")) {
+			else if(tableName.equals("services")) {
 				services.setId(contentId);
-				if(oldImageURL != null) {
+				if(file != null && !file.isEmpty()) {
 					String imagePath = this.applicationProperties.getProperty("imageFolder");
 					oldImageURL = imagePath +BASIC_STRINGS.ADMIN.getStringName()+this.applicationProperties.getProperty("services")+oldImageURL;
 					File oldFile =new File(oldImageURL);
 					GenUtilities.delete(oldFile);
+				}else {
+					services.setServiceImage(oldImageURL);
 				}
 				String filePath = adminService.insertUpdateHomeComponent(file , services , tableName , "update");
 				model.addAttribute("imagepath", filePath);
+				return "admin/insertContentSuccessfull";
 				}
-			return "admin/insertContentSuccessfull";
 		} catch (Exception e) {
 			logger.error("error in file upload==" + e);
 			return "redirect:editProductServiceView/"+tableName+"/"+contentId+"?error=" + e.getMessage();
 		}
+		String st= "Something went wrong";
+		return "redirect:editProductServiceView/"+tableName+"/"+contentId+"?error="+st;
 	}
 	
 	@RequestMapping(value = { "/deleteContent/{contentId}/{imageName}/{tableName}" }, method = { RequestMethod.DELETE})
 	@ResponseBody
 	public String deleteContent( @PathVariable("contentId") long  contentId,
-			@PathVariable("imageName") String imageName ,@PathVariable("viewFolder") String viewFolder ,@PathVariable("tableName") String tableName  ) {	
-		logger.info("delete content data: "+contentId +" "+imageName+ " "+ tableName+" viewFolder: "+viewFolder);
+			@PathVariable("imageName") String imageName ,@PathVariable("tableName") String tableName  ) {	
+		logger.info("delete content data: "+contentId +" "+imageName+ " "+ tableName);
 		boolean statusDelete = productService.deleteContent(contentId,imageName,tableName);
 		return statusDelete ? "success" : "fail";
 	}

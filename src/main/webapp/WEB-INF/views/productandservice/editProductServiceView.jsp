@@ -105,7 +105,7 @@
 				</div>
 
 				<div class="input-field col s8 m4 l7">
-					<textarea id="description" type="text" class="materialize-textarea" maxlength="250" autocomplete="off"
+					<textarea id="description" type="text" class="materialize-textarea" maxlength="2000" autocomplete="off"
 						name="${productService}Description">${tableName eq 'products' ? obj.productDescription : obj.serviceDescription}</textarea>
 					<label for="description" class="">${productService} Description</label>
 				</div>
@@ -158,10 +158,17 @@
 	                    required: true,
 	                   
 	                }, */
-	                file :{
+	               
+	                productName :{
 	                	required: true,
 	                },
-	                type :{
+	                productDescription :{
+	                	required: true,
+	                },
+	                serviceName :{
+	                	required: true,
+	                },
+	                serviceDescription :{
 	                	required: true,
 	                },
 	           },

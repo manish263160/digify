@@ -131,9 +131,9 @@ public class AdminDaoImpl extends DigifyJdbcTemplate implements AdminDao {
 				Products product = null;
 				product = (Products) content;
 				Sqlquery = "UPDATE products SET " + 
-						" product_image = ?,external_link = ?,product_description = ? , product_name = ?,modified_on = now() WHERE id = ?;";
+						" product_image = ?,external_link = ?,product_description = ? , product_name = ?,modified_on=now() WHERE id = ?;";
 				updateInsert = getJdbcTemplate().update(Sqlquery, fileName,
-						product.getProductImage(), product.getExternalLink(), product.getProductDescription() ,product.getProductImage() ,product.getId());
+						 product.getExternalLink(), product.getProductDescription() ,product.getProductName() ,product.getId());
 			}
 			if (content instanceof Services) {
 				Services service = null;
@@ -141,7 +141,7 @@ public class AdminDaoImpl extends DigifyJdbcTemplate implements AdminDao {
 				Sqlquery = "UPDATE services SET " + 
 						" service_image = ?,external_link = ?,service_description = ? , service_name = ?,modified_on = now() WHERE id = ?;";
 				updateInsert = getJdbcTemplate().update(Sqlquery, fileName,
-						service.getServiceImage(), service.getExternalLink(), service.getServiceDescription() ,service.getServiceImage() ,service.getId());
+						 service.getExternalLink(), service.getServiceDescription() ,service.getServiceName() ,service.getId());
 			}
 		}
 		return updateInsert > 0 ? "success" : "fail";

@@ -22,8 +22,8 @@ public interface AdminService {
 
 	boolean deleteContent(long contentId, String imageName, String tableName, String viewFolder);
 	
-	void addUserInModel(ModelMap model);
+	ModelMap addUserInModel(ModelMap model);
 	
-	void addListHomePageContent(ModelMap model); 
+	ModelMap addListHomePageContent(ModelMap model); 
 
 }
