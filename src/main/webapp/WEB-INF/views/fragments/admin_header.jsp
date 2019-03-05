@@ -62,9 +62,16 @@
 					</div>
 				</li>
 				<security:authorize access="hasRole('ROLE_ADMIN')">
+					<c:set var="contains" value="no"  scope="page"/>
+					<c:set var="yes" value="yes"  scope="page"/>
+					<c:forEach var="item" items="${listHomePgcontMaster}">
+						<c:if test="${active eq item.name}">
+							<c:set var="contains" value="${yes}" />
+						</c:if>
+					</c:forEach>
 					<li class="no-padding">
 						<ul class="collapsible collapsible-accordion">
-							<li class="bold ${active eq 'admin'? 'active':'' }"><a class="collapsible-header waves-effect waves-cyan"><i
+							<li class="bold ${contains eq 'yes' ? 'active':'' }"><a class="collapsible-header waves-effect waves-cyan"><i
 									class="mdi-action-account-box"></i> Admin Control</a>
 								<div class="collapsible-body" style="">
 									<ul>

@@ -67,9 +67,17 @@
 					<p>Select An Image (Max 2MB)</p>
 				</div>
 				<div class="col s8 m4 l7">
-					<input type="file" id="input_file" name="file" class="dropify" data-height="150" data-max-file-size="2M" />
+					<input type="file" id="input_file" name="file" class="dropify" data-height="150" data-max-file-size="5M" />
 				</div>
 
+			</div>
+			<div class="row section">
+				<div class="col s12 m4 l3">
+					<p>Select An Icon</p>
+				</div>
+				<div class="col s4 m4 l4">
+					<input type="file" id="input_file" name="file" class="dropify" data-height="150" data-max-file-size="20K" />
+				</div>
 			</div>
 			<div class="row section">
 				<div class="col s12 m4 l3">
@@ -148,12 +156,21 @@
 	                    required: true,
 	                   
 	                }, */
-	                file :{
+	                iconImg :{
 	                	required: true,
 	                },
-	                type :{
+	                productName :{
 	                	required: true,
 	                },
+	                productDescription :{
+	                	required: true,
+	                },
+	                serviceName :{
+	                	required: true,
+	                },
+	                serviceDescription:{
+	                	required: true,
+	                }
 	           },
 	            //For custom messages
 	            messages: {

@@ -10,14 +10,14 @@ public interface AdminDao {
 
 	List<HomepageContentMaster> getHomePageContentMaster();
 
-	List<HomepageContent> getAllHomeComponentList(long userId, long homePageComponentMasterId);
+	List<HomepageContent> getAllHomeComponentList(Long userId, Long homePageComponentMasterId);
 
-	String insertFile(User user, String fileName, String tableName, Object obj);
+	String insertFile(User user, String fileName, String tableName, Object obj, String iconFileName);
 
-	HomepageContent getHomeComponentById(long contentId);
+	HomepageContent getHomeComponentById(Long contentId);
 
-	String updateFile(User user, String fileName, String tableName, Object homeComponent);
+	String updateFile(User user, String fileName, String tableName, Object homeComponent, String iconFileName);
 
-	boolean deleteContent(long contentId, String imageName, String tableName);
+	boolean deleteContent(Long contentId, String imageName, String tableName);
 
 }

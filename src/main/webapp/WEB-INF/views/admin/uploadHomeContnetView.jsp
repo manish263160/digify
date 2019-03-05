@@ -51,7 +51,7 @@ height: 100px;
 	                <p>Select An Image (Max 2MB)</p>
 	              </div>
 	              <div class="col s8 m4 l7">
-	                  <input type="file" id="input_file" name="file" class="dropify" data-height="150"  data-max-file-size="2M" />
+	                  <input type="file" id="input_file" name="file" class="dropify" data-height="150"  data-max-file-size="5M" />
 	              </div>
 	                       
 	            </div>
@@ -72,7 +72,7 @@ height: 100px;
 	              </div>
 	              
 	              <div class="input-field col s8 m4 l7">
-                          <textarea id="contentDescription" type="text" class="materialize-textarea" maxlength="250" autocomplete="off" name="contentDescription" ></textarea>
+                          <textarea id="contentDescription" type="text" class="materialize-textarea" maxlength="2000" autocomplete="off" name="contentDescription" ></textarea>
                           <label for="contentDescription" class="">Content Description</label>
                         </div>
 	            </div>
@@ -123,7 +123,7 @@ height: 100px;
 	                file :{
 	                	required: true,
 	                },
-	                type :{
+	                contentDescription :{
 	                	required: true,
 	                },
 	           },

@@ -7,9 +7,10 @@ public enum BASIC_STRINGS implements Serializable{
 	SYSTEM("SYSTEM"),USER("USER"),ADMIN("ADMIN"), DEFAULT_USER("DEFAULT_USER"), 
 	INACTIVE("INACTIVE") , COMPLETED("Completed"),ACTIVE("ACTIVE"), 
 	CAROUSEL("carousel") , ABOUTUS("aboutus"),CONTACTUS("contactus"),
-	PRODUCT("product"),SERVICE("service"),
+	PRODUCTS("products"),SERVICES("services"),
 	//These are the delivery options
-	CASHON_DELIVERY("CASHON_DELIVERY"),ONLINE("ONLINE"),CANCELED("CANCELED");
+	CASHON_DELIVERY("CASHON_DELIVERY"),ONLINE("ONLINE"),CANCELED("CANCELED"),
+	LOCALURL("http://localhost:8080"),PRODUCTION("http://13.234.106.81:8080");
 	
 	String stringName;
 

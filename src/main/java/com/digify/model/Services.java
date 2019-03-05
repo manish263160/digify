@@ -15,6 +15,8 @@ public class Services extends BaseDto implements Serializable{
 	private String serviceDescription;
 	private String externalLink;
 	private String imageUrl;
+	private String iconImg;
+	private String iconImgUrl;
 	public long getId() {
 		return id;
 	}
@@ -56,6 +58,18 @@ public class Services extends BaseDto implements Serializable{
 	}
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
+	}
+	public String getIconImg() {
+		return iconImg;
+	}
+	public void setIconImg(String iconImg) {
+		this.iconImg = iconImg;
+	}
+	public String getIconImgUrl() {
+		return iconImgUrl;
+	}
+	public void setIconImgUrl(String iconImgUrl) {
+		this.iconImgUrl = iconImgUrl;
 	}
 	
 	

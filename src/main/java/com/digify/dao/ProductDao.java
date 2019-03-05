@@ -3,11 +3,14 @@ package com.digify.dao;
 import java.util.List;
 
 import com.digify.model.Products;
+import com.digify.model.RequestQuotes;
 
 public interface ProductDao {
 
-	<T> List<T> getAllProductServices(long id, String tableName);
+	<T> List<T> getAllProductServices(Long id, String tableName);
 
-	<T> T getProductServiceById(long contentId, String tableName);
+	<T> T getProductServiceById(Long contentId, String tableName);
+
+	boolean insertQuotes(RequestQuotes requestQuotes);
 
 }

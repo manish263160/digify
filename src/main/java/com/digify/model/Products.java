@@ -16,6 +16,8 @@ public class Products extends BaseDto implements Serializable{
 	private String externalLink;
 	private String viewsFolder;
 	private String imageUrl;
+	private String iconImg;
+	private String iconImgUrl;
 	public long getId() {
 		return id;
 	}
@@ -63,6 +65,18 @@ public class Products extends BaseDto implements Serializable{
 	}
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
+	}
+	public String getIconImg() {
+		return iconImg;
+	}
+	public void setIconImg(String iconImg) {
+		this.iconImg = iconImg;
+	}
+	public String getIconImgUrl() {
+		return iconImgUrl;
+	}
+	public void setIconImgUrl(String iconImgUrl) {
+		this.iconImgUrl = iconImgUrl;
 	}
 	
 }

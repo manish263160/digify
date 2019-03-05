@@ -44,9 +44,9 @@
 					<p class="caption">
 						<b>product Image List</b>
 					</p>
-					<c:forEach items="${list }" var="l" varStatus="loop">
 						<div class="row">
-							<div class="col s12 m12 l12">
+					<c:forEach items="${list }" var="l" varStatus="loop">
+							<div class="col s6 m6 l6">
 								<div class="card">
 									<div class="card-image">
 										<img src="${l.imageUrl }" alt="sample"> <span class="card-title">${l.productName}</span>
@@ -62,9 +62,9 @@
 								</div>
 							</div>
 
-						</div>
 						<div class="divider"></div>
 					</c:forEach>
+						</div>
 				</c:when>
 				
 				<c:when test="${ not empty list && tableName eq 'services'}">
@@ -148,7 +148,7 @@
     	  imageName=imageName.trim();
     	  $(".progress").show();
     	  $.ajax({
-    		    url: '${digify}/admin/product/deleteContent/'+contentId+'/'+imageName+'/'+tableName,
+    		    url: '${digify}/admin/product/deleteContent/'+contentId+'/'+tableName+'?imageName='+imageName,
     		    type: 'DELETE',
     		    success: function(result) {
     		        // Do something with the result

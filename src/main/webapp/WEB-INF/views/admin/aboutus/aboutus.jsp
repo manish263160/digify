@@ -61,7 +61,7 @@
 											</div>
 											<div class="card-content">
 												<p class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="${l.contentDescription}">
-												${fn:substring(l.contentDescription, 0, 50)}.</p>
+												${l.contentDescription}</p>
 											</div>
 											<div class="card-action">
 												<a href="${digify}/admin/editHomeContnetView/${l.id}/${viewsFolder}/homepage_content">Edit</a>
@@ -176,7 +176,7 @@
     	  viewFolder=viewFolder.trim();
     	  $(".progress").show();
     	  $.ajax({
-    		    url: '${digify}/admin/deleteContent/'+contentId+'/'+imageName+'/'+viewFolder+'/homepage_content',
+    		  url: '${digify}/admin/deleteContent/'+contentId+'/'+viewFolder+'/homepage_content?imageName'+imageName,
     		    type: 'DELETE',
     		    success: function(result) {
     		        // Do something with the result

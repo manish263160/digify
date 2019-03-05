@@ -58,7 +58,7 @@
 				</div>
 				<div class="col s8 m4 l7">
 					<input type="file" id="input_file" name="file" class="dropify"
-						data-height="150" data-max-file-size="2M" />
+						data-height="150" data-max-file-size="5M" />
 				</div>
 			</div>
 			<div class="row section">
@@ -88,7 +88,7 @@
 
 				<div class="input-field col s8 m4 l7">
 					<textarea id="contentDescription" type="text" placeholder="PLease write a desription"
-						class="materialize-textarea" maxlength="250" autocomplete="off" 
+						class="materialize-textarea" maxlength="2000" autocomplete="off" 
 						name="contentDescription">${homeContentObj.contentDescription}</textarea>
 					<label for="contentDescription" class="">Content Description</label>
 				</div>
@@ -142,9 +142,9 @@
 	                   
 	                }, */
 	               
-	                imageLink :{
+	               /*  imageLink :{
 	                	required: true,
-	                },
+	                }, */
 	                contentDescription :{
 	                	required: true,
 	                },

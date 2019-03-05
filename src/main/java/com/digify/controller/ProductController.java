@@ -27,7 +27,7 @@ import com.digify.utils.ApplicationProperties;
 import com.digify.utils.GenUtilities;
 
 @Controller
-@PreAuthorize("hasRole('ROLE_ADMIN')")
+@PreAuthorize("permitAll()")
 @RequestMapping({"/admin/product"})
 public class ProductController {
 
@@ -76,9 +76,18 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = { "/insertProduct" }, method = { RequestMethod.POST })
-	public String addCarauserInsert( @RequestParam(value = "file", required = false) MultipartFile file, ModelMap model,
+	public String addCarauserInsert( @RequestParam(value = "file", required = false) MultipartFile[] multipart,
+			  ModelMap model,
 			@ModelAttribute("products") Products products , @ModelAttribute("services") Services services  ,@RequestParam("tableName") String tableName) {			
 		try {
+			MultipartFile iconImg = null;
+			MultipartFile file = null;
+			if(multipart.length > 0) {
+				file = multipart[0];
+				iconImg = multipart[1];
+			}else {
+				iconImg = multipart[0];
+			}
 //			String filepath = extractservice.extracted(file, uploadNews, tableName);
 			model=adminService.addUserInModel(model); 
 			model=adminService.addListHomePageContent(model);
@@ -86,13 +95,13 @@ public class ProductController {
 			model.addAttribute("themecolor", this.applicationProperties.getProperty("themecolor"));
 			String filePath = null;
 			if(tableName.equals("products"))
-			 filePath= adminService.insertUpdateHomeComponent(file , products , tableName , "insert");
+			 filePath= adminService.insertUpdateHomeComponent(file , products , tableName , "insert" , iconImg);
 			if(tableName.equals("services"))
-				 filePath= adminService.insertUpdateHomeComponent(file , services , tableName , "insert");
+				 filePath= adminService.insertUpdateHomeComponent(file , services , tableName , "insert", iconImg);
 				
 			if(filePath != null) {
 			model.addAttribute("imagepath", filePath);
-			return "admin/insertContentSuccessfull";
+			return "redirect:insertContentSuccessfull";
 			}
 			else {
 				logger.error("error in file upload==");
@@ -106,6 +115,12 @@ public class ProductController {
 		}
 	}
 	
+	@RequestMapping(value = { "/insertContentSuccessfull" }, method = { RequestMethod.GET })
+	public String insertContentSuccessfull(ModelMap model) {
+		model = adminService.addUserInModel(model);
+		model = adminService.addListHomePageContent(model);
+		return "admin/insertContentSuccessfull";
+	}
 	@RequestMapping(value = { "/editProductServiceView/{tableName}/{contentId}" }, method = { RequestMethod.GET })
 	public String addCarauser(ModelMap model, HttpServletRequest request , @PathVariable("contentId") long contentId
 			,@PathVariable("tableName") String tableName , @RequestParam(value="error" , required= false) String error) {
@@ -128,29 +143,56 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = { "/updateProductService" }, method = { RequestMethod.POST})
-	public String updateHomeContent( @RequestParam(value = "file", required = false) MultipartFile file, ModelMap model,
+	public String updateHomeContent(@RequestParam(value = "file", required = false) MultipartFile[] multipart,
+			ModelMap model,
 			@RequestParam("contentId") long  contentId,
 			@ModelAttribute("products") Products products , @ModelAttribute("services") Services services  ,@RequestParam("tableName") String tableName,
-			@RequestParam("oldImageURL") String oldImageURL) {	
+			@RequestParam("oldImageURL") String oldImageURL , @RequestParam("oldIconImageURL") String oldIconImageURL) {	
 		
 		try {
+			MultipartFile iconImg = null;
+			MultipartFile file = null;
+			if(multipart.length > 0) {
+				file = multipart[0];
+				iconImg = multipart[1];
+			}else {
+				iconImg = multipart[0];
+			}
 			model=adminService.addUserInModel(model); 
 			model=adminService.addListHomePageContent(model);
 			model.addAttribute("active", "carousel");
 			model.addAttribute("themecolor", this.applicationProperties.getProperty("themecolor"));
 			if(tableName.equals("products")) {
 			products.setId(contentId);
+			String imagePath = this.applicationProperties.getProperty("imageFolder");
 			if(file != null && !file.isEmpty()) {
-				String imagePath = this.applicationProperties.getProperty("imageFolder");
+				if(oldImageURL != null && !oldImageURL.isEmpty()) {
 				oldImageURL = imagePath +BASIC_STRINGS.ADMIN.getStringName()+this.applicationProperties.getProperty("products")+oldImageURL;
+				}else {
+					String fileName = file.getOriginalFilename();
+					oldImageURL = imagePath +BASIC_STRINGS.ADMIN.getStringName()+this.applicationProperties.getProperty("products")+fileName;
+				}
 				File oldFile =new File(oldImageURL);
 				GenUtilities.delete(oldFile);
 			}else {
 				products.setProductImage(oldImageURL);
 			}
-			String filePath = adminService.insertUpdateHomeComponent(file , products , tableName , "update");
+			if(iconImg != null && !iconImg.isEmpty()){
+				if(oldIconImageURL != null && !oldIconImageURL.isEmpty()) {
+				oldIconImageURL = imagePath +BASIC_STRINGS.ADMIN.getStringName()+this.applicationProperties.getProperty("products")+oldIconImageURL;
+				}
+				else {
+					String fileName = file.getOriginalFilename();
+					oldImageURL = imagePath +BASIC_STRINGS.ADMIN.getStringName()+this.applicationProperties.getProperty("products")+fileName;
+				}
+				File oldIconFile =new File(oldIconImageURL);
+				GenUtilities.delete(oldIconFile);
+			}else {
+				products.setIconImg(oldIconImageURL);
+			}
+			String filePath = adminService.insertUpdateHomeComponent(file , products , tableName , "update" ,iconImg);
 			model.addAttribute("imagepath", filePath);
-			return "admin/insertContentSuccessfull";
+			return "redirect:insertContentSuccessfull";
 			}
 			else if(tableName.equals("services")) {
 				services.setId(contentId);
@@ -162,7 +204,7 @@ public class ProductController {
 				}else {
 					services.setServiceImage(oldImageURL);
 				}
-				String filePath = adminService.insertUpdateHomeComponent(file , services , tableName , "update");
+				String filePath = adminService.insertUpdateHomeComponent(file , services , tableName , "update" ,iconImg);
 				model.addAttribute("imagepath", filePath);
 				return "admin/insertContentSuccessfull";
 				}
@@ -174,10 +216,10 @@ public class ProductController {
 		return "redirect:editProductServiceView/"+tableName+"/"+contentId+"?error="+st;
 	}
 	
-	@RequestMapping(value = { "/deleteContent/{contentId}/{imageName}/{tableName}" }, method = { RequestMethod.DELETE})
+	@RequestMapping(value = { "/deleteContent/{contentId}/{tableName}" }, method = { RequestMethod.DELETE})
 	@ResponseBody
 	public String deleteContent( @PathVariable("contentId") long  contentId,
-			@PathVariable("imageName") String imageName ,@PathVariable("tableName") String tableName  ) {	
+			@RequestParam(value="imageName", required=false) String imageName ,@PathVariable("tableName") String tableName  ) {	
 		logger.info("delete content data: "+contentId +" "+imageName+ " "+ tableName);
 		boolean statusDelete = productService.deleteContent(contentId,imageName,tableName);
 		return statusDelete ? "success" : "fail";

@@ -1,5 +1,9 @@
 eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
 encoding//src/main/resources=UTF-8
+encoding//src/main/webapp/WEB-INF/views/frontendfragments/productFradments.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/frontendfragments/serviceFragment.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/frontendfragments/testimonialFragment.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/welcomePage.jsp=UTF-8
 encoding//src/test/java=UTF-8
 encoding/<project>=UTF-8

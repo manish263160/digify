@@ -1,5 +1,14 @@
 
+  <!-- Bootstrap core JavaScript -->
+  <script src="${digify}/static/frontEnd/vendor/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="${digify}/static/lib/js/jquery.validate.min.js"></script>
+  <script src="${digify}/static/frontEnd/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<script src="${digify}/static/webstatic/js/script.js"></script>
-<script  src="${digify}/static/webstatic/js/jquery-2.1.4.min.js"></script>
-<script  src="${digify}/static/webstatic/js/numscroller-1.0.js"></script>	
+  <!-- Plugin JavaScript -->
+  <script src="${digify}/static/frontEnd/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="${digify}/static/frontEnd/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+
+  <!-- Custom scripts for this template -->
+  <script src="${digify}/static/frontEnd/js/creative.min.js"></script>
+  <script src="${digify}/static/frontEnd/js/customScript.js"></script>

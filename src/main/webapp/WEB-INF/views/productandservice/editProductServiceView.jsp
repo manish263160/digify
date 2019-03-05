@@ -68,7 +68,7 @@
 				</div>
 				<div class="col s8 m4 l7">
 					<input type="file" id="input_file" name="file" class="dropify"
-						data-height="150" data-max-file-size="2M" />
+						data-height="150" data-max-file-size="5M" />
 				</div>
 			</div>
 			<div class="row section">
@@ -77,6 +77,23 @@
 			</div>
 				<img alt="old_img" src="${obj.imageUrl}" class="responsive-img valign" height="200" width="200">
 				<input name="oldImageURL" type="hidden" value="${tableName eq 'products' ? obj.productImage : obj.serviceImage }">
+			</div>
+			
+			<div class="row section">
+				<div class="col s12 m4 l3">
+					<p>Select Icon image</p>
+				</div>
+				<div class="col s4 m4 l4">
+					<input type="file" id="input_file" name="file" class="dropify"
+						data-height="150" data-max-file-size="20K" />
+				</div>
+			</div>
+			<div class="row section">
+			<div class="col s12 m4 l3">
+			<p>Old Icon Image</p>
+			</div>
+				<img alt="old_icon_img" src="${obj.iconImgUrl}" class="responsive-img valign" height="100" width="100">
+				<input name="oldIconImageURL" type="hidden" value="${obj.iconImg }">
 			</div>
 			<div class="row section">
 				<div class="col s12 m4 l3">

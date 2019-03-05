@@ -7,20 +7,18 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.digify.model.HomepageContent;
 import com.digify.model.HomepageContentMaster;
-import com.digify.model.User;
-import com.digify.utils.GenUtilities;
 
 public interface AdminService {
 
 	List<HomepageContentMaster> getHomePageContentMaster();
 
-	List<HomepageContent> getAllHomeComponentList(long homePageComponentMasterId, String viewsFolder);
+	List<HomepageContent> getAllHomeComponentList(Long homePageComponentMasterId, String viewsFolder);
 
-	String insertUpdateHomeComponent(MultipartFile file, Object content, String tableName , String actionName);
+	String insertUpdateHomeComponent(MultipartFile file, Object content, String tableName , String actionName, MultipartFile iconImg);
 
-	HomepageContent getHomeComponentById(long contentId, String viewsFolder);
+	HomepageContent getHomeComponentById(Long contentId, String viewsFolder);
 
-	boolean deleteContent(long contentId, String imageName, String tableName, String viewFolder);
+	boolean deleteContent(Long contentId, String imageName, String tableName, String viewFolder);
 	
 	ModelMap addUserInModel(ModelMap model);
 	

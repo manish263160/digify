@@ -15,7 +15,7 @@ public class HomepageContent extends BaseDto implements Serializable {
 	private long homeContentId;
 	private String imageLink;
 	private String contentDescription;
-	private String viewsFolder;
+	private String viewFolder;
 	
 	public long getId() {
 		return id;
@@ -59,10 +59,10 @@ public class HomepageContent extends BaseDto implements Serializable {
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
-	public String getViewsFolder() {
-		return viewsFolder;
+	public String getViewFolder() {
+		return viewFolder;
 	}
-	public void setViewsFolder(String viewsFolder) {
-		this.viewsFolder = viewsFolder;
+	public void setViewFolder(String viewsFolder) {
+		this.viewFolder = viewsFolder;
 	}
 }
