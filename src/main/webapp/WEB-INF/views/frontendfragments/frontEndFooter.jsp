@@ -9,7 +9,7 @@
 <div class="col-lg-8 col-sm-8 col-md-8 col-xs-8 cms-cta-text text-center-md"> <div class="subtext" style="color: ;"> Have Any Questions ! </div> 
 <div class="text" style="color: ;"> Don't Hesitate To Contact Us Any Time. </div> </div> 
 <div class="col-lg-4 col-sm-4 col-md-4 col-xs-4 cms-cta-button text-center-md"> 
-<a href="#" class=" btn btn size-default"> Contact Us </a> 
+<a href="${digify}/frontendAction/contactUs" class=" btn btn size-default"> Contact Us </a> 
 </div> </div></div></div></div></div>
         
       </div>

@@ -16,7 +16,7 @@
 					implement an effective risk management system.</p>
 				</br>
 				<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-					<a class="knowmorebtn">Know More</a>
+					<a class="knowmorebtn" href="${digify }/frontendAction/aboutUs">Know More</a>
 				</div>
 			</div>
 
@@ -35,7 +35,7 @@
 							</div>
 						</div>
 						<div class="request-form-content col-lg-12 col-sm-12 col-md-12 col-xs-12">
-							<form  id="quotes_form" action="#">
+							<form  id="quotes_form" action="#" >
 								<div class="form-group">
 									<input type="text" placeholder="Your Name" class="form-control1" id="personName" name="personName">
 								</div>
@@ -49,7 +49,7 @@
 									<textarea type="text" placeholder="Quote Details" class="form-control1" id="quoteDetails" name="quoteDetails"></textarea>
 								</div>
 
-								<button type="submit" class="btn btn-primary">Submit Inquiry</button>
+								<button type="button" onclick="submitQuotes('${digify}','$event')" class="btn btn-primary">Submit Inquiry</button>
 							</form>
 						</div>
 					</div>
@@ -59,24 +59,3 @@
 	</div>
 </section>
 
-<!-- Modal -->
-  <div class="modal fade" id="quotesSuccess" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Request A Quote</h4>
-+-
-        </div>
-        <div class="modal-body">
-          <p>Your quotes has submitted successfully. We have sent you a notification. Please see your email</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-  

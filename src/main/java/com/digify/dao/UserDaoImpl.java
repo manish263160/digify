@@ -285,5 +285,12 @@ public class UserDaoImpl extends DigifyJdbcTemplate implements UserDao{
 		}
 		return passGenToken;
 	}
+
+	@Override
+	public boolean contactUsSubmit(String name, String email, String subject, String message) {
+		String Sqlquery = "INSERT INTO contact_us(name,email,subject,message) VALUES (?,?,?,?);";
+		int rowInsert = getJdbcTemplate().update(Sqlquery, name, email, subject,message);
+		return rowInsert > 0 ? true : false;
+	}
 	
 }

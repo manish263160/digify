@@ -1,30 +1,32 @@
 /**
  * 
- *//*
+ */
 "use strict"; 
 
-	$("#quotes_form").submit(function(e){
+	function submitQuotes(digify,e){
 	  
 		if($("#quotes_form").valid()){
-		console.log("submitQuotes::");
+		console.log("submitQuotes::", digify);
 	  
 	  event.preventDefault();
 	  var form_data = $("#quotes_form").serialize();
 	  $.ajax({
-		    url: '${digify}/requestQuotes',
+		    url: digify+'/requestQuotes',
 		    type: 'POST',
 		    data : form_data,
 		    success: function(result) {
 		        // Do something with the result
 		        console.log("result=="+result)
-     		      	  $(".progress").hide();	 
-		        if(result === 'success'){
-		        	location.reload();
+/*     		      	  $(".progress").hide();	 */
+		        if(result){
+
+		        	$("#quotesSuccess").modal();
+		        	$("#quotes_form")[0].reset();
 		        }
 		    }
 		});
 	}
-});
+};
 
 
 $("#quotes_form").validate({
@@ -54,4 +56,4 @@ $("#quotes_form").validate({
         error.insertAfter(element);
       }
     }
- });	*/
+ });	

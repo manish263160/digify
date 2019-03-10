@@ -1,4 +1,4 @@
-
+<%@include file="../fragments/includetags.jsp"%>
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
     <div class="container">
@@ -9,31 +9,55 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto my-2 my-lg-0">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#intro">Home</a>
+          <c:choose>
+            <c:when test="${page eq 'home'}"><a class="nav-link js-scroll-trigger" href="#intro">Home</a></c:when>
+            <c:otherwise><a class="nav-link js-scroll-trigger" href="${digify}/">Home</a></c:otherwise>
+            </c:choose>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#aboutus">About Us</a>
+            <c:choose>
+            <c:when test="${page eq 'home'}">
+			<a class="nav-link js-scroll-trigger" href="#aboutus">About Us</a>
+			</c:when>
+            <c:otherwise><a class="nav-link js-scroll-trigger" href="${digify }/frontendAction/aboutUs">About Us</a></c:otherwise>
+            </c:choose>
           </li>
           <li class="nav-item servicemenu">
-            <a class="nav-link js-scroll-trigger" href="#products">Product
-			<i class="fa fa-caret-down fa-lg" aria-hidden="true" style="padding-left: 10px; color:#716e6d;"></i></a>
+          <c:choose>
+            <c:when test="${page eq 'home'}">
+			<a class="nav-link js-scroll-trigger" href="${digify}/frontendAction/dashBoard/products">Product <i class="fa fa-caret-down fa-lg caret_custom" aria-hidden="true" ></i></a>
+			</c:when>
+            <c:otherwise>
+            <a class="nav-link js-scroll-trigger" href="${digify}/frontendAction/dashBoard/products">Product <i class="fa fa-caret-down fa-lg caret_custom" aria-hidden="true" ></i></a>
+            </c:otherwise>
+            </c:choose>
           <ul class="servicemenuli">
-          <c:forEach items="${allProducts }" var="products">
-			<li class="servicemenuliin"><a class="servicemenulink"><span><img src="${products.iconImgUrl}"/></span>${products.productName}</a></li>
+          <c:forEach items="${allProducts }" var="products" varStatus="loop">
+		<c:if test="${loop.count < 9 }">	<li class="servicemenuliin"><a class="servicemenulink" href="${digify}/frontendAction/productPage/${products.id}" ><span><img src="${products.iconImgUrl}"/></span>${products.productName}</a></li>
+		</c:if>
           </c:forEach>
 			</ul>
 		  </li>
           <li class="nav-item servicemenu">
-            <a class="nav-link js-scroll-trigger" href="#services">Services
-			<i class="fa fa-caret-down fa-lg" aria-hidden="true" style="padding-left: 10px; color:#716e6d;"></i></a>
+          <c:choose>
+            <c:when test="${page eq 'home'}">
+			<a class="nav-link js-scroll-trigger" href="${digify}/frontendAction/dashBoard/services">Services
+			<i class="fa fa-caret-down fa-lg caret_custom" aria-hidden="true" ></i></a>
+			</c:when>
+            <c:otherwise>
+            <a class="nav-link js-scroll-trigger" href="${digify}/frontendAction/dashBoard/services">Services
+			<i class="fa fa-caret-down fa-lg caret_custom" aria-hidden="true" ></i></a>
+            </c:otherwise>
+            </c:choose>           
           <ul class="servicemenuli">
-			<c:forEach items="${allServices }" var="services">
-			<li class="servicemenuliin"><a class="servicemenulink"><span><img src="${services.iconImgUrl}"/></span>${services.serviceName}</a></li>
+			<c:forEach items="${allServices }" var="services" varStatus="loop">
+			<c:if test="${loop.count < 9 }"><li class="servicemenuliin"><a class="servicemenulink" href="${digify}/frontendAction/servicePage/${products.id}"><span><img src="${services.iconImgUrl}"/></span>${services.serviceName}</a></li>
+			</c:if>
           </c:forEach>
 			</ul>
 		  </li>
 		  <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#contact">AMC</a>
+            <a class="nav-link js-scroll-trigger" href="#">AMC</a>
           </li>
 		  <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#contact">Contact Us</a>

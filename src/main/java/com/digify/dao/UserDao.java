@@ -44,5 +44,7 @@ boolean insertPassGenToken(Long userId, String token);
 
 String getpassGenToken(long userId);
 
+boolean contactUsSubmit(String name, String email, String subject, String message);
+
 
 }

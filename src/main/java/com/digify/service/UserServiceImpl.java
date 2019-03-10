@@ -1,15 +1,21 @@
 package com.digify.service;
 
 import java.net.URLDecoder;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.apache.velocity.app.VelocityEngine;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.MailException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.velocity.VelocityEngineUtils;
 
 import com.digify.Enums.BASIC_STRINGS;
 import com.digify.Enums.CommonEnums.STATUS;
@@ -18,6 +24,7 @@ import com.digify.exception.GenericException;
 import com.digify.model.User;
 import com.digify.model.UserBookingDetails;
 import com.digify.utils.AESEncrypter;
+import com.digify.utils.GenUtilities;
 import com.digify.utils.LoginUtils;
 
 @Service
@@ -27,9 +34,18 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDao userDao;
 
-	@Autowired
-	LoginUtils loginutils;
+	@Autowired LoginUtils loginutils;
 	
+	private @Autowired VelocityEngine velocityEngine;
+	
+	@Autowired MailingService mailingService;
+
+	@Value("${mail.username}")
+	private String senderMailId;
+
+	@Value("${mail.admin}")
+	private String adminMailId;
+
 	private BCryptPasswordEncoder bcryptEncoder;
 
 	@Override
@@ -121,9 +137,9 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean insertPotentialCuastomer(String name, String phone) {
-		boolean bool =  userDao.insertPotentialCuastomer(name, phone);
-		if(bool) {
-			ResponseEntity<String> response = loginutils.sendSms(name,phone);
+		boolean bool = userDao.insertPotentialCuastomer(name, phone);
+		if (bool) {
+			ResponseEntity<String> response = loginutils.sendSms(name, phone);
 		}
 		return bool;
 	}
@@ -172,7 +188,7 @@ public class UserServiceImpl implements UserService {
 
 		return getuserUid;
 	}
-	
+
 	@Override
 	public User checkUserByEmailorID(String emailorID) {
 		return userDao.checkUserByEmailorID(emailorID);
@@ -180,7 +196,44 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean insertPassGenToken(Long userId, String token) {
-		return userDao.insertPassGenToken(userId,token);
+		return userDao.insertPassGenToken(userId, token);
+	}
+
+	@Override
+	public boolean contactUsSubmit(String name, String email, String subject, String message) {
+		boolean bool = userDao.contactUsSubmit(name, email, subject, message);
+		if (bool) {
+			try {
+				/*
+				 * if(GenUtilities.isValidEmail(email)) { Map<String, Object> storemap = new
+				 * HashMap<String, Object>(); storemap.put("name",
+				 * requestQuotes.getPersonName()); storemap.put("email",
+				 * requestQuotes.getPersonEmail()); storemap.put("mobile",
+				 * requestQuotes.getMobile()); storemap.put("quoteDetails",
+				 * requestQuotes.getQuoteDetails()); storemap.put("DigifyTeam", "Digify Team");
+				 * String text = VelocityEngineUtils.mergeTemplateIntoString(velocityEngine,
+				 * "email_Templates/sendEnquiryUser.vm", "UTF-8", storemap);
+				 * mailingService.sendMail(senderMailId, new String[] { email }, null,
+				 * "Request A Quote", text); }
+				 */
+				if (GenUtilities.isValidEmail(adminMailId)) {
+					Map<String, Object> storemap = new HashMap<String, Object>();
+					storemap.put("name", name);
+					storemap.put("email", email);
+					storemap.put("subject", subject);
+					storemap.put("message", message);
+					String text = VelocityEngineUtils.mergeTemplateIntoString(velocityEngine,
+							"email_Templates/sendEnquiryAdmin.vm", "UTF-8", storemap);
+					mailingService.sendMail(senderMailId, new String[] { adminMailId }, null, subject, text);
+				}
+				return true;
+			} catch (MailException e) {
+				e.printStackTrace();
+				return false;
+			}
+		}
+
+		return bool;
 	}
 
 }

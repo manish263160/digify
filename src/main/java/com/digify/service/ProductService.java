@@ -5,7 +5,8 @@ package com.digify.service;
 
 import java.util.List;
 
-import com.digify.model.Products;
+import org.springframework.ui.ModelMap;
+
 import com.digify.model.RequestQuotes;
 
 /**
@@ -21,5 +22,7 @@ public interface ProductService {
 	boolean deleteContent(long contentId, String imageName, String tableName);
 
 	boolean insertQuotes(RequestQuotes requestQuotes);
+	
+	ModelMap setProductservice(ModelMap model);
 
 }

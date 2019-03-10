@@ -241,7 +241,7 @@ public class AdminServiceImpl implements AdminService {
 		return model;
 
 	}
-
+	
 	private boolean iconFileUpload(MultipartFile iconImg, String imagePath) throws IOException {
 		if(iconImg != null && !iconImg.isEmpty()) {
 		String iconFileName = iconImg.getOriginalFilename();

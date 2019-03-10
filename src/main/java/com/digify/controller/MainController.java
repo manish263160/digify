@@ -36,11 +36,13 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.digify.Enums.BASIC_STRINGS;
+import com.digify.exception.GenericException;
 import com.digify.model.HomepageContent;
 import com.digify.model.Products;
 import com.digify.model.RequestQuotes;
 import com.digify.model.Services;
 import com.digify.model.User;
+import com.digify.model.UserBookingDetails;
 import com.digify.service.AdminService;
 import com.digify.service.MailingService;
 import com.digify.service.ProductService;
@@ -48,6 +50,7 @@ import com.digify.service.UserService;
 import com.digify.utils.AESEncrypter;
 import com.digify.utils.ApplicationConstants;
 import com.digify.utils.ApplicationProperties;
+import com.digify.utils.GenUtilities;
 
 @Controller
 @PreAuthorize("permitAll()")
@@ -72,14 +75,12 @@ public class MainController {
 	private String senderMailId;
 
 	@RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
-	public String welcomePage(Model model) {
+	public String welcomePage(ModelMap model) {
 		model.addAttribute("title", "Welcome");
+		model.addAttribute("page", "home");
 		model.addAttribute("message", "This is welcome page!");
-		List<Products> productList = productService.getAllProductServices(BASIC_STRINGS.PRODUCTS.getStringName());
-		List<Services> serviceList = productService.getAllProductServices(BASIC_STRINGS.SERVICES.getStringName());
+		model= productService.setProductservice(model);
 		List<HomepageContent> homePageContnet = adminService.getAllHomeComponentList(null,null);
-		model.addAttribute("allProducts", productList);
-		model.addAttribute("allServices", serviceList);
 		model.addAttribute("homePageContnet", homePageContnet);
 		
 		LinkedList<HomepageContent> carouselList  = homePageContnet.stream().filter(predicate -> predicate.getViewFolder().equals(BASIC_STRINGS.CAROUSEL.getStringName())).collect(Collectors.toCollection(() -> new LinkedList<HomepageContent>()));
@@ -90,6 +91,57 @@ public class MainController {
 		model.addAttribute("carouselList", carouselList);
 		return "welcomePage";
 	}
+
+
+	
+	 /*------------------------USer registration related ----------------------------------------*/	
+		@RequestMapping(value = { "/bookedservice" }, method = { RequestMethod.GET })
+		public String bookedservice(Model model, HttpServletRequest request) {
+//			User user = GenUtilities.getLoggedInUser();
+			List<UserBookingDetails> bookedservice = userService.getUserBookingDetails(); 
+			model.addAttribute("active", "bookedservice");
+			model.addAttribute("themecolor", this.applicationProperties.getProperty("themecolor"));
+			model.addAttribute("list", bookedservice);
+			return "bookedservice";
+		}
+
+		@RequestMapping(value = { "/userregistration" }, method = { RequestMethod.GET })
+		public String register(@RequestParam(name = "error", required = false) String error, @ModelAttribute User user,
+				ModelMap map, HttpServletRequest request) {
+			logger.debug("register start");
+			map.addAttribute("error", error);
+			return "user/registrationpage";
+		}
+
+		@RequestMapping(value = { "/insertUser" }, method = { RequestMethod.POST })
+		public String insertUser(@ModelAttribute User user, ModelMap map, HttpServletRequest request) {
+			logger.debug("register start");
+
+			try {
+				this.userService.insertUser(user);
+				return "user/userRegSuccess";
+			} catch (GenericException arg5) {
+				System.out.println(arg5.getMessage());
+				return "redirect:userregistration?error=" + arg5.getMessage();
+			}
+		}
+
+		@RequestMapping(value = { "/activateUser" }, method = { RequestMethod.GET })
+		public String activateUser(@RequestParam String token, HttpServletRequest request) {
+			try {
+				if (GenUtilities.getLoggedInUser() != null) {
+					request.logout();
+					SecurityContextHolder.getContext().setAuthentication((Authentication) null);
+				}
+
+				String e = this.userService.activateUser(token);
+				return "redirect:/login?message=" + e;
+			} catch (Exception arg3) {
+				arg3.printStackTrace();
+				logger.error("::activateUser: Exception occurred!!");
+				return "redirect:/login";
+			}
+		}
 
 	@RequestMapping(value = { "/loginpage" }, method = { RequestMethod.GET })
 	public ModelAndView loginPage(@RequestParam(value = "error", required = false) String error,
@@ -188,9 +240,10 @@ public class MainController {
 	}
 	@RequestMapping(value="requestQuotes" , method = { RequestMethod.POST } )
 	@ResponseBody
-	public boolean requestQuotes(@ModelAttribute("requestQuotes") RequestQuotes requestQuotes,
-			  ModelMap model) {
+	public boolean requestQuotes(@ModelAttribute("requestQuotes") RequestQuotes requestQuotes) {
 		boolean retrn = productService.insertQuotes(requestQuotes);
 		return retrn;
 	}
+	
+    
 }

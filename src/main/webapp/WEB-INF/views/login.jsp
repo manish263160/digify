@@ -71,7 +71,7 @@
         </div>
         <div class="row">
           <div class="input-field col s6 m6 l6">
-            <p class="margin medium-small"><a href="${digify}/user/userregistration">Register Now!</a></p>
+            <p class="margin medium-small"><a href="${digify}/user/userregistration">Sign Up</a></p>
           </div> 
             <div class="input-field col s6 m6 l6">
               <p class="margin right-align medium-small"><a class="tooltipped modal-trigger" href="#modal1" data-position="bottom" data-delay="50" data-tooltip="Forgot Password">Forgot password ?</a></p>

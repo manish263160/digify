@@ -11,9 +11,12 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.apache.velocity.app.VelocityEngine;
+import org.apache.velocity.exception.VelocityException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.MailException;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.ModelMap;
 import org.springframework.ui.velocity.VelocityEngineUtils;
 
 import com.digify.Enums.BASIC_STRINGS;
@@ -47,6 +50,9 @@ public class ProductServiceImpl implements ProductService {
 
 	@Value("${mail.username}")
 	private String senderMailId;
+	
+	@Value("${mail.admin}")
+	private String adminMailId;
 	
 	private @Autowired VelocityEngine velocityEngine;
 	
@@ -132,16 +138,44 @@ public class ProductServiceImpl implements ProductService {
 	public boolean insertQuotes(RequestQuotes requestQuotes) {
 		boolean bool = productDao.insertQuotes(requestQuotes);
 		if(bool) {
-			String email = requestQuotes.getPersonEmail();
-			if(GenUtilities.isValidEmail(email)) {
-				Map<String, Object> storemap = new HashMap<String, Object>();
-				storemap.put("name", requestQuotes.getPersonName());
-				storemap.put("DigifyTeam", "Digify Team");
-				String text = VelocityEngineUtils.mergeTemplateIntoString(velocityEngine,
-						"email_Templates/sendEnquiry.vm", "UTF-8", storemap);
-				mailingService.sendMail(senderMailId, new String[] { email }, null, "Request A Quote", text);
+			try {
+				String email = requestQuotes.getPersonEmail();
+				if(GenUtilities.isValidEmail(email)) {
+					Map<String, Object> storemap = new HashMap<String, Object>();
+					storemap.put("name", requestQuotes.getPersonName());
+					storemap.put("email", requestQuotes.getPersonEmail());
+					storemap.put("mobile", requestQuotes.getMobile());
+					storemap.put("quoteDetails", requestQuotes.getQuoteDetails());
+					storemap.put("DigifyTeam", "Digify Team");
+					String text = VelocityEngineUtils.mergeTemplateIntoString(velocityEngine,
+							"email_Templates/sendEnquiryUser.vm", "UTF-8", storemap);
+					mailingService.sendMail(senderMailId, new String[] { email }, null, "Request A Quote", text);
+				}
+				if(GenUtilities.isValidEmail(adminMailId)) {
+					Map<String, Object> storemap = new HashMap<String, Object>();
+					storemap.put("name", requestQuotes.getPersonName());
+					storemap.put("email", requestQuotes.getPersonEmail());
+					storemap.put("mobile", requestQuotes.getMobile());
+					storemap.put("quoteDetails", requestQuotes.getQuoteDetails());
+					String text = VelocityEngineUtils.mergeTemplateIntoString(velocityEngine,
+							"email_Templates/sendEnquiryAdmin.vm", "UTF-8", storemap);
+					mailingService.sendMail(senderMailId, new String[] { adminMailId }, null, "Request A Quote", text);
+				}
+				return true;
+			} catch (MailException e) {
+				e.printStackTrace();
+				return false;
 			}
 		}
-		return bool;
+		return false;
+	}
+	
+
+	public ModelMap setProductservice(ModelMap model) {
+		List<Products> productList = getAllProductServices(BASIC_STRINGS.PRODUCTS.getStringName());
+		List<Services> serviceList = getAllProductServices(BASIC_STRINGS.SERVICES.getStringName());
+		model.addAttribute("allProducts", productList);
+		model.addAttribute("allServices", serviceList);
+		return model;
 	}
 }
