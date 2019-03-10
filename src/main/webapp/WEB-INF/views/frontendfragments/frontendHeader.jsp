@@ -51,7 +51,7 @@
             </c:choose>           
           <ul class="servicemenuli">
 			<c:forEach items="${allServices }" var="services" varStatus="loop">
-			<c:if test="${loop.count < 9 }"><li class="servicemenuliin"><a class="servicemenulink" href="${digify}/frontendAction/servicePage/${products.id}"><span><img src="${services.iconImgUrl}"/></span>${services.serviceName}</a></li>
+			<c:if test="${loop.count < 9 }"><li class="servicemenuliin"><a class="servicemenulink" href="${digify}/frontendAction/servicePage/${services.id}"><span><img src="${services.iconImgUrl}"/></span>${services.serviceName}</a></li>
 			</c:if>
           </c:forEach>
 			</ul>
