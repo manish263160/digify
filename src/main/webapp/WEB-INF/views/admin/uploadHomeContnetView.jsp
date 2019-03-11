@@ -5,6 +5,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Image Upload</title>
 	 <link href="${digify}/static/lib/css/dropify.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+	 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="${digify}/static/lib/richtext/richtext.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 	 <style type="text/css">
 #input_file-error{
 	color: red !important;
@@ -32,7 +34,7 @@ height: 100px;
 	 </c:if> 
 	<div id="card-alert" class="card red hide">
 	                      <div class="card-content white-text">
-	                        <p><i class="mdi-alert-error"></i> This ${viewsFolder } already exist.</p>
+	                        <p><i class="mdi-alert-error"></i> This ${viewFolder } already exist.</p>
 	                      </div>
 	                      <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
 	                        <span aria-hidden="true">×</span>
@@ -40,7 +42,7 @@ height: 100px;
 	                    </div>
 		<div class="row section">
 			<div class="col s12 m12 l12">
-				<h5>Please fill this form to add in ${viewsFolder } content</h5>
+				<h5>Please fill this form to add in ${viewFolder } content</h5>
 			</div>
 		</div>
 		<form action="${digify}/admin/insertHomeContent?${_csrf.parameterName}=${_csrf.token}" method="post"
@@ -73,12 +75,12 @@ height: 100px;
 	              
 	              <div class="input-field col s8 m4 l7">
                           <textarea id="contentDescription" type="text" class="materialize-textarea" maxlength="2000" autocomplete="off" name="contentDescription" ></textarea>
-                          <label for="contentDescription" class="">Content Description</label>
+<!--                           <label for="contentDescription" class="">Content Description</label> -->
                         </div>
 	            </div>
 	      <div class="row section">
 	      <input type="hidden" value="${id}" name="homeContentId">
-	      <input type="hidden" value="${viewsFolder}" name="viewsFolder">
+	      <input type="hidden" value="${viewFolder}" name="viewFolder">
 	      <div class="col s12 m8 l9  center" style="padding-right: 193px;" ><button class="btn btn-large waves-effect waves-light red darken-4" type="submit"> Submit</button></div>
 	      </div>
 	</form>            
@@ -87,8 +89,11 @@ height: 100px;
 	
 	 <jsp:include page="../includes/admin_js.jsp" />
 	 <script type="text/javascript" src="${digify}/static/lib/js/dropify.min.js"></script>
+	 <script type="text/javascript" src="${digify}/static/lib/richtext/jquery.richtext.min.js"></script>
 	 <script type="text/javascript">
 	        $(document).ready(function(){
+	        	$("#contentDescription").richText();
+
 	            // Basic
 	            $('.dropify').dropify();
 	

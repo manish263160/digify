@@ -7,6 +7,8 @@
 <title>Image Upload</title>
 <link href="${digify}/static/lib/css/dropify.min.css" type="text/css"
 	rel="stylesheet" media="screen,projection">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="${digify}/static/lib/richtext/richtext.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 <style type="text/css">
 #input_file-error {
 	color: red !important;
@@ -90,12 +92,12 @@
 					<textarea id="contentDescription" type="text" placeholder="PLease write a desription"
 						class="materialize-textarea" maxlength="2000" autocomplete="off" 
 						name="contentDescription">${homeContentObj.contentDescription}</textarea>
-					<label for="contentDescription" class="">Content Description</label>
+<!-- 					<label for="contentDescription" class="">Content Description</label> -->
 				</div>
 			</div>
 			<div class="row section">
 				<input type="hidden" value="${contentId}" name="contentId">
-				<input type="hidden" value="${ viewsFolder}" name="viewsFolder" >
+				<input type="hidden" value="${ viewFolder}" name="viewFolder" >
 				<div class="col s12 m8 l9  center" style="padding-right: 193px;">
 					<button class="btn btn-large waves-effect waves-light red darken-4"
 						type="submit">Edit</button>
@@ -108,8 +110,10 @@
 	<jsp:include page="../includes/admin_js.jsp" />
 	<script type="text/javascript"
 		src="${digify}/static/lib/js/dropify.min.js"></script>
+		<script type="text/javascript" src="${digify}/static/lib/richtext/jquery.richtext.min.js"></script>
 	<script type="text/javascript">
 	        $(document).ready(function(){
+	        	$("#contentDescription").richText();
 	            // Basic
 	            $('.dropify').dropify();
 	

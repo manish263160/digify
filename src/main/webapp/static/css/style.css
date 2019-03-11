@@ -11,4 +11,7 @@
     transform: translateY(0%);
   }
   
-  
+  .equal_height_img{
+  width: 100% !important;
+  height: 10rem !important;s
+  }

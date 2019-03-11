@@ -51,29 +51,28 @@
 						<p class="caption">
 							<b>aboutus Image List</b>
 						</p>
-					<c:forEach items="${list }" var="l" varStatus="loop">
-						<div class="row">
-							<div class="col s6 m6 l6">
-										<div class="card">
-											<div class="card-image">
-												<img src="${l.imageUrl }" alt="sample"> <span
-													class="card-title">${l.imageLink}</span>
-											</div>
-											<div class="card-content">
-												<p class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="${l.contentDescription}">
-												${l.contentDescription}</p>
-											</div>
-											<div class="card-action">
-												<a href="${digify}/admin/editHomeContnetView/${l.id}/${viewsFolder}/homepage_content">Edit</a>
-												<a href="#"
-													onclick="deleteAllImg('${l.id }','${l.imageName}' ,'${viewsFolder}')">Delete</a>
-											</div>
-										</div>
+					<div class="row">
+						<c:forEach items="${list }" var="l" varStatus="loop">
+							<div class="col s6 m3 l3">
+								<div class="card">
+									<div class="card-image">
+										<img src="${l.imageUrl }" alt="sample" class="equal_height_img" >
+<%-- 										 <span class="card-title">${l.imageLink}</span> --%>
 									</div>
+									<div class="card-content">
+										<p class="tooltipped" data-position="bottom" data-delay="50" >
+										 ${l.contentDescription}</p>  <%-- ${fn:substring(l.contentDescription, 0, 30)}... --%>
+									</div>
+									<div class="card-action">
+										<a href="${digify}/admin/editHomeContnetView/${l.id}/${viewsFolder}/homepage_content">Edit</a> <a href="#"
+											onclick="deleteAllImg('${l.id }','${l.imageName}' ,'${viewsFolder}')">Delete</a>
+									</div>
+								</div>
+							</div>
 
-						</div>
-						<div class="divider"></div>
-					</c:forEach>
+							<div class="divider"></div>
+						</c:forEach>
+					</div>
 
 
 				</c:when>

@@ -7,6 +7,8 @@
 <title>Image Upload</title>
 <link href="${digify}/static/lib/css/dropify.min.css" type="text/css"
 	rel="stylesheet" media="screen,projection">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="${digify}/static/lib/richtext/richtext.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 <style type="text/css">
 #input_file-error {
 	color: red !important;
@@ -122,9 +124,9 @@
 				</div>
 
 				<div class="input-field col s8 m4 l7">
-					<textarea id="description" type="text" class="materialize-textarea" maxlength="2000" autocomplete="off"
+					<textarea id="description" type="text"  maxlength="2000" autocomplete="off"
 						name="${productService}Description">${tableName eq 'products' ? obj.productDescription : obj.serviceDescription}</textarea>
-					<label for="description" class="">${productService} Description</label>
+<%-- 					<label for="description" class="">${productService} Description</label> --%>
 				</div>
 			</div>
 			<div class="row section">
@@ -142,8 +144,11 @@
 	<jsp:include page="../includes/admin_js.jsp" />
 	<script type="text/javascript"
 		src="${digify}/static/lib/js/dropify.min.js"></script>
+		<script type="text/javascript" src="${digify}/static/lib/richtext/jquery.richtext.min.js"></script>
 	<script type="text/javascript">
 	        $(document).ready(function(){
+	        	$('#description').richText();
+	        	
 	            // Basic
 	            $('.dropify').dropify();
 	

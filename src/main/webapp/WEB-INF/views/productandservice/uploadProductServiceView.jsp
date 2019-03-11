@@ -6,6 +6,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Image Upload</title>
 <link href="${digify}/static/lib/css/dropify.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="${digify}/static/lib/richtext/richtext.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+
 <style type="text/css">
 #input_file-error {
 	color: red !important;
@@ -18,8 +21,8 @@
 </style>
 
 </head>
-<body class="${themecolor }">
 	<jsp:include page="../fragments/admin_header.jsp" />
+<body class="${themecolor }">
 	<c:if test="${not empty tableName }">
 	<c:set var="productService" value="" scope="page"></c:set>
 	<c:choose>
@@ -104,10 +107,10 @@
 					<p>${productService} Description</p>
 				</div>
 
-				<div class="input-field col s8 m4 l7">
-					<textarea id="description" type="text" class="materialize-textarea" maxlength="2000" autocomplete="off"
+				<div class="input-field col s8 m8 l8">
+					<textarea id="description" type="text"  maxlength="2000" autocomplete="off"
 						name="${productService}Description"></textarea>
-					<label for="description" class="">${productService} Description</label>
+<%-- 					<label for="description" class="">${productService} Description</label> --%>
 				</div>
 			</div>
 
@@ -123,6 +126,7 @@
 
 	<jsp:include page="../includes/admin_js.jsp" />
 	<script type="text/javascript" src="${digify}/static/lib/js/dropify.min.js"></script>
+	<script type="text/javascript" src="${digify}/static/lib/richtext/jquery.richtext.min.js"></script>
 	<script type="text/javascript">
 	        $(document).ready(function(){
 	            // Basic
@@ -200,7 +204,8 @@
 	            });
 	        	
 	        }
-	        
+	        $('#description').richText();
+
 	        function changeSelect(){
 	        	console.log("------",$("#categoryId").val());
 	        }

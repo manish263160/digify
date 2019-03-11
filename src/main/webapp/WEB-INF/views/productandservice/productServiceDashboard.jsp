@@ -44,15 +44,16 @@
 					<p class="caption">
 						<b>product Image List</b>
 					</p>
-						<div class="row">
+						<div class="row" >
 					<c:forEach items="${list }" var="l" varStatus="loop">
-							<div class="col s6 m6 l6">
+							<div class="col s6 m3 l3">
 								<div class="card">
 									<div class="card-image">
-										<img src="${l.imageUrl }" alt="sample"> <span class="card-title">${l.productName}</span>
+										<img src="${l.imageUrl }" alt="sample" class="equal_height_img">
+										 <span class="card-title">${l.productName}</span>
 									</div>
 									<div class="card-content">
-										<p  class="tooltipped" data-position="bottom" data-delay="50" >
+										<p  class="tooltipped" data-position="bottom" data-delay="50"  >
 										${l.productDescription}	</p>
 									</div>
 									<div class="card-action">
@@ -72,16 +73,17 @@
 					<p class="caption">
 						<b>services Image List</b>
 					</p>
-					<c:forEach items="${list }" var="l" varStatus="loop">
 						<div class="row">
-							<div class="col s6 m6 l6">
+					<c:forEach items="${list }" var="l" varStatus="loop">
+							<div class="col s6 m3 l3">
 								<div class="card">
 									<div class="card-image">
-										<img src="${l.imageUrl }" alt="sample"> <span class="card-title">${l.serviceName}</span>
+										<img src="${l.imageUrl }" alt="sample" class="equal_height_img"> 
+										<span class="card-title">${l.serviceName}</span>
 									</div>
 									<div class="card-content">
 										<p class="tooltipped" data-position="bottom" data-delay="50" >
-											${l.serviceDescription }</p>
+											${l.serviceDescription}</p>
 									</div>
 									<div class="card-action">
 										<a href="${digify}/admin/product/editProductServiceView/${tableName}/${l.id}">Edit</a> <a href="#"
@@ -90,9 +92,9 @@
 								</div>
 							</div>
 
-						</div>
 						<div class="divider"></div>
 					</c:forEach>
+						</div>
 
 
 				</c:when>

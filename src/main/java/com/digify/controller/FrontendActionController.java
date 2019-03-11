@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.digify.Enums.BASIC_STRINGS;
+import com.digify.model.HomepageContent;
 import com.digify.model.Products;
 import com.digify.model.Services;
+import com.digify.service.AdminService;
 import com.digify.service.ProductService;
 import com.digify.service.UserService;
 import com.digify.utils.ApplicationProperties;
@@ -29,6 +31,7 @@ public class FrontendActionController {
 	@Autowired ProductService productService;
 	@Autowired ApplicationProperties applicationProperties; 
 	@Autowired UserService userService; 
+	@Autowired AdminService adminService;
 	
 	@RequestMapping(value = { "/productPage/{id}" }, method = { RequestMethod.GET })
 	public String productPage(ModelMap model, HttpServletRequest request , @PathVariable("id") Long id) {
@@ -53,6 +56,10 @@ public class FrontendActionController {
 	@RequestMapping(value = { "/aboutUs" }, method = { RequestMethod.GET })
 	public String aboutUs(ModelMap model) {
 		model = productService.setProductservice(model);
+		String viewsFolder = BASIC_STRINGS.ABOUTUS.getStringName();
+		Long id = new Long(2);
+		List<HomepageContent> list =adminService.getAllHomeComponentList(id, viewsFolder);
+		model.addAttribute("list", list);
 		model.addAttribute("fromcontact", true);
  		return "frontend/aboutUs";
 	}
@@ -74,6 +81,10 @@ public class FrontendActionController {
 	@RequestMapping(value = { "/contactUs" }, method = { RequestMethod.GET })
 	public String contactUs(ModelMap model) {
 		model = productService.setProductservice(model);
+		Long id = new Long(3);
+		String viewsFolder = BASIC_STRINGS.CONTACTUS.getStringName();
+		List<HomepageContent> list =adminService.getAllHomeComponentList(id, viewsFolder);
+		model.addAttribute("list", list);
 		model.addAttribute("fromcontact", true);
  		return "frontend/contactUs";
 	}

@@ -31,26 +31,24 @@
 						<span>About Us</span>
 					</h2>
 				</div>
-				
+				<c:forEach items="${list }" var="loop">
 				<div class="row" style="padding-bottom: 20px;">
 					<div class="col-md-6 col-sm-6 col-xs-12 pull-left">
 						<div class="left-box">
 					<div class="img-box shadow">
-						<img src="${digify}/static/frontEnd/img/pedstrian.jpg" alt="Awesome Image" width="100%">
+						<img src="${loop.imageUrl }" alt="Awesome Image" width="100%">
 					</div>
 				</div>
 					</div>
 					<div class="col-md-6 col-sm-6 col-xs-12 pull-rigth">
 						<div class="right-box">
 					<div class="sec-title text-justify">
-						<p style="color:#3c9c45;"><b>Digify Engineering Pvt. Ltd. maintain optimal security is an integral part of any business that not only protects your employees, but your assets as well.</b></p>
-						<p>In any  industrial building or a multi-campus Building, you need a customised designed and technologically advanced security system . Make sure you get that with Digify Engineering Pvt. Ltd., a leading provider of premium security solutions dedicated to protecting all sizes of  Infrastructure with the latest products and services designed to control access, reduce potential theft and implement an effective risk management system.</p>
-						<p>Each and every customer receives a needs assessment to ensure you get exactly what you need to protect your assets. Plus, with tailor-made maintenance and service plans for every type of business, you'll have peace of mind, knowing your security.</p>
-						
+						${loop.contentDescription }
 					</div>
 				</div>
 					</div>
 				</div>
+				</c:forEach>
 			</div>
 		</section>
 	</div>

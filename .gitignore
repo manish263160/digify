@@ -1,7 +1,8 @@
 # Don't track content of these folders
 node_modules/
 src/main/webapp/static/uploaded_content/
-target/
+target/	
+.gitignore
 
 
 # Compiled source #
@@ -12,9 +13,8 @@ target/
 *.exe
 *.o
 *.so
-
-*.so
-
+.idea/
+.eclipse
 # Packages #
 ############
 # it's better to unpack these files and commit the raw source

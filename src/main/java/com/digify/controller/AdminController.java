@@ -50,30 +50,30 @@ public class AdminController {
 		return "admin/dashboard";
 	}
 
-	@RequestMapping(value = { "/home/{pathVar}/{viewsFolder}/{id}" }, method = { RequestMethod.GET })
+	@RequestMapping(value = { "/home/{pathVar}/{viewFolder}/{id}" }, method = { RequestMethod.GET })
 	public String openHomeContent(ModelMap model, HttpServletRequest request, @PathVariable("pathVar") String pathVar,
-			@PathVariable("id") long id, @PathVariable("viewsFolder") String viewsFolder) {
+			@PathVariable("id") long id, @PathVariable("viewFolder") String viewFolder) {
 		model = adminService.addUserInModel(model);
 		model = adminService.addListHomePageContent(model);
 		model.addAttribute("active", pathVar);
 		logger.debug("path var and id" + pathVar + " :" + id);
 		model.addAttribute("themecolor", this.applicationProperties.getProperty("themecolor"));
-		List<HomepageContent> list = adminService.getAllHomeComponentList(id, viewsFolder);
+		List<HomepageContent> list = adminService.getAllHomeComponentList(id, viewFolder);
 		model.addAttribute("list", list);
 		model.addAttribute("id", id);
-		model.addAttribute("viewsFolder", viewsFolder);
-		return "admin/" + viewsFolder + "/" + pathVar;
+		model.addAttribute("viewsFolder", viewFolder);
+		return "admin/" + viewFolder + "/" + pathVar;
 	}
 
-	@RequestMapping(value = { "/add/addHomeContentView/{id}/{viewsFolder}" }, method = { RequestMethod.GET })
+	@RequestMapping(value = { "/add/addHomeContentView/{id}/{viewFolder}" }, method = { RequestMethod.GET })
 	public String addCarauser(ModelMap model, HttpServletRequest request,
-			@PathVariable("id") String homeContenMastertId, @PathVariable("viewsFolder") String viewsFolder) {
+			@PathVariable("id") String homeContenMastertId, @PathVariable("viewFolder") String viewFolder) {
 		model = adminService.addUserInModel(model);
 		model = adminService.addListHomePageContent(model);
-		model.addAttribute("active", viewsFolder);
+		model.addAttribute("active", viewFolder);
 		model.addAttribute("themecolor", this.applicationProperties.getProperty("themecolor"));
 		model.addAttribute("id", homeContenMastertId);
-		model.addAttribute("viewsFolder", viewsFolder);
+		model.addAttribute("viewFolder", viewFolder);
 		return "admin/uploadHomeContnetView";
 	}
 
@@ -98,19 +98,19 @@ public class AdminController {
 	}
 
 	
-	@RequestMapping(value = { "/editHomeContnetView/{contentId}/{viewsFolder}/{table}" }, method = {
+	@RequestMapping(value = { "/editHomeContnetView/{contentId}/{viewFolder}/{table}" }, method = {
 			RequestMethod.GET })
 	public String addCarauser(ModelMap model, HttpServletRequest request, @PathVariable("contentId") long contentId,
-			@PathVariable("table") String tableName, @PathVariable("viewsFolder") String viewsFolder) {
+			@PathVariable("table") String tableName, @PathVariable("viewFolder") String viewFolder) {
 		model = adminService.addUserInModel(model);
 		model = adminService.addListHomePageContent(model);
 		model.addAttribute("active", "editPage");
 		model.addAttribute("themecolor", this.applicationProperties.getProperty("themecolor"));
-		HomepageContent obj = adminService.getHomeComponentById(contentId, viewsFolder);
+		HomepageContent obj = adminService.getHomeComponentById(contentId, viewFolder);
 		model.addAttribute("homeContentObj", obj);
 		model.addAttribute("table", tableName);
 		model.addAttribute("contentId", contentId);
-		model.addAttribute("viewsFolder", viewsFolder);
+		model.addAttribute("viewFolder", viewFolder);
 		return "admin/editHomeContnetView";
 	}
 

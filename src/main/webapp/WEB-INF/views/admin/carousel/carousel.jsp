@@ -51,13 +51,13 @@
 						<p class="caption">
 							<b>Carousel Image List</b>
 						</p>
-					<c:forEach items="${list }" var="l" varStatus="loop">
 						<div class="row">
-							<div class="col s12 m12 l12">
+					<c:forEach items="${list }" var="l" varStatus="loop">
+							<div class="col s6 m3 l3">
 										<div class="card">
 											<div class="card-image">
-												<img src="${l.imageUrl }" alt="sample"> <span
-													class="card-title">${l.imageLink}</span>
+												<img src="${l.imageUrl }" alt="sample" class="equal_height_img"> <span
+													class="card-title"></span>
 											</div>
 											<div class="card-content">
 												<p class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="${l.contentDescription}">
@@ -71,9 +71,9 @@
 										</div>
 									</div>
 
-						</div>
 						<div class="divider"></div>
 					</c:forEach>
+						</div>
 
 
 				</c:when>
