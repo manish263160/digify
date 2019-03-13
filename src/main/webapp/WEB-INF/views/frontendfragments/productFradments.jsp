@@ -19,9 +19,9 @@
 							style="margin: 0px; padding: 0px;" id="nav-tab" role="tablist">
 							<c:forEach items="${allProducts }" var="prod" varStatus="status">
 								<c:if test="${status.index lt 4 }">
-									<a class="col-lg-2 col-sm-2 col-md-2 col-sm-2 nav-item nav-link ${status.index eq 0 ? 'active' : '' }" 
+									<a class="col-lg-2 col-sm-2 col-md-2 col-sm-2 nav-item nav-link dots"  <%-- ${status.index eq 0 ? 'active' : '' } --%> 
 									id="nav-${status.index}" data-toggle="tab"
-										href="#nav-id-${status.index}" role="tab" aria-controls="nav-id-${status.index}"
+										 role="tab" aria-controls="nav-id-${status.index}"
 										aria-selected="${status.index eq 0 ? 'true' : 'false' }">
 										<div class="col-lg-12 col-sm-12 col-md-12 col-sm-12 text-center">
 											<div class="margint-b servicediv">
@@ -37,19 +37,15 @@
 
 				</div>
 
-
-
-
-
 				<div class="tab-content col-lg-12 col-sm-12 col-md-12 col-xs-12 bgcolor p-0" id="nav-tabContent">
 					<c:forEach items="${allProducts }" var="prod" varStatus="status">
 						<c:if test="${status.index lt 4 }">
-							<div class="tab-pane fade ${status.index eq 0 ? 'show active' : '' }" 
-							id="nav-id-${status.index }" role="tabpanel"
+							<div class="tab-pane fade mySlides"   <%-- ${status.index eq 0 ? 'show active' : '' } --%> 
+							 role="tabpanel"
 								aria-labelledby="nav-${status.index }">
 								<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 p-0 row">
 									<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12 p-0">
-										<img class="img-responsive" style="width: 100%;" src="${prod.imageUrl }" />
+										<img class="img-responsive" style="width: 100%; max-height: 25rem !important; " src="${prod.imageUrl }" />
 									</div>
 									<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 										<p class="texthd">${prod.productName }</p>

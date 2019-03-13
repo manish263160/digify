@@ -42,6 +42,10 @@ public interface UserService {
 
 	boolean contactUsSubmit(String name, String email, String subject, String message);
 
+	String getpassGenToken(long parseLong);
+
+	boolean resetPassword(User user, String newpassword);
+
 
 	
 }

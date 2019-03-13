@@ -39,7 +39,7 @@
       <form action="${loginUrl}" method="post" class="login-form" id="formValidate">
         <div class="row">
           <div class="input-field col s12 center">
-            <img src="static/images/logo-512.png" alt="" class="valign profile-image-login">
+            <img src="static/images/login-logo.png" alt="" class="valign profile-image-login">
             <p class="center login-form-text"> Login Page</p>
           </div>
         </div>
@@ -71,7 +71,7 @@
         </div>
         <div class="row">
           <div class="input-field col s6 m6 l6">
-            <p class="margin medium-small"><a href="${digify}/user/userregistration">Sign Up</a></p>
+            <p class="margin medium-small"><a href="${digify}/userregistration">Sign Up</a></p>
           </div> 
             <div class="input-field col s6 m6 l6">
               <p class="margin right-align medium-small"><a class="tooltipped modal-trigger" href="#modal1" data-position="bottom" data-delay="50" data-tooltip="Forgot Password">Forgot password ?</a></p>
@@ -189,8 +189,8 @@
     	if(email !== '' ){
     		 $(".progress").show();
     		  $.ajax({
-      		    url: '${digify}/forgotpassword.json?email='+email,
-      		    type: 'GET',
+      		    url: '${digify}/forgotpassword?email='+email,
+      		    type: 'POST',
 	      		 
       		    success: function(result) {
       		        if(result === 'NOT_FOUND'){

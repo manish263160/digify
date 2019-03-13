@@ -4,6 +4,7 @@
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Image Upload</title>
+	<jsp:include page="../fragments/admin_header.jsp" />
 	 <link href="${digify}/static/lib/css/dropify.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 	 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="${digify}/static/lib/richtext/richtext.min.css" type="text/css" rel="stylesheet" media="screen,projection">
@@ -19,7 +20,6 @@ height: 100px;
 	 
 	</head>
 	<body class="${themecolor }">
-	<jsp:include page="../fragments/admin_header.jsp" />
 	
 	<div class="container">
 	<c:if test="${not empty error}">

@@ -26,7 +26,7 @@
  </c:if>      
 <div  id="registration-form">
   <div id="login-page" class="row">
-      <form:form action="${digify}/user/insertUser" class="login-form col s12 z-depth-4 card-panel" id="userRegForm" method="post" modelAttribute="user">
+      <form:form action="${digify}/insertUser" class="login-form col s12 z-depth-4 card-panel" id="userRegForm" method="post" modelAttribute="user">
         <div class="row">
           <div class="input-field col s12 center">
             <h4>Register</h4>

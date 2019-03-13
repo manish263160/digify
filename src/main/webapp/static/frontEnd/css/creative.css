@@ -4417,7 +4417,10 @@ input[type="button"].btn-block {
   flex-grow: 1;
   text-align: center;
 }
-
+.tab-content{
+	width: 100%;
+	max-height: 30rem;
+}
 .tab-content > .tab-pane {
   display: none;
 }
@@ -10959,19 +10962,17 @@ font-size:14px;
     font-family: Open_Sans;
 }
 .ourstorydiv1:before {
-    border: 2px solid #0000fe;
-    content: "";
-    height: 96px;
-    left: 0;
-    margin: auto;
-    position: absolute;
-    right: 0;
-    top: -41px;
-    width: 70px;
-    z-index: -1;
-	}
-
-
+	border: 2px solid #0000fe;
+	content: "";
+	height: 3rem;
+	left: 0;
+	margin: auto;
+	position: absolute;
+	right: 0;
+	top: 0.2rem;
+	width: 17rem;
+	z-index: -1;
+}
 
 /* Tabs*/
 section {
@@ -11108,6 +11109,7 @@ section .section-title {
 }
 .vc_column_container>.vc_column-inner {
     box-sizing: border-box;
+    text-align: center;
     padding-left: 15px;
     padding-right: 15px;
     width: 100%;

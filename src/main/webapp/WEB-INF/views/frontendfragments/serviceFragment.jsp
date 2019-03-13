@@ -19,8 +19,8 @@
 						<div class="col-lg-12 col-sm-12 col-md-12 col-sm-12 row justify-content-center nav nav-tabs nav-fill"
 							style="margin: 0px; padding: 0px;" id="servc-nav-tab" role="tablist">
 							<c:forEach items="${allServices }" var="servc" varStatus="todo">
-									<a class="col-lg-2 col-sm-2 col-md-2 col-sm-2 nav-item nav-link ${todo.index eq 0 ? 'active' : '' }"
-										id="servc-nav-${todo.index}" data-toggle="tab" href="#servc-nav-id-${todo.index}" role="tab"
+									<a class="col-lg-2 col-sm-2 col-md-2 col-sm-2 nav-item nav-link servicedot"
+										id="servc-nav-${todo.index}" data-toggle="tab"  role="tab"
 										aria-controls="servc-nav-id-${todo.index}" aria-selected="${todo.index eq 0 ? 'true' : 'false' }">
 										<div class="col-lg-12 col-sm-12 col-md-12 col-sm-12 text-center">
 											<div class="margint-b servicediv">
@@ -35,11 +35,11 @@
 				</div>
 				<div class="tab-content col-lg-12 col-sm-12 col-md-12 col-xs-12 bgcolor p-0" id="servc-nav-tabContent">
 					<c:forEach items="${allServices }" var="servc" varStatus="todo">
-							<div class="tab-pane fade ${todo.index eq 0 ? 'show active' : '' }" id="servc-nav-id-${todo.index }"
+							<div class="tab-pane fade serviceSlide" id="servc-nav-id-${todo.index }"
 								role="tabpanel" aria-labelledby="servc-nav-${todo.index }">
 								<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 p-0 row">
 									<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12 p-0">
-										<img class="img-responsive" style="width: 100%;" src="${servc.imageUrl }" />
+										<img class="img-responsive" style="width: 100%; max-height: 30rem !important;" src="${servc.imageUrl }" />
 									</div>
 									<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 										<p class="texthd">${servc.serviceName }</p>

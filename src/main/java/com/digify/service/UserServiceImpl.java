@@ -236,4 +236,14 @@ public class UserServiceImpl implements UserService {
 		return bool;
 	}
 
+	@Override
+	public String getpassGenToken(long userId) {
+		return userDao.getpassGenToken(userId);
+	}
+
+	@Override
+	public boolean resetPassword(User user, String newpassword) {
+		return userDao.resetPassword(user,newpassword);
+	}
+
 }

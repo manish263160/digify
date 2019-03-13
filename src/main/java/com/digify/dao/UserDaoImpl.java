@@ -244,7 +244,7 @@ public class UserDaoImpl extends DigifyJdbcTemplate implements UserDao{
 	public User checkUserByEmailorID(String emailorID) {
 		logger.debug("::checkUserByEmail()");
 		User user = null;
-		final String query = "select * from user where email=? or user_id=?";
+		final String query = "select * from user where email=? or id=?";
 		try {
 			user = getJdbcTemplate().queryForObject(query, new BeanPropertyRowMapper<User>(User.class), emailorID,emailorID);
 		} catch (EmptyResultDataAccessException e) {
@@ -260,7 +260,7 @@ public class UserDaoImpl extends DigifyJdbcTemplate implements UserDao{
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date curdate=new Date();
 		String currentTime = sdf.format(curdate);
-		String query = "update user set pass_gen_token=?, modified_on=?  where user_id=?;";
+		String query = "update user set pass_gen_token=?, modified_on=?  where id=?;";
 		int get=getJdbcTemplate().update(query, token,currentTime,userId);
 		if(get>0)
 		return true;
@@ -275,9 +275,8 @@ public class UserDaoImpl extends DigifyJdbcTemplate implements UserDao{
 		String currentTime = sdf.format(curdate);
 		String passGenToken=null;
 		try {
-			String query = "select pass_gen_token from user where user_id=? and modified_on > (DATE_SUB('"+currentTime+"', INTERVAL 1 DAY));";
-			Object[] inputs = new Object[] {userId};
-			passGenToken= getJdbcTemplate().queryForObject(query, inputs, String.class);
+			String query = "select pass_gen_token from user where id=? and modified_on > (DATE_SUB('"+currentTime+"', INTERVAL 1 DAY));";
+			passGenToken= getJdbcTemplate().queryForObject(query, new Object[] { userId }, String.class);
 		} catch (EmptyResultDataAccessException e) {
 			logger.error(" getRegistrationToken() EmptyResultDataAccessException");
 		} catch (DataAccessException e) {
@@ -287,10 +286,24 @@ public class UserDaoImpl extends DigifyJdbcTemplate implements UserDao{
 	}
 
 	@Override
+	public boolean resetPassword(User user, String newpassword) {
+		try {
+			String query = "update user set password=? where id=?;";
+			getJdbcTemplate().update(query,newpassword ,user.getId());
+			return true;
+		} catch (EmptyResultDataAccessException e) {
+			logger.error(" resetPassword() EmptyResultDataAccessException");
+		} catch (DataAccessException e) {
+			logger.error(" resetPassword() DataAccessException");
+		}
+		return false;
+	}
+	@Override
 	public boolean contactUsSubmit(String name, String email, String subject, String message) {
 		String Sqlquery = "INSERT INTO contact_us(name,email,subject,message) VALUES (?,?,?,?);";
 		int rowInsert = getJdbcTemplate().update(Sqlquery, name, email, subject,message);
 		return rowInsert > 0 ? true : false;
 	}
+
 	
 }

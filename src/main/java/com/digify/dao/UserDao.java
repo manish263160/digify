@@ -46,5 +46,7 @@ String getpassGenToken(long userId);
 
 boolean contactUsSubmit(String name, String email, String subject, String message);
 
+boolean resetPassword(User user, String newpassword);
+
 
 }

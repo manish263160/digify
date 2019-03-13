@@ -15,3 +15,7 @@
   width: 100% !important;
   height: 10rem !important;s
   }
+  
+  .richText-editor ul li{
+      list-style-type: disc !important;
+  }

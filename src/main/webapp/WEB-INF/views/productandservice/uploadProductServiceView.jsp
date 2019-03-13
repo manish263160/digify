@@ -107,8 +107,8 @@
 					<p>${productService} Description</p>
 				</div>
 
-				<div class="input-field col s8 m8 l8">
-					<textarea id="description" type="text"  maxlength="2000" autocomplete="off"
+				<div class="col s8 m8 l8">
+					<textarea id="description"  maxlength="2000" autocomplete="off"
 						name="${productService}Description"></textarea>
 <%-- 					<label for="description" class="">${productService} Description</label> --%>
 				</div>
@@ -204,11 +204,11 @@
 	            });
 	        	
 	        }
-	        $('#description').richText();
 
 	        function changeSelect(){
 	        	console.log("------",$("#categoryId").val());
 	        }
+	        $('#description').richText({});
 	    </script>
 
 </body>

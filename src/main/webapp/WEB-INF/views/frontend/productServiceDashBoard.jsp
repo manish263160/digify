@@ -46,7 +46,7 @@
 	</c:if>
 </div>
 </section>
-		<jsp:include page="../frontendfragments/frontEndFooter.jsp" />
+		<%@include file="../frontendfragments/frontEndFooter.jsp"%>
 	<jsp:include page="../includes/web_js.jsp" />
 	
 </body>

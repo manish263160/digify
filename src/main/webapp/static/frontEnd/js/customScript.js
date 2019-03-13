@@ -57,3 +57,49 @@ $("#quotes_form").validate({
       }
     }
  });	
+
+var slideIndex = 0;
+showproductSlides();
+
+function showproductSlides() {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dots");
+  /*for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }*/
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  for (i = 0; i < slides.length; i++) {
+	  slides[i].className = slides[i].className.replace(" show active", "");
+	  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].className +=  " show active";  
+  dots[slideIndex-1].className += " active";
+  setTimeout(showproductSlides, 2000); // Change image every 2 seconds
+}
+
+var serviceSlideIndex = 0;
+showserviceSlides();
+
+function showserviceSlides() {
+  var i;
+  var slides = document.getElementsByClassName("serviceSlide");
+  var dots = document.getElementsByClassName("servicedot");
+  /*for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }*/
+  serviceSlideIndex++;
+  if (serviceSlideIndex > slides.length) {serviceSlideIndex = 1}
+  for (i = 0; i < slides.length; i++) {
+	  slides[i].className = slides[i].className.replace(" show active", "");
+	  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[serviceSlideIndex-1].className +=  " show active";  
+  dots[serviceSlideIndex-1].className += " active";
+  setTimeout(showserviceSlides, 2000); // Change image every 2 seconds
+}

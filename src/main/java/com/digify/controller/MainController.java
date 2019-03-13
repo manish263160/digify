@@ -1,6 +1,8 @@
 package com.digify.controller;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.security.Principal;
 import java.util.ArrayList;
@@ -28,6 +30,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.ui.velocity.VelocityEngineUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -194,7 +197,7 @@ public class MainController {
 		return "403Page";
 	}
 
-	@RequestMapping(value = { "/forgotpassword" }, method = { RequestMethod.GET })
+	@RequestMapping(value = { "/forgotpassword" }, method = { RequestMethod.POST })
 	@ResponseBody
 	public String deleteImages(@RequestParam("email") String email,
 			@RequestParam(value = "newpassword", required = false) String newpassword, HttpServletRequest request)
@@ -211,7 +214,7 @@ public class MainController {
 					String plainText = System.currentTimeMillis() + "##" + existuser.getId();
 					String token = AESEncrypter.encrypt(plainText);
 					String url = applicationProperties.getProperty("appUrl");
-					url += "/user/generateNewPass/" + URLEncoder.encode(token, "UTF-8");
+					url += "/generateNewPass/" + URLEncoder.encode(token, "UTF-8");
 					logger.debug("url for mail ===" + url);
 					userService.insertPassGenToken(existuser.getId(), token);
 					Map<String, Object> storemap = new HashMap<String, Object>();
@@ -238,6 +241,51 @@ public class MainController {
 			return "fail";
 		}
 	}
+	@RequestMapping(value = { "/generateNewPass/{token}" }, method = { RequestMethod.GET })
+	public String generateNewPass(@PathVariable String token, Model model, HttpServletRequest request) throws Exception {
+		String error="";
+		try {
+			String accesstoken=AESEncrypter.decrypt(token);
+			String getaccess=URLDecoder.decode(accesstoken, "UTF-8");
+			String userId=getaccess.split("##")[1];
+			logger.debug("userId===="+userId);
+			if(userId!=null){
+			String getpassGenToken=userService.getpassGenToken(Long.parseLong(userId));
+			if(getpassGenToken.equals(token)){
+				model.addAttribute("userId", AESEncrypter.encrypt(userId));
+				return "user/newGenratePassword";
+				
+			}else{
+				error="Your Token is expire, Please try again.";
+				return "redirect:/login?error="+URLEncoder.encode(error,"UTF-8");
+			}
+			}else{
+				error="Something went wrong, Please try again.";
+				return "redirect:/login.htm?error="+URLEncoder.encode(error,"UTF-8");
+			}
+		} catch (UnsupportedEncodingException e) {
+			logger.error(e.getMessage());
+			error="Your Token is expire, Please try again.";
+			return "redirect:/login?error="+error;
+		}
+	}
+	
+	@RequestMapping(value = { "/newGenPassword/{userId}" }, method = { RequestMethod.GET})
+	@ResponseBody
+	public boolean newGenPassword(@PathVariable("userId") String userId,@RequestParam(value="newpassword",required=false) String newpassword,HttpServletRequest request) throws Exception {
+		String getuserId="";
+		if(userId != null){
+			getuserId=AESEncrypter.decrypt(userId);
+			User user=userService.checkUserByEmailorID(getuserId);
+			boolean bool= userService.resetPassword(user,newpassword);
+			
+			return bool;
+		}
+		
+		return false;
+		
+	}
+	
 	@RequestMapping(value="requestQuotes" , method = { RequestMethod.POST } )
 	@ResponseBody
 	public boolean requestQuotes(@ModelAttribute("requestQuotes") RequestQuotes requestQuotes) {

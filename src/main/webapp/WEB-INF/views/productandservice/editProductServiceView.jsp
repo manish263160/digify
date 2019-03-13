@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Image Upload</title>
+<title>Edit Product and Services</title>
+	<jsp:include page="../fragments/admin_header.jsp" />
 <link href="${digify}/static/lib/css/dropify.min.css" type="text/css"
 	rel="stylesheet" media="screen,projection">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -22,7 +23,6 @@
 
 </head>
 <body class="${themecolor }">
-	<jsp:include page="../fragments/admin_header.jsp" />
 <c:if test="${not empty tableName }">
 	<c:set var="productService" value="" scope="page"></c:set>
 	<c:choose>

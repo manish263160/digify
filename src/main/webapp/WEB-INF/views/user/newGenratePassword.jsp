@@ -78,7 +78,7 @@
 		    	if(newpassword !== '' ){
 		    		 $(".progress").show();
 		    		  $.ajax({
-		      		    url: '${digify}/user/newGenPassword/'+userId+'?newpassword='+newpassword,
+		      		    url: '${digify}/newGenPassword/'+userId+'?newpassword='+newpassword,
 		      		    type: 'GET',
 			      		 
 		      		    success: function(result) {
