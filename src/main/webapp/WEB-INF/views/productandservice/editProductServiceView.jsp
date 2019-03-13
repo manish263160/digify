@@ -59,6 +59,11 @@
 				<span aria-hidden="true">×</span>
 			</button>
 		</div>
+		<div class="row section">
+			<div class="col s12 m12 l12">
+				<h5>Edit form of ${productService} : ${tableName eq 'products' ? obj.productName : obj.serviceName}</h5>
+			</div>
+		</div>
 		<form
 			action="${digify}/admin/product/updateProductService?${_csrf.parameterName}=${_csrf.token}"
 			method="post" modelAttribute="${tableName }"

@@ -152,11 +152,13 @@ public class ProductController {
 		try {
 			MultipartFile iconImg = null;
 			MultipartFile file = null;
-			if(multipart.length > 0) {
-				file = multipart[0];
-				iconImg = multipart[1];
-			}else {
-				iconImg = multipart[0];
+			if (multipart != null && multipart.length != 0) {
+				if (multipart.length > 0) {
+					file = !multipart[0].isEmpty() ? multipart[0] : null;
+					iconImg = !multipart[1].isEmpty() ? multipart[1] : null;
+				} else if(multipart.length == 0) {
+					iconImg = !multipart[0].isEmpty() ? multipart[0] : null;
+				}
 			}
 			model=adminService.addUserInModel(model); 
 			model=adminService.addListHomePageContent(model);
@@ -182,7 +184,7 @@ public class ProductController {
 				oldIconImageURL = imagePath +BASIC_STRINGS.ADMIN.getStringName()+this.applicationProperties.getProperty("products")+oldIconImageURL;
 				}
 				else {
-					String fileName = file.getOriginalFilename();
+					String fileName = iconImg.getOriginalFilename();
 					oldImageURL = imagePath +BASIC_STRINGS.ADMIN.getStringName()+this.applicationProperties.getProperty("products")+fileName;
 				}
 				File oldIconFile =new File(oldIconImageURL);

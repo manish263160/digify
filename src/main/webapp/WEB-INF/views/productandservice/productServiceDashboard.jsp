@@ -50,11 +50,11 @@
 								<div class="card">
 									<div class="card-image">
 										<img src="${l.imageUrl }" alt="sample" class="equal_height_img">
-										 <span class="card-title">${l.productName}</span>
+										 <span class="card-title"></span>
 									</div>
 									<div class="card-content">
 										<p  class="tooltipped" data-position="bottom" data-delay="50"  >
-										${l.productDescription}	</p>
+										${l.productName}</p>
 									</div>
 									<div class="card-action">
 										<a href="${digify}/admin/product/editProductServiceView/${tableName }/${l.id}">Edit</a> <a href="#"
@@ -79,11 +79,11 @@
 								<div class="card">
 									<div class="card-image">
 										<img src="${l.imageUrl }" alt="sample" class="equal_height_img"> 
-										<span class="card-title">${l.serviceName}</span>
+										<span class="card-title"></span>
 									</div>
 									<div class="card-content">
 										<p class="tooltipped" data-position="bottom" data-delay="50" >
-											${l.serviceDescription}</p>
+											${l.serviceName}</p>
 									</div>
 									<div class="card-action">
 										<a href="${digify}/admin/product/editProductServiceView/${tableName}/${l.id}">Edit</a> <a href="#"

@@ -61,7 +61,7 @@
 									</div>
 									<div class="card-content">
 										<p class="tooltipped" data-position="bottom" data-delay="50" >
-										 ${l.contentDescription}</p>  <%-- ${fn:substring(l.contentDescription, 0, 30)}... --%>
+										 About US</p>  <%-- ${fn:substring(l.contentDescription, 0, 30)}... --%>
 									</div>
 									<div class="card-action">
 										<a href="${digify}/admin/editHomeContnetView/${l.id}/${viewsFolder}/homepage_content">Edit</a> <a href="#"
