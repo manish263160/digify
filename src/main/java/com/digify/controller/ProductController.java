@@ -198,13 +198,31 @@ public class ProductController {
 			}
 			else if(tableName.equals("services")) {
 				services.setId(contentId);
+				String imagePath = this.applicationProperties.getProperty("imageFolder");
 				if(file != null && !file.isEmpty()) {
-					String imagePath = this.applicationProperties.getProperty("imageFolder");
-					oldImageURL = imagePath +BASIC_STRINGS.ADMIN.getStringName()+this.applicationProperties.getProperty("services")+oldImageURL;
-					File oldFile =new File(oldImageURL);
-					GenUtilities.delete(oldFile);
-				}else {
+					if(oldImageURL != null && !oldImageURL.isEmpty()) {
+						oldImageURL = imagePath +BASIC_STRINGS.ADMIN.getStringName()+this.applicationProperties.getProperty("services")+oldImageURL;
+						}else {
+							String fileName = file.getOriginalFilename();
+							oldImageURL = imagePath +BASIC_STRINGS.ADMIN.getStringName()+this.applicationProperties.getProperty("services")+fileName;
+						}
+						File oldFile =new File(oldImageURL);
+						GenUtilities.delete(oldFile);
+					}else {
 					services.setServiceImage(oldImageURL);
+				}
+				if(iconImg != null && !iconImg.isEmpty()){
+					if(oldIconImageURL != null && !oldIconImageURL.isEmpty()) {
+					oldIconImageURL = imagePath +BASIC_STRINGS.ADMIN.getStringName()+this.applicationProperties.getProperty("services")+oldIconImageURL;
+					}
+					else {
+						String fileName = iconImg.getOriginalFilename();
+						oldImageURL = imagePath +BASIC_STRINGS.ADMIN.getStringName()+this.applicationProperties.getProperty("services")+fileName;
+					}
+					File oldIconFile =new File(oldIconImageURL);
+					GenUtilities.delete(oldIconFile);
+				}else {
+					services.setIconImg(oldIconImageURL);
 				}
 				String filePath = adminService.insertUpdateHomeComponent(file , services , tableName , "update" ,iconImg);
 				model.addAttribute("imagepath", filePath);

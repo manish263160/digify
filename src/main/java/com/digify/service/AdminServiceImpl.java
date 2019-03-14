@@ -72,14 +72,14 @@ public class AdminServiceImpl implements AdminService {
 					+ this.applicationProperties.getProperty("services");
 		}
 		try {
+			String fileName = "";
+			String iconImgFileName = "";
 			if (file != null && !file.isEmpty()) {
 				String fileExtension = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."),
 						file.getOriginalFilename().length());
 				SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd_hh-mm-ss");
 				Date date = new Date();
-				String fileName = formatter.format(date) + "_" + file.getOriginalFilename();
-
-				boolean isIconUploaded = iconFileUpload(iconImg, imagePath);
+				fileName = formatter.format(date) + "_" + file.getOriginalFilename();				
 
 				File newFile = GenUtilities.uploadFile(imagePath, fileName, file);
 				if (newFile != null) {
@@ -91,35 +91,37 @@ public class AdminServiceImpl implements AdminService {
 					 * 206, 206, RenderingHints.VALUE_INTERPOLATION_BILINEAR, true);
 					 */
 					boolean isUploaded = ImageIO.write(originalImage, fileExtension, new File(imagePath + fileName));
-//					if (isUploaded && isIconUploaded) {
-					String iconImgFileName = "";
-					if(iconImg != null) {
-						iconImgFileName = iconImg.getOriginalFilename();
-					}
-						return actionInDb(content, tableName, actionName, user, fileName,
-								iconImgFileName);
 				}
 			} else {
-				String fileName = "";
-				if (tableName.equals("homepage_content")) {
-					fileName = ((HomepageContent) content).getImageName();
-				} else if (tableName.equals("products")) {
-					fileName = ((Products) content).getProductImage();
-				} else if (tableName.equals("services")) {
-					fileName = ((Services) content).getServiceImage();
-				}
-				boolean isIconUploaded = iconFileUpload(iconImg, imagePath);
-				String iconImgFileName = "";
-				if(iconImg != null) {
-					iconImgFileName = iconImg.getOriginalFilename();
-				}
-				return actionInDb(content, tableName, actionName, user, fileName ,iconImgFileName);
+				fileName = setExistingFileName(content, tableName, fileName);
+				
 			}
+			if(iconImg != null && !iconImg.isEmpty()) {
+				iconImgFileName = iconFileUpload(iconImg, imagePath);
+			}else {
+				 if (tableName.equals("products")) {
+					iconImgFileName = ((Products) content).getIconImg();
+				} else if (tableName.equals("services")) {
+					iconImgFileName = ((Services) content).getIconImg();
+				}
+			}
+		return actionInDb(content, tableName, actionName, user, fileName,
+						iconImgFileName);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
-		return null;
+	}
+
+	public String setExistingFileName(Object content, String tableName, String fileName) {
+		if (tableName.equals("homepage_content")) {
+			fileName = ((HomepageContent) content).getImageName();
+		} else if (tableName.equals("products")) {
+			fileName = ((Products) content).getProductImage();
+		} else if (tableName.equals("services")) {
+			fileName = ((Services) content).getServiceImage();
+		}
+		return fileName;
 	}
 
 	/**
@@ -242,7 +244,7 @@ public class AdminServiceImpl implements AdminService {
 
 	}
 	
-	private boolean iconFileUpload(MultipartFile iconImg, String imagePath) throws IOException {
+	private String iconFileUpload(MultipartFile iconImg, String imagePath) throws IOException {
 		if(iconImg != null && !iconImg.isEmpty()) {
 		String iconFileName = iconImg.getOriginalFilename();
 		String iconExtension = iconImg.getOriginalFilename().substring(iconImg.getOriginalFilename().lastIndexOf("."),
@@ -253,9 +255,9 @@ public class AdminServiceImpl implements AdminService {
 			BufferedImage originalIconImage = ImageIO.read(newIconFile);
 			boolean isIconUploaded = ImageIO.write(originalIconImage, iconExtension,
 					new File(imagePath + iconFileName));
-			return isIconUploaded;
+			return iconFileName;
 		}
 		}
-		return false;
+		return null;
 	}
 }

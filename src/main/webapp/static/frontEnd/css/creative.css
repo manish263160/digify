@@ -10961,7 +10961,7 @@ font-size:14px;
     font-size: 36px;
     font-family: Open_Sans;
 }
-.ourstorydiv1:before {
+/* .ourstorydiv1:before {
 	border: 2px solid #0000fe;
 	content: "";
 	height: 3rem;
@@ -10973,7 +10973,7 @@ font-size:14px;
 	width: 17rem;
 	z-index: -1;
 }
-
+ */
 /* Tabs*/
 section {
    /* padding: 60px 0;*/
