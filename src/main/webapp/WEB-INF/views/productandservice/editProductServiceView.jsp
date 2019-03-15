@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Edit Product and Services</title>
-	<jsp:include page="../fragments/admin_header.jsp" />
+	<%@include file="../fragments/admin_header.jsp" %>
 <link href="${digify}/static/lib/css/dropify.min.css" type="text/css"
 	rel="stylesheet" media="screen,projection">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -146,7 +146,7 @@
 	</div>
 
 
-	<jsp:include page="../includes/admin_js.jsp" />
+	<%@include file="../includes/admin_js.jsp" %>
 	<script type="text/javascript"
 		src="${digify}/static/lib/js/dropify.min.js"></script>
 		<script type="text/javascript" src="${digify}/static/lib/richtext/jquery.richtext.min.js"></script>
