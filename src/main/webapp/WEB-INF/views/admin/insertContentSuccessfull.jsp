@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Image Upload</title>
-<jsp:include page="../fragments/admin_header.jsp" />
+<%@include file="../fragments/admin_header.jsp" %>
 </head>
 <body class="${themecolor }">
 
@@ -19,7 +19,7 @@
 
 					</div> --%> 
 					<div class="card-content">
-						<p>This home content uploaded successfully.</p>
+						<p>The content uploaded successfully.</p>
 					</div>
 					<div class="card-action">
 						<a href="${digify}/admin/dashboard" class="btn waves-effect waves-red light-blue darken-4">Admin Dash Board</a>

@@ -1,5 +1,5 @@
 <%@include file="includetags.jsp"%>
-<jsp:include page="../includes/admin_css.jsp"></jsp:include>
+<%@include file="../includes/admin_css.jsp" %>
 
 <!--Mobile Collapse Button-->
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>

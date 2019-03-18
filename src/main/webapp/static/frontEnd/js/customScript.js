@@ -64,61 +64,71 @@ function openModel(obj , event){
 }
 
 
+// -----------------------owl carousel js changes-------------------------------------
+$('.prodserviceCarousel').owlCarousel({
+	  loop: true,
+	  margin: 10,
+	  nav: true,
+	  dots: false,
+	  navText: [
+	    "<i class='fa fa-caret-left'></i>",
+	    "<i class='fa fa-caret-right'></i>"
+	  ],
+	  autoplay: true,
+	  autoplayHoverPause: true,
+	  responsive: {
+	    0: {
+	      items: 1
+	    },
+	    600: {
+	      items: 3
+	    },
+	    1000: {
+	      items: 5
+	    }
+	  }
+	});
 
+$('#testimonials').owlCarousel({
+	  loop: true,
+	  margin: 0,
+	  nav: false,
+	  dots: false,
+	  navText: [
+	    "<i class='fa fa-caret-left'></i>",
+	    "<i class='fa fa-caret-right'></i>"
+	  ],
+	  autoplay: true,
+	  autoplayHoverPause: true,
+	  responsive: {
+	    0: {
+	      items: 1
+	    },
+	    600: {
+	      items: 2
+	    },
+	    1000: {
+	      items: 3
+	    }
+	  }
+	});
 
 
 
 //---------------------------code start for auto slider---------------------------------------
-var slideIndex = 0;
-showproductSlides();
-
-function showproductSlides() {
-	var i;
-	var slides = document.getElementsByClassName("mySlides");
-	var dots = document.getElementsByClassName("dots");
-	/*for (i = 0; i < slides.length; i++) {
-	  slides[i].style.display = "none";  
-	}*/
-	if(dots.length > 0 && slides.length >0){
-	slideIndex++;
-	if (slideIndex > slides.length) {
-		slideIndex = 1
+function showContnet(size,index){
+	console.log('index::',size,'' ,index);
+	
+	for (var i = 0; i < size; i++) {
+		$("#productDesc_"+i).removeClass('show active');
 	}
-	for (i = 0; i < slides.length; i++) {
-		slides[i].className = slides[i].className.replace(" show active", "");
-	}
-	for (i = 0; i < dots.length; i++) {
-		dots[i].className = dots[i].className.replace(" active", "");
-	}
-	slides[slideIndex - 1].className += " show active";
-	dots[slideIndex - 1].className += " active";
-	setTimeout(showproductSlides, 2000); // Change image every 2 seconds
-	}
+	$("#productDesc_"+index).addClass("show active");
 }
 
-var serviceSlideIndex = 0;
-showserviceSlides();
+function showContnetServ(size,index){
 
-function showserviceSlides() {
-	var i;
-	var slides = document.getElementsByClassName("serviceSlide");
-	var dots = document.getElementsByClassName("servicedot");
-	/*for (i = 0; i < slides.length; i++) {
-	  slides[i].style.display = "none";  
-	}*/
-	if(dots.length > 0 && slides.length >0){
-	serviceSlideIndex++;
-	if (serviceSlideIndex > slides.length) {
-		serviceSlideIndex = 1
+	for (var i = 0; i < size; i++) {
+		$("#serviceDesc_"+i).removeClass('show active');
 	}
-	for (i = 0; i < slides.length; i++) {
-		slides[i].className = slides[i].className.replace(" show active", "");
-	}
-	for (i = 0; i < dots.length; i++) {
-		dots[i].className = dots[i].className.replace(" active", "");
-	}
-	slides[serviceSlideIndex - 1].className += " show active";
-	dots[serviceSlideIndex - 1].className += " active";
-	setTimeout(showserviceSlides, 2000); // Change image every 2 seconds
-	}
+	$("#serviceDesc_"+index).addClass("show active");
 }

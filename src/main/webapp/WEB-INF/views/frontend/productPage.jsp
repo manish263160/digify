@@ -37,7 +37,7 @@
 		</div>
 		 <div class="row">
         <div class="float-right offset-5 ">
-               <button class="btn btn-primary" style="width: 100%;"  onclick="openModel('${service}','$event')">Get Quotes</button>
+               <button class="btn btn-primary" style="width: 100%;"  onclick="openModel('${product}','$event')">Get Quotes</button>
             </div>
         </div>
 		<div class="modal fade" id="request-form" role="dialog">

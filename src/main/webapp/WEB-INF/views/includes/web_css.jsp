@@ -7,8 +7,6 @@
 
 <title>Digify</title>
 
-<!-- Font Awesome Icons -->
-<link href="${digify}/static/frontEnd/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet">
@@ -17,10 +15,29 @@
 
 <!-- Plugin CSS -->
 <link href="${digify}/static/frontEnd/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+<!-- Font Awesome Icons -->
+<link href="${digify}/static/frontEnd/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+
 
 <!-- Theme CSS - Includes Bootstrap -->
 <link href="${digify}/static/frontEnd/css/creative.css" rel="stylesheet">
+<link href="${digify}/static/frontEnd/css/custom_css.css" rel="stylesheet">
+
+<!-- Owl carousel -->
+<link href="${digify}/static/frontEnd/vendor/owlcarousel/owl.carousel.min.css" rel="stylesheet" type="text/css">
 <c:if test="${ fromcontact eq true }">
 	<link href="${digify}/static/frontEnd/css/contactus.css" rel="stylesheet">
+	<link href="${digify}/static/frontEnd/vendor/fontawesome-free/css/fontawesome.min.css" rel="stylesheet">
+</c:if>
+
+<c:if test="${ faq eq true }">
+<link href="${digify}/static/frontEnd/css/contactus.css" rel="stylesheet">
+	<link href="${digify}/static/frontEnd/css/faq.css" rel="stylesheet">
+	<link href="${digify}/static/frontEnd/vendor/fontawesome-free/css/fontawesome.min.css" rel="stylesheet">
+</c:if>
+<c:if test="${ team eq true }">
+<link href="${digify}/static/frontEnd/css/contactus.css" rel="stylesheet">
+	<link href="${digify}/static/frontEnd/css/team.css" rel="stylesheet">
 	<link href="${digify}/static/frontEnd/vendor/fontawesome-free/css/fontawesome.min.css" rel="stylesheet">
 </c:if>

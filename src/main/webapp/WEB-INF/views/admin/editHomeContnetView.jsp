@@ -113,7 +113,6 @@
 		<script type="text/javascript" src="${digify}/static/lib/richtext/jquery.richtext.min.js"></script>
 	<script type="text/javascript">
 	        $(document).ready(function(){
-	        	$("#contentDescription").richText();
 	            // Basic
 	            $('.dropify').dropify();
 	
@@ -185,6 +184,16 @@
 	        function changeSelect(){
 	        	console.log("------",$("#categoryId").val());
 	        }
+	        
+	        $("#contentDescription").richText({
+        		fonts: false,
+        		fontSize: false,
+        		fontColor: false,
+        		 imageUpload: false,
+        		 fileUpload: false,
+        		 table: false,
+        		 videoEmbed: false,
+        	});
 	    </script>
 
 </body>

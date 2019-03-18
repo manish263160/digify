@@ -208,7 +208,15 @@
 	        function changeSelect(){
 	        	console.log("------",$("#categoryId").val());
 	        }
-	        $('#description').richText({});
+	        $('#description').richText({
+	        	fonts: false,
+        		fontSize: false,
+        		fontColor: false,
+        		 imageUpload: false,
+        		 fileUpload: false,
+        		 table: false,
+        		 videoEmbed: false,
+        	});
 	    </script>
 
 </body>

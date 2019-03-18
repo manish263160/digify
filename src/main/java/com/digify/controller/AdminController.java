@@ -136,11 +136,11 @@ public class AdminController {
 				File oldFile = new File(oldImageURL);
 				GenUtilities.delete(oldFile);
 			} else {
-				homeComponent.setImageUrl(oldImageURL);
+				homeComponent.setImageName(oldImageURL);
 			}
 			String filePath = adminService.insertUpdateHomeComponent(file, homeComponent, tableName, "update",null);
 			model.addAttribute("imagepath", filePath);
-			return "redirect:insertContentSuccessfull";
+			return "admin/insertContentSuccessfull";
 		} catch (Exception e) {
 			logger.error("error in file upload==" + e);
 			return "redirect:updateHomeContent/" + homeComponent.getHomeContentId() + "?error=" + e.getMessage();

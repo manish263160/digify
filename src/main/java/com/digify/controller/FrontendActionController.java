@@ -89,11 +89,29 @@ public class FrontendActionController {
  		return "frontend/contactUs";
 	}
 	
+	
 	@RequestMapping(value = { "/contactUsSubmit" }, method = { RequestMethod.POST })
 	@ResponseBody
 	public boolean contactUsSubmit(ModelMap model ,@RequestParam String name , @RequestParam String email ,
 			@RequestParam String subject ,@RequestParam String message ) {		
 		boolean retrn = userService.contactUsSubmit(name,email , subject , message);
 		return retrn;
+	}
+	
+	@RequestMapping(value = { "/faq" }, method = { RequestMethod.GET })
+	public String faqPage(ModelMap model) {
+		model = productService.setProductservice(model);
+//		Long id = new Long(3);
+//		String viewsFolder = BASIC_STRINGS.CONTACTUS.getStringName();
+//		List<HomepageContent> list =adminService.getAllHomeComponentList(id, viewsFolder);
+//		model.addAttribute("list", list);
+		model.addAttribute("faq", true);
+ 		return "frontend/faq";
+	}
+	@RequestMapping(value = { "/team" }, method = { RequestMethod.GET })
+	public String teamPage(ModelMap model) {
+		model = productService.setProductservice(model);
+		model.addAttribute("team", true);
+ 		return "frontend/team";
 	}
 }

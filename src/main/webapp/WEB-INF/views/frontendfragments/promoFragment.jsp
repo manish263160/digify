@@ -6,7 +6,7 @@
  <div class="wpb_column vc_column_container vc_col-sm-12">
  <div class="vc_column-inner ">
  <div class="wpb_wrapper">
- <iframe width="1280" height="720" src="https://www.youtube.com/embed/fZvW1QCMyRY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+ <iframe class="pramotion" src="https://www.youtube.com/embed/iU1PhSw1LrQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
  </div>
  </div>
  </div>
