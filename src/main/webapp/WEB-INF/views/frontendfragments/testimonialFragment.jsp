@@ -4,7 +4,7 @@
       <div class="row justify-content-center">
 	  <div class="col-lg-8 text-center">
 		<h3 class="serviceheading">What People Says!</h3>
-          <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12"><span class="ourstorydiv1">Testimonials</span><span class="dot">.</span>
+          <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12"><span class="ourstorydiv1">Testimonials</span>
           </div>
         </div>
 <!--         <div class="carousel-wrap"> -->

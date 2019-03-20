@@ -114,4 +114,10 @@ public class FrontendActionController {
 		model.addAttribute("team", true);
  		return "frontend/team";
 	}
+	@RequestMapping(value = { "/amc" }, method = { RequestMethod.GET })
+	public String amcPage(ModelMap model) {
+		model = productService.setProductservice(model);
+		model.addAttribute("amc", true);
+ 		return "frontend/amc";
+	}
 }

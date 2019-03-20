@@ -103,10 +103,10 @@
 													class="menu-item menu-item-type-custom menu-item-object-custom no_group menu-item-122" data-depth="0">
 													<a href="${digify }/frontendAction/dashBoard/products" class=""><span class="menu-title">Product</span></a>
 												</li>
-												<li id="menu-item-123"
+												<!-- <li id="menu-item-123"
 													class="menu-item menu-item-type-custom menu-item-object-custom no_group menu-item-123" data-depth="0">
 													<a href="#" class=""><span class="menu-title">Careers</span></a>
-												</li>
+												</li> -->
 												<li id="menu-item-124"
 													class="menu-item menu-item-type-custom menu-item-object-custom no_group menu-item-124" data-depth="0">
 													<a href="${digify }/frontendAction/team" class=""><span class="menu-title">Team</span></a>

@@ -41,3 +41,9 @@
 	<link href="${digify}/static/frontEnd/css/team.css" rel="stylesheet">
 	<link href="${digify}/static/frontEnd/vendor/fontawesome-free/css/fontawesome.min.css" rel="stylesheet">
 </c:if>
+
+<c:if test="${ amc eq true }">
+<link href="${digify}/static/frontEnd/css/contactus.css" rel="stylesheet">
+	<link href="${digify}/static/frontEnd/css/team.css" rel="stylesheet">
+	<link href="${digify}/static/frontEnd/vendor/fontawesome-free/css/fontawesome.min.css" rel="stylesheet">
+</c:if>

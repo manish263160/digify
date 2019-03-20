@@ -15,7 +15,7 @@
 			<div class="thm-container clearfix">
 				<h2 class="pull-left">FAQs</h2>
 				<ul class="breadcumb pull-right">
-					<li><a href="/digify" class="home-fa"><i class="fa fa-home"></i> Home</a></li>
+					<li><a href="${digify}" class="home-fa"><i class="fa fa-home"></i> Home</a></li>
 					<li><span>About Us</span></li>
 				</ul>
 			</div>

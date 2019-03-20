@@ -5,7 +5,7 @@
 		<div class="col-lg-12 col-center m-auto">
 			<div class="col-lg-12 text-center">
 		<h3 class="serviceheading">They Always Trust Us</h3>
-          <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12"><span class="ourstorydiv1">Our Clients</span><span class="dot">.</span>
+          <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12"><span class="ourstorydiv1">Our Clients</span>
           </div>
         </div>
 			<div id="myCarousel" class="carousel slide" data-ride="carousel">

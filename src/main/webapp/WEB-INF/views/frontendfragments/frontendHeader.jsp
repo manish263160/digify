@@ -2,7 +2,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top"><img class="logo-img" src="${digify}/static/frontEnd/img/logo.png"/></a> <a href="${digify}/login">Admin Login</a>
+      <a class="navbar-brand js-scroll-trigger" href="${digify}/"><img class="logo-img" src="${digify}/static/frontEnd/img/logo.png"/></a> <a href="${digify}/login">Admin Login</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -41,11 +41,11 @@
           <li class="nav-item servicemenu">
           <c:choose>
             <c:when test="${page eq 'home'}">
-			<a class="nav-link js-scroll-trigger" href="${digify}/frontendAction/dashBoard/services">Services
+			<a class="nav-link js-scroll-trigger" href="${digify}/frontendAction/dashBoard/services">GMS
 			<i class="fa fa-caret-down fa-lg caret_custom" aria-hidden="true" ></i></a>
 			</c:when>
             <c:otherwise>
-            <a class="nav-link js-scroll-trigger" href="${digify}/frontendAction/dashBoard/services">Services
+            <a class="nav-link js-scroll-trigger" href="${digify}/frontendAction/dashBoard/services">GMS
 			<i class="fa fa-caret-down fa-lg caret_custom" aria-hidden="true" ></i></a>
             </c:otherwise>
             </c:choose>           
@@ -57,10 +57,10 @@
 			</ul>
 		  </li>
 		  <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#">AMC</a>
+            <a class="nav-link js-scroll-trigger" href="${digify}/frontendAction/amc">AMC</a>
           </li>
 		  <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#contact">Contact Us</a>
+            <a class="nav-link js-scroll-trigger" href="${digify}/frontendAction/contactUs">Contact Us</a>
           </li>
 		  <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#contact"><div class="callimg"></div></a>

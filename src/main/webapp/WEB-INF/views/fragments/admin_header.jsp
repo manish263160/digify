@@ -28,7 +28,7 @@
 						<li class="bold ${active eq 'products'? 'active':'' }"><a href="${digify}/admin/product"
 							class="waves-effect waves-cyan"><i class="mdi-editor-format-list-numbered"></i> Product </a></li>
 						<li class="bold ${active eq 'services'? 'active':'' }"><a href="${digify}/services"
-							class="waves-effect waves-cyan"><i class="mdi-maps-local-offer"></i>Service</a></li>
+							class="waves-effect waves-cyan"><i class="mdi-maps-local-offer"></i>GMS</a></li>
 					</security:authorize>
 					<security:authorize access="isAuthenticated()">
 						<li><a href="${digify}/logout">Logout</a></li>
@@ -88,7 +88,7 @@
 					<li class="bold ${active eq 'products'? 'active':'' }"><a href="${digify}/admin/product/products"
 						class="waves-effect waves-cyan"><i class="mdi-editor-format-list-numbered"></i> Product </a></li>
 					<li class="bold ${active eq 'services'? 'active':'' }"><a href="${digify}/admin/product/services"
-						class="waves-effect waves-cyan"><i class="mdi-maps-local-offer"></i>Service</a></li>
+						class="waves-effect waves-cyan"><i class="mdi-maps-local-offer"></i>GMS</a></li>
 				</security:authorize>
 			</ul>
 		</aside>

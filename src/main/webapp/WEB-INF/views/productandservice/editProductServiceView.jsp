@@ -30,7 +30,7 @@
 			<c:set var="productService" value="product"></c:set>
 		</c:when>
 		<c:when test="${tableName eq 'services' }">
-			<c:set var="productService"  value="service"></c:set>
+			<c:set var="productService"  value="Gate Management System"></c:set>
 		</c:when>
 	</c:choose>
 	</c:if>

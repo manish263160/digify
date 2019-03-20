@@ -37,10 +37,13 @@
 .lib-panel .lib-row.lib-desc {
 	position: absolute;
 	height: 100%;
+	width:100%;
 	display: block;
 	font-size: 13px;
 	overflow-y: scroll;
-	max-height: 90%; 
+	overflow-x: auto;
+	max-height: 90%;
+	text-align: justify; 
 }
 
 .lib-panel .lib-row.lib-desc a {

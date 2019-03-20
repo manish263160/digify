@@ -846,7 +846,7 @@ figure.snip1192 .author {
   margin: 0;
   text-transform: uppercase;
   text-align: center;
-  color: #ffffff;
+  color: slategray;
 }
 figure.snip1192 .author h5 {
   opacity: 0.8;
@@ -864,4 +864,15 @@ figure.snip1192 .author h5 span {
 .pramotion{
 	width: 72rem;
 	height: 30rem;
+}
+
+/* product and service carousel */
+.productserviceBackground{
+	    position: relative;
+    float: left;
+    width: fit-content;
+    height: -webkit-fill-available;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover
 }

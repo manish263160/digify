@@ -10606,6 +10606,7 @@ hr.light {
 
 .page-section {
   padding: 1rem 0 5rem 0;
+  background-color: #EFF1F6;  /* change the background color */
 }
 
 #mainNav {

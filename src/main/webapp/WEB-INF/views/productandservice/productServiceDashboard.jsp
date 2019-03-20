@@ -15,12 +15,12 @@
 		</div>
 
 		<div class="section">
-			<p class="caption">All ${tableName} Images that uploaded by ${user.name }</p>
+			<p class="caption">All ${ tableName eq 'services' ? 'Gate Management System' : tableName} Images that uploaded by ${user.name }</p>
 			<div class="row">
 				<p class="col s3">
 					<a href="${digify}/admin/product/add/addProductView/${tableName}"
 						class="btn-floating btn-large waves-effect waves-light green accent-3 tooltipped" data-position="bottom"
-						data-delay="50" data-tooltip="Upload product"> <i class="mdi-content-add ">Upload ${tableName} Image</i>
+						data-delay="50" data-tooltip="Upload product"> <i class="mdi-content-add ">Upload ${ tableName eq 'services' ? 'Gate Management System' : tableName} Image</i>
 					</a>
 				</p>
 			</div>
@@ -71,7 +71,7 @@
 				<c:when test="${ not empty list && tableName eq 'services'}">
 
 					<p class="caption">
-						<b>services Image List</b>
+						<b> Gate Management System Image List</b>
 					</p>
 						<div class="row">
 					<c:forEach items="${list }" var="l" varStatus="loop">
@@ -109,7 +109,7 @@
 
 					</div> --%>
 								<div class="card-content">
-									<p>There is no ${tableName}.Please click upload button to upload.</p>
+									<p>There is no ${ tableName eq 'services' ? 'Gate Management System' : tableName}.Please click upload button to upload.</p>
 								</div>
 
 							</div>
