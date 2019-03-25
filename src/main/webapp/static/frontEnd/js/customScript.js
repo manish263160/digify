@@ -8,7 +8,7 @@ function submitQuotes(digify, e) {
 	if ($("#quotes_form").valid()) {
 		console.log("submitQuotes::", digify);
 
-		event.preventDefault();
+//		e.preventDefault();
 		var form_data = $("#quotes_form").serialize();
 		$.ajax({
 			url : digify + '/requestQuotes',

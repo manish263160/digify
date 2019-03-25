@@ -5,7 +5,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -29,21 +28,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.ui.velocity.VelocityEngineUtils;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.digify.Enums.BASIC_STRINGS;
 import com.digify.exception.GenericException;
 import com.digify.model.HomepageContent;
-import com.digify.model.Products;
 import com.digify.model.RequestQuotes;
-import com.digify.model.Services;
 import com.digify.model.User;
 import com.digify.model.UserBookingDetails;
 import com.digify.service.AdminService;
@@ -55,6 +52,7 @@ import com.digify.utils.ApplicationConstants;
 import com.digify.utils.ApplicationProperties;
 import com.digify.utils.GenUtilities;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @Controller
 @PreAuthorize("permitAll()")
 @RequestMapping(value = { "/" })
