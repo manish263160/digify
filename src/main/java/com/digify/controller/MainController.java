@@ -284,7 +284,7 @@ public class MainController {
 		
 	}
 	
-	@RequestMapping(value= {"/requestQuotes" }, method = { RequestMethod.GET } )
+	@RequestMapping(value= {"/requestQuotes" }, method = { RequestMethod.POST } )
 	@ResponseBody
 	public boolean requestQuotes(@ModelAttribute("requestQuotes") RequestQuotes requestQuotes) {
 		boolean retrn = productService.insertQuotes(requestQuotes);
