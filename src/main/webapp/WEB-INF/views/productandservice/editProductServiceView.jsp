@@ -25,12 +25,15 @@
 <body class="${themecolor }">
 <c:if test="${not empty tableName }">
 	<c:set var="productService" value="" scope="page"></c:set>
+	<c:set var="gms" value="" scope="page"></c:set>
 	<c:choose>
 		<c:when test="${tableName eq 'products' }">
 			<c:set var="productService" value="product"></c:set>
+			<c:set var="gms"  value="product"></c:set>
 		</c:when>
 		<c:when test="${tableName eq 'services' }">
-			<c:set var="productService"  value="Gate Management System"></c:set>
+			<c:set var="productService"  value="service"></c:set>
+			<c:set var="gms"  value="Gate Management System"></c:set>
 		</c:when>
 	</c:choose>
 	</c:if>
@@ -51,7 +54,7 @@
 		<div id="card-alert" class="card red hide">
 			<div class="card-content white-text">
 				<p>
-					<i class="mdi-alert-error"></i> This ${tableName} already exist.
+					<i class="mdi-alert-error"></i> This ${gms} already exist.
 				</p>
 			</div>
 			<button type="button" class="close white-text" data-dismiss="alert"
@@ -61,7 +64,7 @@
 		</div>
 		<div class="row section">
 			<div class="col s12 m12 l12">
-				<h5>Edit form of ${productService} : ${tableName eq 'products' ? obj.productName : obj.serviceName}</h5>
+				<h5>Edit form of ${gms} : ${tableName eq 'products' ? obj.productName : obj.serviceName}</h5>
 			</div>
 		</div>
 		<form
@@ -114,18 +117,18 @@
 			</div>
 			<div class="row section">
 				<div class="col s12 m4 l3">
-					<p>${productService} Name</p>
+					<p>${gms} Name</p>
 				</div>
 
 				<div class="input-field col s8 m4 l7">
 					<input id="${productService}name" type="text" class="materialize-textarea" maxlength="250" autocomplete="off"
 					 value="${tableName eq 'products' ? obj.productName : obj.serviceName}"
-						name="${productService}Name"></input> <label for="${productService}name" class="">${productService} Name</label>
+						name="${productService}Name"></input> <label for="${productService}name" class="">${gms} Name</label>
 				</div>
 			</div>
 			<div class="row section">
 				<div class="col s12 m4 l3">
-					<p>${productService} Description</p>
+					<p>${gms} Description</p>
 				</div>
 
 				<div class="input-field col s8 m4 l7">

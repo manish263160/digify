@@ -274,3 +274,36 @@ button, input, select, textarea {
     border-radius: 3px;
     transition: all 0.5s ease;
 }
+
+/*Amc css*/
+ /*sahil*/
+
+.all {}
+  .info {}
+  .info p {
+    padding-bottom: 3%;
+    letter-spacing: 1px;
+  }
+  .info1 {
+     margin-left: 50px;
+    letter-spacing: 1px;
+    background-color: #FFFFFF;
+    box-shadow: inset 0px 0px 50px 0px rgba(0,0,0,0.5);
+    padding: 20px 40px;
+  }
+  .info1 ul {}
+  .info1 ul li {}
+  @media (min-width: 576px) {
+    .info1 {
+    margin-left: 0px;
+   }
+}
+
+.ques {
+    padding-bottom: 2%;
+}
+.ques h1 {}
+.ques p {
+    font-size: 13px;
+    margin-left: 30px;
+}

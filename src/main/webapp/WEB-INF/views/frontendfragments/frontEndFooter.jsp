@@ -107,10 +107,10 @@
 													class="menu-item menu-item-type-custom menu-item-object-custom no_group menu-item-123" data-depth="0">
 													<a href="#" class=""><span class="menu-title">Careers</span></a>
 												</li> -->
-												<li id="menu-item-124"
+												<%-- <li id="menu-item-124"
 													class="menu-item menu-item-type-custom menu-item-object-custom no_group menu-item-124" data-depth="0">
 													<a href="${digify }/frontendAction/team" class=""><span class="menu-title">Team</span></a>
-												</li>
+												</li> --%>
 												<li id="menu-item-126"
 													class="menu-item menu-item-type-custom menu-item-object-custom no_group menu-item-126" data-depth="0">
 													<a href="${digify }/frontendAction/faq" class=""><span class="menu-title">FAQs</span></a>
@@ -123,7 +123,7 @@
 						</div>
 						<div class="cshero-footer-top3 col-xs-12 col-sm-6 col-md-5 col-lg-5">
 							<aside id="nav_menu-3" class="widget widget_nav_menu">
-								<h3 class="widget-title">Services</h3>
+								<h3 class="widget-title">GMS</h3>
 								<div class="menu-menu-services-footer-container">
 									<ul id="menu-menu-services-footer" class="menu p-0">
 										<c:forEach items="${allServices }" var="services" varStatus="loop">
