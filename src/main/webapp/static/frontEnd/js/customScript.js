@@ -12,7 +12,7 @@ function submitQuotes(digify, e) {
 		var form_data = $("#quotes_form").serialize();
 		$.ajax({
 			url : digify + '/requestQuotes',
-			type : 'POST',
+			type : 'GET',
 			data : form_data,
 			success : function(result) {
 				// Do something with the result
