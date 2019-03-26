@@ -17,6 +17,17 @@ public class RequestQuotes implements Serializable {
 	private String inquiryFor;
 	private long inquiryForId;
 	private String inquiryForName;
+	public RequestQuotes(String personName, String personEmail, String mobile, String quoteDetails, String inquiryFor,
+			long inquiryForId, String inquiryForName) {
+		super();
+		this.personName = personName;
+		this.personEmail = personEmail;
+		this.mobile = mobile;
+		this.quoteDetails = quoteDetails;
+		this.inquiryFor = inquiryFor;
+		this.inquiryForId = inquiryForId;
+		this.inquiryForName = inquiryForName;
+	}
 	
 	public long getId() {
 		return id;

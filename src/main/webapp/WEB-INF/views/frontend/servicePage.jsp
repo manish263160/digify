@@ -62,7 +62,7 @@
 					<input type="hidden" name="inquiryForId" value="${service.id }"> <input type="hidden" name="inquiryFor"
 						value="${table}"> 
 						<input type="hidden" name="inquiryForName" value="${service.serviceName}">
-					<button type="button" onclick="submitQuotes('${digify}','$event')" class="btn btn-primary">Submit Inquiry</button>
+					<button type="button" onclick="submitQuotes('${digify}')" class="btn btn-primary">Submit Inquiry</button>
 				</form>
 			</div>
 			<div class="modal-footer">
@@ -75,32 +75,5 @@
 	<%@include file="../frontendfragments/modelFragment.jsp"%>
 	<%@include file="../frontendfragments/frontEndFooter.jsp"%>
 	<jsp:include page="../includes/web_js.jsp" />
-	<script type="text/javascript">
-
-	function submitQuotes(digify, e) {
-
-		if ($("#quotes_form").valid()) {
-			console.log("submitQuotes::", digify);
-
-//			e.preventDefault();
-			var form_data = $("#quotes_form").serialize();
-			$.post({
-				url :   '${digify}/requestQuotes',
-				data : form_data,
-				dataType: "json",
-				success : function(result) {
-					// Do something with the result
-					console.log("result==" + result)
-					/*     		      	  $(".progress").hide();	 */
-					if (result) {
-						$("#request-form").modal('hide');
-						$("#quotesSuccess").modal();
-						$("#quotes_form")[0].reset();
-					}
-				}
-			});
-		}
-	};
-	</script>
 </body>
 </html>

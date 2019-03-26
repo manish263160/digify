@@ -32,6 +32,7 @@ import org.springframework.ui.velocity.VelocityEngineUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -284,10 +285,15 @@ public class MainController {
 		return false;
 		
 	}
-	
-	@RequestMapping(value= {"/requestQuotes" }, method = { RequestMethod.POST }, produces = { MediaType.APPLICATION_JSON_VALUE })
+
+	@RequestMapping(value = { "/requestQuotes" }, method = { RequestMethod.POST })
 	@ResponseBody
-	public boolean requestQuotes(@ModelAttribute RequestQuotes requestQuotes) {
+	public boolean requestQuotes(@RequestParam("personName") String personName,
+			@RequestParam("personEmail") String personEmail, @RequestParam("mobile") String mobile,
+			@RequestParam("quoteDetails") String quoteDetails, @RequestParam("inquiryForId") long inquiryForId,
+			@RequestParam("inquiryFor") String inquiryFor, @RequestParam("inquiryForName") String inquiryForName) {
+		
+		RequestQuotes requestQuotes= new RequestQuotes(personName, personEmail, mobile, quoteDetails, inquiryFor, inquiryForId, inquiryForName);
 		boolean retrn = productService.insertQuotes(requestQuotes);
 		return retrn;
 	}
