@@ -86,10 +86,10 @@
 
 //			e.preventDefault();
 			var form_data = $("#quotes_form").serialize();
-			$.ajax({
+			$.post({
 				url :   '${digify}/requestQuotes',
-				type : 'POST',
 				data : form_data,
+				dataType: "json",
 				success : function(result) {
 					// Do something with the result
 					console.log("result==" + result)
