@@ -697,6 +697,7 @@ border: 1px solid #0000fe !important;
 }
 .servicemenuliin span img {
     width: 32px;
+    max-height: 36px;
     padding-right: 4px;
 }
 #intro {

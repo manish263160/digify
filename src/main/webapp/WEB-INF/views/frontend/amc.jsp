@@ -13,10 +13,10 @@
 
 		<section class="inner-banner inner-banner-about ">
 			<div class="thm-container clearfix">
-				<h2 class="pull-left">SERVICES</h2>
+				<h2 class="pull-left">AMC</h2>
 				<ul class="breadcumb pull-right">
 					<li><a href="/digify" class="home-fa"><i class="fa fa-home"></i> Home</a></li>
-					<li><span>About Us</span></li>
+					<li><span>AMC</span></li>
 				</ul>
 			</div>
 		</section>

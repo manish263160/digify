@@ -33,7 +33,16 @@
             </c:choose>
           <ul class="servicemenuli">
           <c:forEach items="${allProducts }" var="products" varStatus="loop">
-		<c:if test="${loop.count < 9 }">	<li class="servicemenuliin"><a class="servicemenulink" href="${digify}/frontendAction/productPage/${products.id}" ><span><img src="${products.iconImgUrl}"/></span>${products.productName}</a></li>
+		<c:if test="${loop.count < 9 }">	<li class="servicemenuliin"><a class="servicemenulink" href="${digify}/frontendAction/productPage/${products.id}" ><span><img src="${products.iconImgUrl}"/></span>
+		<c:choose>
+			<c:when test="${ fn:length(products.productName) gt 20}">
+			${ fn:substring(products.productName, 0, 20)}...
+			</c:when>
+			<c:otherwise>
+			${products.productName}
+			</c:otherwise>
+			</c:choose>
+			</a></li>
 		</c:if>
           </c:forEach>
 			</ul>
@@ -51,7 +60,16 @@
             </c:choose>           
           <ul class="servicemenuli">
 			<c:forEach items="${allServices }" var="services" varStatus="loop">
-			<c:if test="${loop.count < 9 }"><li class="servicemenuliin"><a class="servicemenulink" href="${digify}/frontendAction/servicePage/${services.id}"><span><img src="${services.iconImgUrl}"/></span>${services.serviceName}</a></li>
+			<c:if test="${loop.count < 9 }"><li class="servicemenuliin"><a class="servicemenulink" href="${digify}/frontendAction/servicePage/${services.id}"><span><img src="${services.iconImgUrl}"/></span>
+			<c:choose>
+			<c:when test="${ fn:length(services.serviceName) gt 20}">
+			${ fn:substring(services.serviceName, 0, 20)}...
+			</c:when>
+			<c:otherwise>
+			${services.serviceName }
+			</c:otherwise>
+			</c:choose>
+			</a></li>
 			</c:if>
           </c:forEach>
 			</ul>
