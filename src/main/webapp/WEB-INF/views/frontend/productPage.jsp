@@ -62,7 +62,7 @@
 					</div>
 					<input type="hidden" name="inquiryForId" value="${product.id }"> <input type="hidden" name="inquiryFor"
 								value="${table}"> <input type="hidden" name="inquiryForName" value="${product.productName}">
-							<button type="button" onclick="submitQuotes('${digify}')" class="btn btn-primary">Submit
+							<button type="button" onclick="submitQuotes('${digify}','$event')" class="btn btn-primary">Submit
 								Inquiry</button>
 				</form>
 			</div>

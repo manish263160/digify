@@ -62,7 +62,7 @@
 					<input type="hidden" name="inquiryForId" value="${service.id }"> <input type="hidden" name="inquiryFor"
 						value="${table}"> 
 						<input type="hidden" name="inquiryForName" value="${service.serviceName}">
-					<button type="button" onclick="submitQuotes('${digify}')" class="btn btn-primary">Submit Inquiry</button>
+					<button type="button" onclick="submitQuotes('${digify}','$event')" class="btn btn-primary">Submit Inquiry</button>
 				</form>
 			</div>
 			<div class="modal-footer">

@@ -82,11 +82,19 @@ public class ProductDaoImpl extends DigifyJdbcTemplate implements ProductDao {
 
 	@Override
 	public boolean insertQuotes(RequestQuotes req) {
+		logger.info("DB updation");
+		try {
 		String Sqlquery = "INSERT INTO request_quote "
 				+ " (person_name , person_email , mobile , quote_details,inquiry_for, inquiry_for_id, inquiry_for_name ) VALUES " + "(?,?,?,? ,?,?,?)";
 		int rowInsert = getJdbcTemplate().update(Sqlquery, req.getPersonName(), req.getPersonEmail(), req.getMobile(),
 				req.getQuoteDetails() , req.getInquiryFor(),req.getInquiryForId(),req.getInquiryForName());
 		return rowInsert > 0 ? true : false;
+		} catch (EmptyResultDataAccessException e) {
+			logger.error("No role found" + e);
+		} catch (DataAccessException e) {
+			logger.error("No role found" + e);
+		}
+		return false;
 	}
 
 }
