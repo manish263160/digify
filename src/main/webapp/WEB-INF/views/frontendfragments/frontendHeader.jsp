@@ -80,9 +80,9 @@
 		  <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="${digify}/frontendAction/contactUs">Contact Us</a>
           </li>
-		  <li class="nav-item">
+		 <!--  <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#contact"><div class="callimg"></div></a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>

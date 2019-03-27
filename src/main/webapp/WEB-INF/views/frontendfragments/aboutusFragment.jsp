@@ -5,7 +5,7 @@
 			<div class="col-lg-8 col-sm-8 col-md-8 col-xs-8">
 				<h4 class="col-lg-12 col-sm-12 col-md-12 col-xs-12 aboutus">All About Us</h4>
 				<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-					<span class="ourstorydiv">OUR STORY</span><span class="dot">.</span>
+					<span class="ourstorydiv">OUR STORY</span>
 				</div>
 				<p class="col-lg-12 col-sm-12 col-md-12 col-xs-12 aboutuscontent">Digify Engineering Pvt. Ltd. maintain optimal
 					security is an integral part of any business that not only protects your employees, but your assets as well.</p>

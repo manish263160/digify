@@ -860,7 +860,10 @@ figure.snip1192 .author h5 span {
   display: block;
 }
 
-
+.tab-content.product {
+    width: 100%;
+    max-height: 23 rem;
+}
 /*  for promotion css */
 .pramotion{
 	width: 72rem;

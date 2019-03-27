@@ -75,9 +75,9 @@
 			<div id="cshero-footer-top">
 				<div class="container">
 					<div class="row">
-						<div class="col-xs-12 col-sm-6 col-md-7 col-lg-7">
+						<div class="col-xs-12 col-sm-6 col-md-8 col-lg-8">
 							<div class="row">
-								<div class="cshero-footer-top1 col-xs-12 col-sm-12 col-md-7 col-lg-7">
+								<div class="cshero-footer-top1 col-xs-12 col-sm-12 col-md-6 col-lg-6">
 									<aside id="text-5" class="widget widget_text">
 										<div class="textwidget">
 											<div class="media">
@@ -90,7 +90,7 @@
 										</div>
 									</aside>
 								</div>
-								<div class="cshero-footer-top2 col-xs-12 col-sm-12 col-md-5 col-lg-5">
+								<div class="cshero-footer-top2 col-xs-12 col-sm-12 col-md-6 col-lg-6">
 									<aside id="nav_menu-2" class="widget widget_nav_menu">
 										<h3 class="widget-title">Navigation</h3>
 										<div class="menu-navigation-container">
@@ -121,7 +121,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="cshero-footer-top3 col-xs-12 col-sm-6 col-md-5 col-lg-5">
+						<div class="cshero-footer-top3 col-xs-12 col-sm-6 col-md-4 col-lg-4">
 							<aside id="nav_menu-3" class="widget widget_nav_menu">
 								<h3 class="widget-title">GMS</h3>
 								<div class="menu-menu-services-footer-container">
@@ -145,8 +145,11 @@
 			<div id="cs-copyright">
 				<div class="container">
 					<div class="row">
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">Copyright © DIGIFY Engineering Pvt. Ltd.
-							2017. All rights reserved.</div>
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center">Copyright © DIGIFY Engineering Pvt. Ltd.
+							2019. All rights reserved.</div>
+					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center">
+					Powered by Anoman Digital Media Pvt. Ltd.
+					</div>
 					</div>
 				</div>
 			</div>

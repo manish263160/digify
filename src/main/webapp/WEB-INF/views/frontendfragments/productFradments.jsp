@@ -8,9 +8,9 @@
 				<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
 					<span class="ourstorydiv1">Our Products</span>
 				</div>
-				<p class="mb-4 aboutuscontent">
+				<!-- <p class="mb-4 aboutuscontent">
 					Here the product related text</br> This is fixed in html.
-				</p>
+				</p> -->
 			</div>
 			<div class="carousel-wrap">
 				<div class="owl-carousel prodserviceCarousel" id="prodserviceCarousel">
@@ -27,7 +27,7 @@
 				</div>
 			</div>
 			
-			<div class="tab-content col-lg-12 col-sm-12 col-md-12 col-xs-12 bgcolor p-0" id="nav-tabContent">
+			<div class="tab-content product col-lg-12 col-sm-12 col-md-12 col-xs-12 bgcolor p-0" id="nav-tabContent">
 					<c:forEach items="${allProducts }" var="prod" varStatus="status">
 							<div class="tab-pane fade mySlides ${status.index eq 0 ? 'show active' : '' }"    
 							 id="productDesc_${status.index }" >
