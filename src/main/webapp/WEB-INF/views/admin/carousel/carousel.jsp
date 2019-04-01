@@ -53,7 +53,7 @@
 						</p>
 						<div class="row">
 					<c:forEach items="${list }" var="l" varStatus="loop">
-							<div class="col s6 m3 l3">
+							<div class="col s6 m3 l3 main-card">
 										<div class="card">
 											<div class="card-image">
 												<img src="${l.imageUrl }" alt="sample" class="equal_height_img"> <span
@@ -125,6 +125,12 @@
     		format : 'yyyy-mm-dd'
 
     	  });
+    	  $(window).on('load', function(event) {
+    		  $('.main-card').jQueryEqualHeight();
+    		});
+    	$(window).on('resize', function(event) {
+    		  $('.main-card').jQueryEqualHeight();
+    		});
 	  });
       /*
        * Masonry container for Gallery page

@@ -12,11 +12,9 @@
 									<div class="subtext" style="color:;">Have Any Questions !</div>
 									<div class="text" style="color:;">Don't Hesitate To Contact Us Any Time.</div>
 								</div>
-								<c:if test="${ fromcontact ne true }">
 								<div class="col-lg-4 col-sm-4 col-md-4 col-xs-4 cms-cta-button text-center-md">
 									<a href="${digify}/frontendAction/contactUs" class=" btn btn size-default"> Contact Us </a>
 								</div>
-								</c:if>
 							</div>
 						</div>
 					</div>
@@ -74,23 +72,22 @@
 			</div>
 			<div id="cshero-footer-top">
 				<div class="container">
-					<div class="row">
-						<div class="col-xs-12 col-sm-6 col-md-8 col-lg-8">
+<!-- 					<div class="row"> -->
+<!-- 						<div class="col-xs-12 col-sm-6 col-md-8 col-lg-8"> -->
 							<div class="row">
-								<div class="cshero-footer-top1 col-xs-12 col-sm-12 col-md-6 col-lg-6">
+								<div class="cshero-footer-top1 col-xs-12 col-sm-12 col-md-3 col-lg-3">
 									<aside id="text-5" class="widget widget_text">
 										<div class="textwidget">
 											<div class="media">
 												<div class="media-left">
 													<img class="logo-img" src="${digify}/static/frontEnd/img/logo.png">
-													<div class="media-body">DIGIFY Engineering Pvt. Ltd. Maintain optimal security is an Integral part of
-														any business that not only protects your employees, but your assets as well as.</div>
+													<div class="media-body">Digify Engineering Pvt. Ltd. maintain an optimal security which is an integral part of any business that not only protects your employees but your assets as well.</div>
 												</div>
 											</div>
 										</div>
 									</aside>
 								</div>
-								<div class="cshero-footer-top2 col-xs-12 col-sm-12 col-md-6 col-lg-6">
+								<div class="cshero-footer-top2 col-xs-12 col-sm-12 col-md-3 col-lg-3 offset-2">
 									<aside id="nav_menu-2" class="widget widget_nav_menu">
 										<h3 class="widget-title">Navigation</h3>
 										<div class="menu-navigation-container">
@@ -119,33 +116,34 @@
 										</div>
 									</aside>
 								</div>
+							<div class="cshero-footer-top3 col-xs-12 col-sm-6 col-md-3 col-lg-3">
+								<aside id="nav_menu-3" class="widget widget_nav_menu">
+									<h3 class="widget-title">GMS</h3>
+									<div class="menu-menu-services-footer-container">
+										<ul id="menu-menu-services-footer" class="menu p-0">
+											<c:forEach items="${allServices }" var="services" varStatus="loop">
+												<c:if test="${loop.count < 6 }">
+													<li id="menu-item-${loop.count}"
+														class="menu-item menu-item-type-custom menu-item-object-custom no_group menu-item-503"><a
+														class="servicemenulink" href="${digify}/frontendAction/servicePage/${services.id}"><span
+															class="menu-title">${services.serviceName}</span></a></li>
+												</c:if>
+											</c:forEach>
+										</ul>
+									</div>
+								</aside>
 							</div>
 						</div>
-						<div class="cshero-footer-top3 col-xs-12 col-sm-6 col-md-4 col-lg-4">
-							<aside id="nav_menu-3" class="widget widget_nav_menu">
-								<h3 class="widget-title">GMS</h3>
-								<div class="menu-menu-services-footer-container">
-									<ul id="menu-menu-services-footer" class="menu p-0">
-										<c:forEach items="${allServices }" var="services" varStatus="loop">
-											<c:if test="${loop.count < 6 }">
-												<li id="menu-item-${loop.count}"
-													class="menu-item menu-item-type-custom menu-item-object-custom no_group menu-item-503"><a
-													class="servicemenulink" href="${digify}/frontendAction/servicePage/${services.id}"><span
-														class="menu-title">${services.serviceName}</span></a></li>
-											</c:if>
-										</c:forEach>
-									</ul>
-								</div>
-							</aside>
-						</div>
-					</div>
+<!-- 						</div> -->
+					
+<!-- 					</div> -->
 				</div>
 			</div>
 
 			<div id="cs-copyright">
 				<div class="container">
 					<div class="row">
-						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center">Copyright © DIGIFY Engineering Pvt. Ltd.
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 ">Copyright © DIGIFY Engineering Pvt. Ltd.
 							2019. All rights reserved.</div>
 					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center">
 					Powered by Anoman Digital Media Pvt. Ltd.

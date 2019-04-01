@@ -28,7 +28,7 @@
 								${product.productName }
 								<div class="lib-header-seperator"></div>
 							</div>
-							<div class="lib-row lib-desc">${product.productDescription}</div>
+							<div class="lib-row lib-desc" id="description"></div>
 						</div>
 					</div>
 				</div>
@@ -77,5 +77,12 @@
 	<%@include file="../frontendfragments/modelFragment.jsp"%>
 	<%@include file="../frontendfragments/frontEndFooter.jsp"%>
 	<jsp:include page="../includes/web_js.jsp" />
+	<script type="text/javascript">
+	$( document ).ready(function() {
+		console.log("new one");
+		$("#description").html('${product.productDescription}')
+		$('#description, #description *').attr('style','');
+	});
+	</script>
 </body>
 </html>

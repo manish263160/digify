@@ -4,7 +4,7 @@
 	<div class="container-fluid">
 		<div class="row justify-content-center">
 			<div class="col-lg-8 text-center">
-				<h3 class="serviceheading">What We Provide?</h3>
+<!-- 				<h3 class="serviceheading">What We Provide?</h3> -->
 				<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
 					<span class="ourstorydiv1">Our Products</span>
 				</div>
@@ -28,6 +28,7 @@
 			</div>
 			
 			<div class="tab-content product col-lg-12 col-sm-12 col-md-12 col-xs-12 bgcolor p-0" id="nav-tabContent">
+					<span id="allProductcount" val="${fn:length(allProducts)}"></span>
 					<c:forEach items="${allProducts }" var="prod" varStatus="status">
 							<div class="tab-pane fade mySlides ${status.index eq 0 ? 'show active' : '' }"    
 							 id="productDesc_${status.index }" >
@@ -37,7 +38,7 @@
 									</div>
 									<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 										<p class="texthd">${prod.productName }</p>
-										<div class="aboutuscontent text">${prod.productDescription }</div>
+										<div class="aboutuscontent text" id="product_description${status.index}" desc ="${prod.productDescription }"></div>
 									</div>
 								</div>
 							</div>

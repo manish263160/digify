@@ -46,8 +46,8 @@
 					</p>
 						<div class="row" >
 					<c:forEach items="${list }" var="l" varStatus="loop">
-							<div class="col s6 m3 l3">
-								<div class="card">
+							<div class="col s6 m3 l3 main-card">
+								<div class="card ">
 									<div class="card-image">
 										<img src="${l.imageUrl }" alt="sample" class="equal_height_img">
 										 <span class="card-title"></span>
@@ -75,8 +75,8 @@
 					</p>
 						<div class="row">
 					<c:forEach items="${list }" var="l" varStatus="loop">
-							<div class="col s6 m3 l3">
-								<div class="card">
+							<div class="col s6 m3 l3 main-card">
+								<div class="card ">
 									<div class="card-image">
 										<img src="${l.imageUrl }" alt="sample" class="equal_height_img"> 
 										<span class="card-title"></span>
@@ -99,7 +99,7 @@
 
 				</c:when>
 				<c:otherwise>
-					<div class="row warningmodel">
+					<div class="row warningmodel main-card">
 						<div class="col s8 m6 l6 offset-l4">
 							<div class="card">
 								<%-- <div class="card-image">
@@ -142,6 +142,13 @@
     		format : 'yyyy-mm-dd'
 
     	  });
+    	
+    	  $(window).on('load', function(event) {
+    		  $('.main-card').jQueryEqualHeight();
+    		});
+    	$(window).on('resize', function(event) {
+    		  $('.main-card').jQueryEqualHeight();
+    		});
 	  });
       
       
@@ -164,6 +171,7 @@
     	  
       }
       
+    
   
     </script>
 

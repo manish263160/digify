@@ -11,6 +11,9 @@
 <!-- Owl crousel -->
  <script src="${digify}/static/frontEnd/vendor/owlcarousel/owl.carousel.min.js"></script>
  
+ <!-- jquery equal height -->
+ <script src="${digify}/static/frontEnd/vendor/jquery/jquery-equal-height.min.js"></script>
+ 
   <!-- Custom scripts for this template -->
   <script src="${digify}/static/frontEnd/js/creative.min.js"></script>
   <script src="${digify}/static/frontEnd/js/customScript.js"></script>

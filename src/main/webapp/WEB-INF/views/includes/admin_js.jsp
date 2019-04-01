@@ -17,5 +17,6 @@
   <script type="text/javascript" src="${digify}/static/lib/js/jquery.validate.min.js"></script>
   <script type="text/javascript" src="${digify}/static/lib/js/additional-methods.min.js"></script>
   <script type="text/javascript" src="${digify}/static/js/customJs.js"></script>
+   <script type="text/javascript" src="${digify}/static/frontEnd/vendor/jquery/jquery-equal-height.min.js"></script>
   
   

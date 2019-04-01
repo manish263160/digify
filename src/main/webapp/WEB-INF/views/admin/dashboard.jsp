@@ -1,7 +1,7 @@
 
 <html>
 <head>
-<title>Admin Dash Boarsd</title>
+<title>Admin Dash Boards</title>
 </head>
 <body class="${themecolor }">
 <jsp:include page="../fragments/admin_header.jsp" />

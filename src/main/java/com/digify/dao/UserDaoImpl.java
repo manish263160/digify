@@ -230,7 +230,7 @@ public class UserDaoImpl extends DigifyJdbcTemplate implements UserDao{
 					ps.setString(i++, null);
 				}
 
-				ps.setInt(i++, STATUS.INACTIVE.ID);
+				ps.setInt(i++, STATUS.ACTIVE.ID);
 
 				return ps;
 			}
@@ -244,9 +244,9 @@ public class UserDaoImpl extends DigifyJdbcTemplate implements UserDao{
 	public User checkUserByEmailorID(String emailorID) {
 		logger.debug("::checkUserByEmail()");
 		User user = null;
-		final String query = "select * from user where email=? or id=?";
+		final String query = "select * from user where email=? ";
 		try {
-			user = getJdbcTemplate().queryForObject(query, new BeanPropertyRowMapper<User>(User.class), emailorID,emailorID);
+			user = getJdbcTemplate().queryForObject(query, new BeanPropertyRowMapper<User>(User.class), emailorID);
 		} catch (EmptyResultDataAccessException e) {
 			logger.error(" checkUserByEmail() EmptyResultDataAccessException");
 		} catch (DataAccessException e) {

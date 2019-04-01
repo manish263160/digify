@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -37,6 +38,11 @@ public class FrontendActionController {
 	public String productPage(ModelMap model, HttpServletRequest request , @PathVariable("id") Long id) {
 		String tableName = BASIC_STRINGS.PRODUCTS.getStringName();
 		Products product= productService.getProductServiceById(id, tableName);
+		String prdctDesc = product.getProductDescription();
+		if(! StringUtils.isEmpty(prdctDesc )) {
+		prdctDesc = prdctDesc.replace("\n", "").replace("\r", "");
+		product.setProductDescription(prdctDesc);
+		}
 		model = productService.setProductservice(model);
 		model.addAttribute("product", product);
 		model.addAttribute("table", tableName);
@@ -47,6 +53,11 @@ public class FrontendActionController {
 	public String servicePage(ModelMap model, HttpServletRequest request , @PathVariable("id") Long id) {
 		String tableName = BASIC_STRINGS.SERVICES.getStringName();
 		Services service= productService.getProductServiceById(id, tableName);
+		String serviceDesc = service.getServiceDescription();
+		if(! StringUtils.isEmpty(serviceDesc )) {
+			serviceDesc = serviceDesc.replace("\n", "").replace("\r", "");
+			service.setServiceDescription(serviceDesc);
+		}
 		model = productService.setProductservice(model);
 		model.addAttribute("service", service);
 		model.addAttribute("table", tableName);
@@ -60,7 +71,7 @@ public class FrontendActionController {
 		Long id = new Long(2);
 		List<HomepageContent> list =adminService.getAllHomeComponentList(id, viewsFolder);
 		model.addAttribute("list", list);
-		model.addAttribute("fromcontact", true);
+		model.addAttribute("abount", true);
  		return "frontend/aboutUs";
 	}
 	

@@ -12,7 +12,7 @@
 <body id="page-top">
 	<%@include file="../frontendfragments/frontendHeader.jsp"%>
 <section class="card-container">
-<h2>All ${table eq 'products' ? 'products' : table eq 'services' ? 'Gate Management System' : table}.</h2>
+<h2>All ${table eq 'products' ? 'products' : table eq 'services' ? 'Gate Management System' : table}</h2>
 <div class="row">
 <c:if test="${table eq 'products' }">
 <c:forEach var="item" items="${allProducts }">
@@ -48,6 +48,13 @@
 </section>
 		<%@include file="../frontendfragments/frontEndFooter.jsp"%>
 	<jsp:include page="../includes/web_js.jsp" />
-	
+	<script type="text/javascript">
+	$(window).on('load', function(event) {
+		  $('.main-card').jQueryEqualHeight();
+		});
+	$(window).on('resize', function(event) {
+		  $('.main-card').jQueryEqualHeight();
+		});
+	</script>
 </body>
 </html>

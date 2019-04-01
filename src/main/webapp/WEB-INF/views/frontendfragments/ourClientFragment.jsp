@@ -8,21 +8,15 @@
           <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12"><span class="ourstorydiv1">Our Clients</span>
           </div>
         </div>
-			<div id="myCarousel" class="carousel slide" data-ride="carousel">
-				<!-- Carousel indicators -->
-				<ol class="carousel-indicators">
-					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-					<li data-target="#myCarousel" data-slide-to="1"></li>
-					<li data-target="#myCarousel" data-slide-to="2"></li>
-				</ol>   
-				<!-- Wrapper for carousel items -->
+			<div class="col-lg-12 text-center offset-1">
+				
 				<div class="carousel-inner">
 					<div class="item carousel-item active">
 						<div class="row col-lg-12 col-sm-12 col-md-12 col-xs-12 owl-item active" style="margin-right: 10px;">
 						<div class="col-lg-2 text-center cms-carousel-item"> 
 						<a href="#" title="Bortolini Company"> 
 						<span class="cms-carousel-media has-thumbnail">
-						<img width="130" height="130" src="${digify}/static/frontEnd/img/yellow-client1.png" class="attachment-medium size-medium wp-post-image" alt="">
+						<img width="130" height="130" src="${digify}/static/frontEnd/img/clients/banner_logo2.png" class="attachment-medium size-medium wp-post-image" alt="">
 						</span> 
 						</a> 
 						</div>
@@ -30,7 +24,7 @@
 						<div class="col-lg-2 text-center cms-carousel-item"> 
 						<a href="#" title="Bortolini Company"> 
 						<span class="cms-carousel-media has-thumbnail">
-						<img width="130" height="130" src="${digify}/static/frontEnd/img/yellow-client1.png" class="attachment-medium size-medium wp-post-image" alt="">
+						<img width="130" height="130" src="${digify}/static/frontEnd/img/clients/brand1.png" class="attachment-medium size-medium wp-post-image" alt="">
 						</span> 
 						</a> 
 						</div>
@@ -38,7 +32,7 @@
 						<div class="col-lg-2 text-center cms-carousel-item"> 
 						<a href="#" title="Bortolini Company"> 
 						<span class="cms-carousel-media has-thumbnail">
-						<img width="130" height="130" src="${digify}/static/frontEnd/img/yellow-client1.png" class="attachment-medium size-medium wp-post-image" alt="">
+						<img width="130" height="130" src="${digify}/static/frontEnd/img/clients/coag8512.png" class="attachment-medium size-medium wp-post-image" alt="">
 						</span> 
 						</a> 
 						</div>
@@ -46,7 +40,7 @@
 						<div class="col-lg-2 text-center cms-carousel-item"> 
 						<a href="#" title="Bortolini Company"> 
 						<span class="cms-carousel-media has-thumbnail">
-						<img width="130" height="130" src="${digify}/static/frontEnd/img/yellow-client1.png" class="attachment-medium size-medium wp-post-image" alt="">
+						<img width="130" height="130" src="${digify}/static/frontEnd/img/clients/Gunnebo.png" class="attachment-medium size-medium wp-post-image" alt="">
 						</span> 
 						</a> 
 						</div>
@@ -54,119 +48,7 @@
 						<div class="col-lg-2 text-center cms-carousel-item"> 
 						<a href="#" title="Bortolini Company"> 
 						<span class="cms-carousel-media has-thumbnail">
-						<img width="130" height="130" src="${digify}/static/frontEnd/img/yellow-client1.png" class="attachment-medium size-medium wp-post-image" alt="">
-						</span> 
-						</a> 
-						</div>
-						
-						<div class="col-lg-2 text-center cms-carousel-item"> 
-						<a href="#" title="Bortolini Company"> 
-						<span class="cms-carousel-media has-thumbnail">
-						<img width="130" height="130" src="${digify}/static/frontEnd/img/yellow-client1.png" class="attachment-medium size-medium wp-post-image" alt="">
-						</span> 
-						</a> 
-						</div>
-						
-						</div>
-					</div>
-					<div class="item carousel-item">
-						<div class="row col-lg-12 col-sm-12 col-md-12 col-xs-12 owl-item active" style="margin-right: 10px;">
-						<div class="col-lg-2 text-center cms-carousel-item"> 
-						<a href="#" title="Bortolini Company"> 
-						<span class="cms-carousel-media has-thumbnail">
-						<img width="130" height="130" src="http://7oroof.com/tfdemos/wp-yellow-hats/wp-content/uploads/2015/10/yellow-client1.png" class="attachment-medium size-medium wp-post-image" alt="">
-						</span> 
-						</a> 
-						</div>
-						
-						<div class="col-lg-2 text-center cms-carousel-item"> 
-						<a href="#" title="Bortolini Company"> 
-						<span class="cms-carousel-media has-thumbnail">
-						<img width="130" height="130" src="http://7oroof.com/tfdemos/wp-yellow-hats/wp-content/uploads/2015/10/yellow-client6.png" class="attachment-medium size-medium wp-post-image" alt="">
-						</span> 
-						</a> 
-						</div>
-						
-						<div class="col-lg-2 text-center cms-carousel-item"> 
-						<a href="#" title="Bortolini Company"> 
-						<span class="cms-carousel-media has-thumbnail">
-						<img width="130" height="130" src="http://7oroof.com/tfdemos/wp-yellow-hats/wp-content/uploads/2015/10/yellow-client1.png" class="attachment-medium size-medium wp-post-image" alt="">
-						</span> 
-						</a> 
-						</div>
-						
-						<div class="col-lg-2 text-center cms-carousel-item"> 
-						<a href="#" title="Bortolini Company"> 
-						<span class="cms-carousel-media has-thumbnail">
-						<img width="130" height="130" src="http://7oroof.com/tfdemos/wp-yellow-hats/wp-content/uploads/2015/10/yellow-client5.png" class="attachment-medium size-medium wp-post-image" alt="">
-						</span> 
-						</a> 
-						</div>
-						
-						<div class="col-lg-2 text-center cms-carousel-item"> 
-						<a href="#" title="Bortolini Company"> 
-						<span class="cms-carousel-media has-thumbnail">
-						<img width="130" height="130" src="http://7oroof.com/tfdemos/wp-yellow-hats/wp-content/uploads/2015/10/yellow-client1.png" class="attachment-medium size-medium wp-post-image" alt="">
-						</span> 
-						</a> 
-						</div>
-						
-						<div class="col-lg-2 text-center cms-carousel-item"> 
-						<a href="#" title="Bortolini Company"> 
-						<span class="cms-carousel-media has-thumbnail">
-						<img width="130" height="130" src="http://7oroof.com/tfdemos/wp-yellow-hats/wp-content/uploads/2015/10/yellow-client1.png" class="attachment-medium size-medium wp-post-image" alt="">
-						</span> 
-						</a> 
-						</div>
-						
-						</div>
-					</div>
-					<div class="item carousel-item">
-						<div class="row col-lg-12 col-sm-12 col-md-12 col-xs-12 owl-item active" style="margin-right: 10px;">
-						<div class="col-lg-2 text-center cms-carousel-item"> 
-						<a href="#" title="Bortolini Company"> 
-						<span class="cms-carousel-media has-thumbnail">
-						<img width="130" height="130" src="http://7oroof.com/tfdemos/wp-yellow-hats/wp-content/uploads/2015/10/yellow-client1.png" class="attachment-medium size-medium wp-post-image" alt="">
-						</span> 
-						</a> 
-						</div>
-						
-						<div class="col-lg-2 text-center cms-carousel-item"> 
-						<a href="#" title="Bortolini Company"> 
-						<span class="cms-carousel-media has-thumbnail">
-						<img width="130" height="130" src="http://7oroof.com/tfdemos/wp-yellow-hats/wp-content/uploads/2015/10/yellow-client6.png" class="attachment-medium size-medium wp-post-image" alt="">
-						</span> 
-						</a> 
-						</div>
-						
-						<div class="col-lg-2 text-center cms-carousel-item"> 
-						<a href="#" title="Bortolini Company"> 
-						<span class="cms-carousel-media has-thumbnail">
-						<img width="130" height="130" src="http://7oroof.com/tfdemos/wp-yellow-hats/wp-content/uploads/2015/10/yellow-client1.png" class="attachment-medium size-medium wp-post-image" alt="">
-						</span> 
-						</a> 
-						</div>
-						
-						<div class="col-lg-2 text-center cms-carousel-item"> 
-						<a href="#" title="Bortolini Company"> 
-						<span class="cms-carousel-media has-thumbnail">
-						<img width="130" height="130" src="http://7oroof.com/tfdemos/wp-yellow-hats/wp-content/uploads/2015/10/yellow-client5.png" class="attachment-medium size-medium wp-post-image" alt="">
-						</span> 
-						</a> 
-						</div>
-						
-						<div class="col-lg-2 text-center cms-carousel-item"> 
-						<a href="#" title="Bortolini Company"> 
-						<span class="cms-carousel-media has-thumbnail">
-						<img width="130" height="130" src="http://7oroof.com/tfdemos/wp-yellow-hats/wp-content/uploads/2015/10/yellow-client1.png" class="attachment-medium size-medium wp-post-image" alt="">
-						</span> 
-						</a> 
-						</div>
-						
-						<div class="col-lg-2 text-center cms-carousel-item"> 
-						<a href="#" title="Bortolini Company"> 
-						<span class="cms-carousel-media has-thumbnail">
-						<img width="130" height="130" src="http://7oroof.com/tfdemos/wp-yellow-hats/wp-content/uploads/2015/10/yellow-client1.png" class="attachment-medium size-medium wp-post-image" alt="">
+						<img width="130" height="130" src="${digify}/static/frontEnd/img/clients/Ministry-of-Defence-logo.png" class="attachment-medium size-medium wp-post-image" alt="">
 						</span> 
 						</a> 
 						</div>

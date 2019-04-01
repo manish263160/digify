@@ -20,7 +20,7 @@
 
 <%-- 	<%@include file="./frontendfragments/serviceFragment.jsp"%> --%>
 
-	<%@include file="./frontendfragments/testimonialFragment.jsp"%>
+<%-- 	<%@include file="./frontendfragments/testimonialFragment.jsp"%> --%>
 
 	
 	<%@include file="./frontendfragments/promoFragment.jsp"%>
@@ -34,4 +34,17 @@
 	<%@include file="./frontendfragments/frontEndFooter.jsp"%>
 	<jsp:include page="./includes/web_js.jsp" />
 </body>
+<script type="text/javascript">
+	$( document ).ready(function() {
+		
+		var allProduct = $("#allProductcount").attr('val');
+		for (var i = 0; i < allProduct; i++) {
+			var id = "#product_description"+i;
+			var comboId = id+' *';
+		$(id).html($(id).attr('desc'))
+		$(id).attr('style','');
+		$(comboId).attr('style','');
+		}
+	});
+	</script>
 </html>

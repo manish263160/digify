@@ -24,8 +24,7 @@
                                ${service.serviceName }
                                 <div class="lib-header-seperator"></div>
                             </div>
-                            <div class="lib-row lib-desc">
-                                ${service.serviceDescription}
+                            <div class="lib-row lib-desc" id="description">
                             </div>
                         </div>
                     </div>
@@ -75,5 +74,14 @@
 	<%@include file="../frontendfragments/modelFragment.jsp"%>
 	<%@include file="../frontendfragments/frontEndFooter.jsp"%>
 	<jsp:include page="../includes/web_js.jsp" />
+	<script type="text/javascript">
+	$( document ).ready(function() {
+		console.log("new one");
+		var str = "${service.serviceDescription}";
+		str = str.replace(/(\r\n|\n|\r)/gm, "");
+		$("#description").html(str);
+		$('#description, #description *').attr('style','');
+	});
+	</script>
 </body>
 </html>
