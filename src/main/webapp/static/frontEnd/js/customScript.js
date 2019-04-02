@@ -132,4 +132,6 @@ function showContnetServ(size,index){
 	}
 	$("#serviceDesc_"+index).addClass("show active");
 }
-
+$(document).ready(function() {
+    $('.datepicker').datepicker();
+});

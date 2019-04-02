@@ -200,8 +200,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean contactUsSubmit(String name, String email, String subject, String message) {
-		boolean bool = userDao.contactUsSubmit(name, email, subject, message);
+	public boolean contactUsSubmit(String name, String email, String subject, String message, String dateOfContact, String mobileNo) {
+		boolean bool = userDao.contactUsSubmit(name, email, subject, message , dateOfContact , mobileNo);
 		if (bool) {
 			try {
 				/*

@@ -47,3 +47,5 @@
 	<link href="${digify}/static/frontEnd/css/team.css" rel="stylesheet">
 	<link href="${digify}/static/frontEnd/vendor/fontawesome-free/css/fontawesome.min.css" rel="stylesheet">
 </c:if>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css.map" rel="stylesheet">

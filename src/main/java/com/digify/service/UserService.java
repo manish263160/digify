@@ -40,7 +40,7 @@ public interface UserService {
 
 	boolean insertPassGenToken(Long userId, String token);
 
-	boolean contactUsSubmit(String name, String email, String subject, String message);
+	boolean contactUsSubmit(String name, String email, String subject, String message, String dateOfContact, String mobileNo);
 
 	String getpassGenToken(long parseLong);
 

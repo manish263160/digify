@@ -17,3 +17,4 @@
   <!-- Custom scripts for this template -->
   <script src="${digify}/static/frontEnd/js/creative.min.js"></script>
   <script src="${digify}/static/frontEnd/js/customScript.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>

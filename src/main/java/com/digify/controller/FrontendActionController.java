@@ -104,8 +104,8 @@ public class FrontendActionController {
 	@RequestMapping(value = { "/contactUsSubmit" }, method = { RequestMethod.POST })
 	@ResponseBody
 	public boolean contactUsSubmit(ModelMap model ,@RequestParam String name , @RequestParam String email ,
-			@RequestParam String subject ,@RequestParam String message ) {		
-		boolean retrn = userService.contactUsSubmit(name,email , subject , message);
+			@RequestParam String subject ,@RequestParam String message ,@RequestParam String dateOfContact ,@RequestParam String mobileNo  ) {		
+		boolean retrn = userService.contactUsSubmit(name,email , subject , message , dateOfContact , mobileNo);
 		return retrn;
 	}
 	

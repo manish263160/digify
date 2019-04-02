@@ -5,6 +5,7 @@
 
 <head>
 <jsp:include page="../includes/web_css.jsp" />
+<link>
 </head>
 
 <body id="page-top">
@@ -91,6 +92,15 @@
 								<input type="text" placeholder="Subject" name="subject">
 							</div>
 							<div>
+								<input type="text" placeholder="Mobile Number" name="mobileNo">
+							</div>
+							<div>
+								<input type="text" placeholder="Date" class="datepicker" name="dateOfContact">
+							</div>
+							<div>
+								<input type="text" placeholder="Subject" name="subject">
+							</div>
+							<div>
 								<textarea name="message" placeholder="Message"></textarea>
 							</div>
 							<button type="button" onclick="submitContactForm('$event')" class="thm-btn">
@@ -144,6 +154,13 @@
 	        },
 	        name :{
 	        	required: true
+	        },
+	        mobileNo:{
+	        	required: true,
+	        	number: true
+	        },
+	        dateOfContact :{
+	        	required: true,
 	        },
 	        subject :{
 	        	required: true

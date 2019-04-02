@@ -298,10 +298,12 @@ public class UserDaoImpl extends DigifyJdbcTemplate implements UserDao{
 		}
 		return false;
 	}
+
 	@Override
-	public boolean contactUsSubmit(String name, String email, String subject, String message) {
-		String Sqlquery = "INSERT INTO contact_us(name,email,subject,message) VALUES (?,?,?,?);";
-		int rowInsert = getJdbcTemplate().update(Sqlquery, name, email, subject,message);
+	public boolean contactUsSubmit(String name, String email, String subject, String message, String dateOfContact,
+			String mobileNo) {
+		String Sqlquery = "INSERT INTO contact_us(name,email,subject,message ,mobile_no , date_of_contact) VALUES (?,?,?,?,?,?);";
+		int rowInsert = getJdbcTemplate().update(Sqlquery, name, email, subject, message, mobileNo, dateOfContact);
 		return rowInsert > 0 ? true : false;
 	}
 

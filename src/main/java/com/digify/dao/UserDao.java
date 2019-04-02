@@ -44,7 +44,7 @@ boolean insertPassGenToken(Long userId, String token);
 
 String getpassGenToken(long userId);
 
-boolean contactUsSubmit(String name, String email, String subject, String message);
+boolean contactUsSubmit(String name, String email, String subject, String message, String dateOfContact, String mobileNo);
 
 boolean resetPassword(User user, String newpassword);
 
