@@ -28,12 +28,14 @@
                                         <th style="border: 1px solid #dddddd;text-align: left;padding: 8px;">Name</th>
                                         <th style="border: 1px solid #dddddd;text-align: left;padding: 8px;">Email</th>
                                         <th style="border: 1px solid #dddddd;text-align: left;padding: 8px;">Telephone</th>
+                                        <th style="border: 1px solid #dddddd;text-align: left;padding: 8px;">Date</th>
                                         <th style="border: 1px solid #dddddd;text-align: left;padding: 8px;">Quote Details</th>
                                       </tr>
                                       <tr>
                                         <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">${name}	</td>
                                         <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">${email}</td>
                                         <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">${mobile}</td>
+                                        <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">${date}</td>
                                         <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">${quoteDetails}</td>
                                       </tr>
                                         </tr>

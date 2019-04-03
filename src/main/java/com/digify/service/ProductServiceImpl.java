@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.exception.VelocityException;
@@ -22,6 +23,7 @@ import org.springframework.ui.velocity.VelocityEngineUtils;
 import com.digify.Enums.BASIC_STRINGS;
 import com.digify.dao.AdminDao;
 import com.digify.dao.ProductDao;
+import com.digify.model.HomepageContent;
 import com.digify.model.Products;
 import com.digify.model.RequestQuotes;
 import com.digify.model.Services;
@@ -173,9 +175,31 @@ public class ProductServiceImpl implements ProductService {
 
 	public ModelMap setProductservice(ModelMap model) {
 		List<Products> productList = getAllProductServices(BASIC_STRINGS.PRODUCTS.getStringName());
+		for (Products products : productList) {
+			if(! StringUtils.isEmpty(products.getProductDescription() )) {
+				String prdctDesc=products.getProductDescription(); 
+				prdctDesc = prdctDesc.replace("\n", "").replace("\r", "");
+				products.setProductDescription(prdctDesc);
+				}
+		}
 		List<Services> serviceList = getAllProductServices(BASIC_STRINGS.SERVICES.getStringName());
+		for (Services services : serviceList) {
+			if(! StringUtils.isEmpty(services.getServiceDescription() )) {
+				String servDesc=services.getServiceDescription(); 
+				servDesc = servDesc.replace("\n", "").replace("\r", "");
+				services.setServiceDescription(servDesc);
+				}
+		}
 		model.addAttribute("allProducts", productList);
 		model.addAttribute("allServices", serviceList);
+		List<HomepageContent> homePageContnet = adminDao.getAllHomeComponentList(null,null);
+		String address = "";
+		for (HomepageContent hompg : homePageContnet) {
+			if(hompg.getHomeContentId() == 3) {
+				address = hompg.getContentDescription();
+			}
+		}
+		model.addAttribute("address", address);
 		return model;
 	}
 }

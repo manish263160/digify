@@ -80,6 +80,13 @@ public class MainController {
 		model.addAttribute("message", "This is welcome page!");
 		model= productService.setProductservice(model);
 		List<HomepageContent> homePageContnet = adminService.getAllHomeComponentList(null,null);
+		String address = "";
+		for (HomepageContent hompg : homePageContnet) {
+			if(hompg.getHomeContentId() == 3) {
+				address = hompg.getContentDescription();
+			}
+		}
+		model.addAttribute("address", address);
 		model.addAttribute("homePageContnet", homePageContnet);
 		
 		LinkedList<HomepageContent> carouselList  = homePageContnet.stream().filter(predicate -> predicate.getViewFolder().equals(BASIC_STRINGS.CAROUSEL.getStringName())).collect(Collectors.toCollection(() -> new LinkedList<HomepageContent>()));

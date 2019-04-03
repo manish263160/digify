@@ -12,7 +12,7 @@
 
 	<div class="wrapper">
 
-		<section class="inner-banner inner-banner-about ">
+		<section class="inner-banner inner-banner-about">
 			<div class="thm-container clearfix">
 				<h2 class="pull-left">About Us</h2>
 				<ul class="breadcumb pull-right">

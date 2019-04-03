@@ -220,6 +220,8 @@ public class UserServiceImpl implements UserService {
 					Map<String, Object> storemap = new HashMap<String, Object>();
 					storemap.put("name", name);
 					storemap.put("email", email);
+					storemap.put("mobile", mobileNo);
+					storemap.put("date", dateOfContact);
 					storemap.put("subject", subject);
 					storemap.put("message", message);
 					String text = VelocityEngineUtils.mergeTemplateIntoString(velocityEngine,

@@ -10606,7 +10606,7 @@ hr.light {
 
 .page-section {
   padding: 1rem 0 5rem 0;
-  background-color: #EFF1F6;  /* change the background color */
+  /*background-color: #EFF1F6; */ /* change the background color */ /*SAHIL*/
 }
 
 #mainNav {
@@ -10644,7 +10644,7 @@ hr.light {
     -webkit-box-shadow: none;
     box-shadow: none;
 /*     background-color: transparent; */
-	background-color: black;
+	background-color: #00000057;
   }
   #mainNav .navbar-brand {
     color: rgba(255, 255, 255, 0.7);
@@ -10794,10 +10794,11 @@ margin-bottom: 0px;
 .aboutuscontent{
 	font-size:14px;
 	font-family:OpenSans-Light;
+	color: black; /*sahil*/
 }
 .knowmorebtn{
 background-color:#b3abab;
-color:#fff!important;	
+color:#000c!important;	/*sahil*/	
 font-size:14px;
 	font-family:Open_Sans;
 	text-transform:uppercase!important;
@@ -10805,7 +10806,7 @@ font-size:14px;
 	
 }
 .countdiv{
-	background-color:#0000fe;
+	background-color: steelblue; /*sahil*/
 	color:#fff;
 }
 .margint-b{
@@ -10929,7 +10930,7 @@ font-size:14px;
 	z-index: 2;
 }
 .request-form .request-form-header {
-    background-color: #0000fe;
+    background-color: grey; /*sahil*/
     color: #fff;
     padding: 26px 28px 26px;
     position: relative;
@@ -11334,7 +11335,7 @@ section .section-title {
     text-transform: uppercase;
 }
 .bgcolor{
-	background-color:#0000fe;
+	background-color: steelblue; /*sahil*/
 }
 .text{
 	color:#fff;

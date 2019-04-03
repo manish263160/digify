@@ -39,8 +39,9 @@
 										<div class="media-left">
 											<span class="lnr lnr-map"><img class="footerimg" src="${digify}/static/frontEnd/img/visit.png" /></span>
 										</div>
+										
 										<div class="media-body">
-											<span>Visit Us</span> 660/2119, Shivaji Park Gurgaon-122001
+											<span>Visit Us</span> ${address }
 										</div>
 									</div>
 								</div>
@@ -60,7 +61,7 @@
 											<span class="lnr lnr-phone"><img class="footerimg" src="${digify}/static/frontEnd/img/call_0.png" /></span>
 										</div>
 										<div class="media-body">
-											<span>Call Us</span> <a href="tel:0124-6512448">0124-6512448</a>
+											<span>Call Us</span> <a href="tel:0124-6512448">0124-4014785, 9599662884</a>
 										</div>
 
 									</div>

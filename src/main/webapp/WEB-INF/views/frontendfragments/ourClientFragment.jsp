@@ -8,15 +8,24 @@
           <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12"><span class="ourstorydiv1">Our Clients</span>
           </div>
         </div>
-			<div class="col-lg-12 text-center offset-1">
-				
-				<div class="carousel-inner">
+			<div class="col-lg-12">
+				<div class="owl-carousel our-client">
+				<div><img class="client_img" src="${digify}/static/frontEnd/img/clients/tak.png" class="attachment-medium size-medium wp-post-image" alt=""></div>
+				<div><img class="client_img" src="${digify}/static/frontEnd/img/clients/punjab-police-india.png" class="attachment-medium size-medium wp-post-image" alt=""></div>
+				<div><img class="client_img" src="${digify}/static/frontEnd/img/clients/avvashya.png" class="attachment-medium size-medium wp-post-image" alt=""></div>
+				<div><img class="client_img" src="${digify}/static/frontEnd/img/clients/gunnebo.png" class="attachment-medium size-medium wp-post-image" alt=""></div>
+				<div><img class="client_img" src="${digify}/static/frontEnd/img/clients/honeywell.png" class="attachment-medium size-medium wp-post-image" alt=""></div>
+				<div><img class="client_img" src="${digify}/static/frontEnd/img/clients/IAF.png" class="attachment-medium size-medium wp-post-image" alt=""></div>
+				<div><img class="client_img" src="${digify}/static/frontEnd/img/clients/MOD.png" class="attachment-medium size-medium wp-post-image" alt=""></div>
+				<div><img class="client_img" src="${digify}/static/frontEnd/img/clients/plexonics.png" class="attachment-medium size-medium wp-post-image" alt=""></div>
+				</div>
+				<%-- <div class="carousel-inner">
 					<div class="item carousel-item active">
 						<div class="row col-lg-12 col-sm-12 col-md-12 col-xs-12 owl-item active" style="margin-right: 10px;">
 						<div class="col-lg-2 text-center cms-carousel-item"> 
 						<a href="#" title="Bortolini Company"> 
 						<span class="cms-carousel-media has-thumbnail">
-						<img width="130" height="130" src="${digify}/static/frontEnd/img/clients/banner_logo2.png" class="attachment-medium size-medium wp-post-image" alt="">
+						<img width="130" height="130" src="${digify}/static/frontEnd/img/clients/tak.png" class="attachment-medium size-medium wp-post-image" alt="">
 						</span> 
 						</a> 
 						</div>
@@ -24,7 +33,7 @@
 						<div class="col-lg-2 text-center cms-carousel-item"> 
 						<a href="#" title="Bortolini Company"> 
 						<span class="cms-carousel-media has-thumbnail">
-						<img width="130" height="130" src="${digify}/static/frontEnd/img/clients/brand1.png" class="attachment-medium size-medium wp-post-image" alt="">
+						<img width="130" height="130" src="${digify}/static/frontEnd/img/clients/punjab-police-india.png" class="attachment-medium size-medium wp-post-image" alt="">
 						</span> 
 						</a> 
 						</div>
@@ -32,7 +41,7 @@
 						<div class="col-lg-2 text-center cms-carousel-item"> 
 						<a href="#" title="Bortolini Company"> 
 						<span class="cms-carousel-media has-thumbnail">
-						<img width="130" height="130" src="${digify}/static/frontEnd/img/clients/coag8512.png" class="attachment-medium size-medium wp-post-image" alt="">
+						<img width="130" height="130" src="${digify}/static/frontEnd/img/clients/avvashya.png" class="attachment-medium size-medium wp-post-image" alt="">
 						</span> 
 						</a> 
 						</div>
@@ -40,7 +49,7 @@
 						<div class="col-lg-2 text-center cms-carousel-item"> 
 						<a href="#" title="Bortolini Company"> 
 						<span class="cms-carousel-media has-thumbnail">
-						<img width="130" height="130" src="${digify}/static/frontEnd/img/clients/Gunnebo.png" class="attachment-medium size-medium wp-post-image" alt="">
+						<img width="130" height="130" src="${digify}/static/frontEnd/img/clients/gunnebo.png" class="attachment-medium size-medium wp-post-image" alt="">
 						</span> 
 						</a> 
 						</div>
@@ -48,22 +57,39 @@
 						<div class="col-lg-2 text-center cms-carousel-item"> 
 						<a href="#" title="Bortolini Company"> 
 						<span class="cms-carousel-media has-thumbnail">
-						<img width="130" height="130" src="${digify}/static/frontEnd/img/clients/Ministry-of-Defence-logo.png" class="attachment-medium size-medium wp-post-image" alt="">
+						<img width="130" height="130" src="${digify}/static/frontEnd/img/clients/honeywell.png" class="attachment-medium size-medium wp-post-image" alt="">
+						</span> 
+						</a> 
+						</div>
+						
+						<div class="col-lg-2 text-center cms-carousel-item"> 
+						<a href="#" title="Bortolini Company"> 
+						<span class="cms-carousel-media has-thumbnail">
+						<img width="130" height="130" src="${digify}/static/frontEnd/img/clients/IAF.png" class="attachment-medium size-medium wp-post-image" alt="">
+						</span> 
+						</a> 
+						</div>
+						
+						<div class="col-lg-2 text-center cms-carousel-item"> 
+						<a href="#" title="Bortolini Company"> 
+						<span class="cms-carousel-media has-thumbnail">
+						<img width="130" height="130" src="${digify}/static/frontEnd/img/clients/MOD.png" class="attachment-medium size-medium wp-post-image" alt="">
+						</span> 
+						</a> 
+						</div>
+						<div class="col-lg-2 text-center cms-carousel-item"> 
+						<a href="#" title="Bortolini Company"> 
+						<span class="cms-carousel-media has-thumbnail">
+						<img width="130" height="130" src="${digify}/static/frontEnd/img/clients/plexonics.png" class="attachment-medium size-medium wp-post-image" alt="">
 						</span> 
 						</a> 
 						</div>
 						
 						</div>
 					</div>
-				</div>
+				</div> --%>
 				<!-- Carousel controls -->
-				<a class="carousel-control l
-				eft carousel-control-prev" href="#myCarousel" data-slide="prev">
-					<i class="fa fa-angle-left"></i>
-				</a>
-				<a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
-					<i class="fa fa-angle-right"></i>
-				</a>
+				
 			</div>
 		</div>
 	</div>

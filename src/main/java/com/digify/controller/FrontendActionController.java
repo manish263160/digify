@@ -71,7 +71,7 @@ public class FrontendActionController {
 		Long id = new Long(2);
 		List<HomepageContent> list =adminService.getAllHomeComponentList(id, viewsFolder);
 		model.addAttribute("list", list);
-		model.addAttribute("abount", true);
+		model.addAttribute("about", true);
  		return "frontend/aboutUs";
 	}
 	

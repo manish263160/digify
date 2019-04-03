@@ -89,9 +89,6 @@
 								<input type="text" placeholder="Email" name="email">
 							</div>
 							<div>
-								<input type="text" placeholder="Subject" name="subject">
-							</div>
-							<div>
 								<input type="text" placeholder="Mobile Number" name="mobileNo">
 							</div>
 							<div>

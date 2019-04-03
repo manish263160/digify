@@ -113,7 +113,26 @@ $('#testimonials').owlCarousel({
 	  }
 	});
 
-
+$('.our-client').owlCarousel({
+	  loop: true,
+	  margin: 10,
+	  nav: false,
+	  dots: false,
+	  autoWidth:true,
+	  autoplay: true,
+	  autoplayHoverPause: true,
+	  responsive: {
+	    0: {
+	      items: 1
+	    },
+	    600: {
+	      items: 2
+	    },
+	    1000: {
+	      items: 3
+	    }
+	  }
+	});
 
 //---------------------------code start for auto slider---------------------------------------
 function showContnet(size,index){

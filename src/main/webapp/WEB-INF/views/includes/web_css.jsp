@@ -7,6 +7,8 @@
 
 <title>Digify</title>
 
+<!-- Theme CSS - Includes Bootstrap -->
+<link href="${digify}/static/frontEnd/css/creative.css" rel="stylesheet">
 
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet">
@@ -18,17 +20,12 @@
 <!-- Font Awesome Icons -->
 <link href="${digify}/static/frontEnd/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
-
-
-<!-- Theme CSS - Includes Bootstrap -->
-<link href="${digify}/static/frontEnd/css/creative.css" rel="stylesheet">
-<link href="${digify}/static/frontEnd/css/custom_css.css" rel="stylesheet">
-
 <!-- Owl carousel -->
 <link href="${digify}/static/frontEnd/vendor/owlcarousel/owl.carousel.min.css" rel="stylesheet" type="text/css">
-<c:if test="${ fromcontact eq true }">
+<c:if test="${ fromcontact eq true || about eq true }">
 	<link href="${digify}/static/frontEnd/css/contactus.css" rel="stylesheet">
 	<link href="${digify}/static/frontEnd/vendor/fontawesome-free/css/fontawesome.min.css" rel="stylesheet">
+<link href="${digify}/static/frontEnd/vendor/bootstrap/bootstrap-datepicker.css.map" rel="stylesheet">
 </c:if>
 
 <c:if test="${ faq eq true }">
@@ -48,4 +45,4 @@
 	<link href="${digify}/static/frontEnd/vendor/fontawesome-free/css/fontawesome.min.css" rel="stylesheet">
 </c:if>
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css.map" rel="stylesheet">
+<link href="${digify}/static/frontEnd/css/custom_css.css" rel="stylesheet">

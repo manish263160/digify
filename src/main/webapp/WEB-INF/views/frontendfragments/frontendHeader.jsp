@@ -25,15 +25,15 @@
           <li class="nav-item servicemenu">
           <c:choose>
             <c:when test="${page eq 'home'}">
-			<a class="nav-link js-scroll-trigger" href="${digify}/frontendAction/dashBoard/products">Product <i class="fa fa-caret-down fa-lg caret_custom" aria-hidden="true" ></i></a>
+			<a class="nav-link js-scroll-trigger" href="${digify}/frontendAction/dashBoard/products">Services <i class="fa fa-caret-down fa-lg caret_custom" aria-hidden="true" ></i></a>
 			</c:when>
             <c:otherwise>
-            <a class="nav-link js-scroll-trigger" href="${digify}/frontendAction/dashBoard/products">Product <i class="fa fa-caret-down fa-lg caret_custom" aria-hidden="true" ></i></a>
+            <a class="nav-link js-scroll-trigger" href="${digify}/frontendAction/dashBoard/products">Services <i class="fa fa-caret-down fa-lg caret_custom" aria-hidden="true" ></i></a>
             </c:otherwise>
             </c:choose>
           <ul class="servicemenuli">
           <c:forEach items="${allProducts }" var="products" varStatus="loop">
-		<c:if test="${loop.count < 9 }">	<li class="servicemenuliin"><a class="servicemenulink" href="${digify}/frontendAction/productPage/${products.id}" ><span><img src="${products.iconImgUrl}"/></span>
+		<c:if test="${loop.count lt 10 }">	<li class="servicemenuliin"><a class="servicemenulink" href="${digify}/frontendAction/productPage/${products.id}" ><span><img src="${products.iconImgUrl}"/></span>
 		<c:choose>
 			<c:when test="${ fn:length(products.productName) gt 20}">
 			${ fn:substring(products.productName, 0, 20)}...
@@ -45,22 +45,23 @@
 			</a></li>
 		</c:if>
           </c:forEach>
+		<c:if test="${fn:length(allProducts) >= 10 }"><a style="text-decoration: underline; color: red;" href="${digify}/frontendAction/dashBoard/products">More ...</a></c:if>
 			</ul>
 		  </li>
           <li class="nav-item servicemenu">
           <c:choose>
             <c:when test="${page eq 'home'}">
-			<a class="nav-link js-scroll-trigger" href="${digify}/frontendAction/dashBoard/services">GMS
+			<a class="nav-link js-scroll-trigger" href="${digify}/frontendAction/dashBoard/services">Products
 			<i class="fa fa-caret-down fa-lg caret_custom" aria-hidden="true" ></i></a>
 			</c:when>
             <c:otherwise>
-            <a class="nav-link js-scroll-trigger" href="${digify}/frontendAction/dashBoard/services">GMS
+            <a class="nav-link js-scroll-trigger" href="${digify}/frontendAction/dashBoard/services">Products
 			<i class="fa fa-caret-down fa-lg caret_custom" aria-hidden="true" ></i></a>
             </c:otherwise>
             </c:choose>           
           <ul class="servicemenuli">
 			<c:forEach items="${allServices }" var="services" varStatus="loop">
-			<c:if test="${loop.count < 9 }"><li class="servicemenuliin"><a class="servicemenulink" href="${digify}/frontendAction/servicePage/${services.id}"><span><img src="${services.iconImgUrl}"/></span>
+			<c:if test="${loop.count < 10 }"><li class="servicemenuliin"><a class="servicemenulink" href="${digify}/frontendAction/servicePage/${services.id}"><span><img src="${services.iconImgUrl}"/></span>
 			<c:choose>
 			<c:when test="${ fn:length(services.serviceName) gt 20}">
 			${ fn:substring(services.serviceName, 0, 20)}...
@@ -72,6 +73,7 @@
 			</a></li>
 			</c:if>
           </c:forEach>
+			<c:if test="${fn:length(allServices) >= 10 }"><a style="text-decoration: underline; color: red;" href="${digify}/frontendAction/dashBoard/services">More ...</a></c:if>
 			</ul>
 		  </li>
 		  <li class="nav-item">

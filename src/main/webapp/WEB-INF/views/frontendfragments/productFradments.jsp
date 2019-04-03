@@ -6,11 +6,9 @@
 			<div class="col-lg-8 text-center">
 <!-- 				<h3 class="serviceheading">What We Provide?</h3> -->
 				<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-					<span class="ourstorydiv1">Our Products</span>
+					<span class="ourstorydiv1">Our Services</span>
 				</div>
-				<!-- <p class="mb-4 aboutuscontent">
-					Here the product related text</br> This is fixed in html.
-				</p> -->
+				
 			</div>
 			<div class="carousel-wrap">
 				<div class="owl-carousel prodserviceCarousel" id="prodserviceCarousel">
@@ -38,7 +36,7 @@
 									</div>
 									<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 										<p class="texthd">${prod.productName }</p>
-										<div class="aboutuscontent text" id="product_description${status.index}" desc ="${prod.productDescription }"></div>
+										<div class="aboutuscontent text" id="product_description${status.index}" >${prod.productDescription }</div>
 									</div>
 								</div>
 							</div>
