@@ -24,12 +24,12 @@
 <%-- 	<%@include file="./frontendfragments/testimonialFragment.jsp"%> --%>
 
 	
+	<%@include file="./frontendfragments/technologyPartner.jsp"%>
 	<%@include file="./frontendfragments/promoFragment.jsp"%>
 
-	<%@include file="./frontendfragments/ourClientFragment.jsp"%>
 	<%@include file="./frontendfragments/infographix.jsp"%>
+	<%@include file="./frontendfragments/ourClientFragment.jsp"%>
 	
-	<%@include file="./frontendfragments/technologyPartner.jsp"%>
 	
 	<%@include file="./frontendfragments/modelFragment.jsp"%>
 	

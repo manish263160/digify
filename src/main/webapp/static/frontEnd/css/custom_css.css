@@ -529,7 +529,7 @@ section .section-title {
     content: "";
     height: 290px;
     width: 193px;
-    background-image: url(../img/footer_man.png);
+    background-image: url(../img/footer_woman.png);
     background-repeat: no-repeat;
     position: absolute;
     bottom: 0;

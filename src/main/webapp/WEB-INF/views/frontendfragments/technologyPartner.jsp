@@ -17,7 +17,7 @@
 				<div><img class="client_img" src="${digify}/static/frontEnd/img/tp/hikvision.png" class="attachment-medium size-medium wp-post-image" alt=""></div>
 				<div><img class="client_img" src="${digify}/static/frontEnd/img/tp/honeywell.png" class="attachment-medium size-medium wp-post-image" alt=""></div>
 				<div><img class="client_img" src="${digify}/static/frontEnd/img/tp/hp.png" class="attachment-medium size-medium wp-post-image" alt=""></div>
-				<div><img class="client_img" src="${digify}/static/frontEnd/img/tp/logipix.png" class="attachment-medium size-medium wp-post-image" alt=""></div>
+<%-- 				<div><img class="client_img" src="${digify}/static/frontEnd/img/tp/logipix.png" class="attachment-medium size-medium wp-post-image" alt=""></div> --%>
 				<div><img class="client_img" src="${digify}/static/frontEnd/img/tp/panasonic.png" class="attachment-medium size-medium wp-post-image" alt=""></div>
 				<div><img class="client_img" src="${digify}/static/frontEnd/img/tp/plexonics.png" class="attachment-medium size-medium wp-post-image" alt=""></div>
 				</div>
