@@ -24,7 +24,7 @@ margin-bottom: 0px;
 }
 .knowmorebtn{
 background-color:#b3abab;
-color:#fff!important;	
+color:black!important;  /*sahil*/	
 font-size:14px;
 	font-family:Open_Sans;
 	text-transform:uppercase!important;
@@ -32,7 +32,7 @@ font-size:14px;
 	
 }
 .countdiv{
-	background-color:#0000fe;
+	background-color:steelblue; /*sahil*/
 	color:#fff;
 }
 .margint-b{
@@ -156,7 +156,7 @@ font-size:14px;
 	z-index: 2;
 }
 .request-form .request-form-header {
-    background-color: #0000fe;
+     background-color:  grey !important; /*sahil*/
     color: #fff;
     padding: 26px 28px 26px;
     position: relative;
@@ -561,7 +561,7 @@ section .section-title {
     text-transform: uppercase;
 }
 .bgcolor{
-	background-color:#0000fe;
+	background-color:steelblue; /*sahil*/
 }
 .text{
 	color:#fff;
@@ -871,17 +871,20 @@ figure.snip1192 .author h5 span {
 	height: 30rem;
 }
 
-/* product and service carousel */
+/* product and service carousel {is changed by manish at 4 apr 2019 at 11pm}*/
 .productserviceBackground{
-	    position: relative;
+	position: absolute;
     float: left;
-    width: fit-content;
-    height: -webkit-fill-available;
+    width: 100%;
+    height: 100%;
     background-position: 50% 50%;
     background-repeat: no-repeat;
-    background-size: cover
+    background-size: cover;
 }
-
+.mySlides {
+	min-height: 25rem;
+}
+/* end */
 .client_img{
 	height: 6rem;
 }
@@ -892,4 +895,105 @@ figure.snip1192 .author h5 span {
 .table-condensed{
 	    width: 15rem;
     margin: 0rem 1rem 0rem 1rem;
+}
+
+/*sahil css*/
+.col-lg-12 {
+    padding-bottom: 2%;
+    }
+.page-section2 {
+    background-color: white !important;
+}
+
+@media only screen and (max-width: 1200px) {
+
+}
+
+
+@media only screen and (max-width: 1023px) {
+.pramotion {
+    width: 100%;
+    margin-bottom: -6%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .carousel-item {
+        height: 430px !important;
+    }
+    #intro {
+    height: 0 !important;
+    }
+    .container9 {
+    max-width: 770px !important;
+    }
+    #cshero-footer-feature-top .feature-top-item {
+    width: 100%;
+    /* float: left; */
+    padding: 0 40px;
+    margin-bottom: 7%;
+    }
+    .offset-2 {
+    margin-left: 0;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .inquirydiv {
+    margin-top: 40px !important;
+  }
+  .ourstorydiv1 {
+    font-size: 22px;
+    }
+    .pramotion {
+    margin-bottom: -15%;
+    }
+    .owl-carousel .owl-item img {
+    width: 87%;
+    }
+    .cms-cta-wrapper .cms-cta-text .text {
+    font-size: 14px;
+    margin-bottom: 20px;
+    }
+    .text-center1 {
+        text-align: left!important;
+    }
+    .carousel-item {
+    height: 254px !important;
+    }
+    #intro {
+    margin-top: 20%;
+    }
+    #cshero-footer-top {
+    padding: 70px 0 0px;
+    }
+/*  ---------------------- These following chnages is done by manish ---------------------------------------   */
+    .cms-cta-wrapper.cms-style-default:before {
+    height: 50%;
+    width: 30%;
+    }
+    .cms-cta-wrapper.cms-style-default .cms-cta-text:before {
+    background-color: #fff;
+    content: "";
+    height: 23px;
+    left: -20px;
+    position: absolute;
+    top: 15px;
+    width: 2px;
+}
+	.cms-cta-text{
+		padding: 0;
+	}
+	.textalign-centre{
+	text-align: center;
+	}
+	.p-0 {
+    padding: 0px;
+	}
+	.productserviceBackground{
+	opacity: 0.1;
+	}
+/* ---------------END--------------------------------------------------------------------------------------------- */
 }

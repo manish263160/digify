@@ -1,6 +1,6 @@
 <!-- Contact Section -->
-<section class="page-section" id="contact">
-	<div class="container">
+<section class="page-section page-section2" id="contact">
+	<div class="container container9">
 
 		<div class="row">
 			<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 vc_row wpb_row vc_row-fluid">
@@ -144,7 +144,7 @@
 			<div id="cs-copyright">
 				<div class="container">
 					<div class="row">
-						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 ">Copyright © DIGIFY Engineering Pvt. Ltd.
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 textalign-centre">Copyright © DIGIFY Engineering Pvt. Ltd.
 							2019. All rights reserved.</div>
 					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center">
 					Powered by Anoman Digital Media Pvt. Ltd.

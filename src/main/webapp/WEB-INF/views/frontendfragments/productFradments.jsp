@@ -1,9 +1,9 @@
 
 <!-- Products Section -->
-<section class="page-section" id="products">
+<section class="page-section page-section2" id="products">
 	<div class="container-fluid">
 		<div class="row justify-content-center">
-			<div class="col-lg-8 text-center">
+			<div class="col-lg-12 col-sm-12 col-xs-12  text-center">
 <!-- 				<h3 class="serviceheading">What We Provide?</h3> -->
 				<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
 					<span class="ourstorydiv1">Our Services</span>
@@ -25,20 +25,18 @@
 				</div>
 			</div>
 			
-			<div class="tab-content product col-lg-12 col-sm-12 col-md-12 col-xs-12 bgcolor p-0" id="nav-tabContent">
+			<div class="tab-content product col-lg-12 col-sm-12 col-md-12 col-xs-12 bgcolor" id="nav-tabContent">
 					<span id="allProductcount" val="${fn:length(allProducts)}"></span>
 					<c:forEach items="${allProducts }" var="prod" varStatus="status">
-							<div class="tab-pane fade mySlides ${status.index eq 0 ? 'show active' : '' }"    
+							<div class="row tab-pane fade mySlides ${status.index eq 0 ? 'show active' : '' }"    
 							 id="productDesc_${status.index }" >
-								<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 p-0 row">
-									<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12 p-0 productserviceBackground" style="background-image: url('${prod.imageUrl}');">
+									<div class="col-lg-6 col-sm-12 col-md-12 col-xs-12 productserviceBackground" style="background-image: url('${prod.imageUrl}');">
 <%-- 										<img class="img-responsive" style="width: 100%; max-height: 25rem !important; " src="${prod.imageUrl }" /> --%>
 									</div>
-									<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+									<div class="col-lg-6 col-sm-12 col-md-12 col-xs-12 float-right right-content">
 										<p class="texthd">${prod.productName }</p>
 										<div class="aboutuscontent text" id="product_description${status.index}" >${prod.productDescription }</div>
 									</div>
-								</div>
 							</div>
 					</c:forEach>
 			

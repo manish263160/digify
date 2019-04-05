@@ -1,4 +1,4 @@
-<section class="page-section ourclientdiv">
+<section class="page-section ourclientdiv page-section2">
  <div class="container">
 	<div class="row">
 	
