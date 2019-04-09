@@ -42,7 +42,8 @@ font-size:14px;
 .textcountdiv{
 	color:#fff;
 	font-size:14px;
-font-family:OpenSans-Light;
+	font-family:OpenSans-Light;
+	text-align: center;
 }
 .margint-b img {
     height: 40px;
@@ -995,5 +996,29 @@ figure.snip1192 .author h5 span {
 	.productserviceBackground{
 	opacity: 0.1;
 	}
+	
+	#navbarResponsive .servicemenu:hover > .servicemenuli {
+    opacity: 1;
+    display: inline-grid;
+    margin-left: 3rem;
+    position: relative;
+    width: 100%;
+	}
+	#navbarResponsive .servicemenuli {
+	    top: 0px;
+	    padding-left: 2em;
+	    padding-top : 0px;
+	
+	}
+	
+	#navbarResponsive .servicemenuli li {
+    float: none;
+    width: 100%;
+    margin-right: 0%;
+    background-color: #eee;
+    display: block;
+    border: none;
+    margin-bottom: 0.4rem;
+}
 /* ---------------END--------------------------------------------------------------------------------------------- */
 }

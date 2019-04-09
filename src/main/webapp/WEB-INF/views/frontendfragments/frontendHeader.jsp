@@ -25,10 +25,10 @@
           <li class="nav-item servicemenu">
           <c:choose>
             <c:when test="${page eq 'home'}">
-			<a class="nav-link js-scroll-trigger" href="${digify}/frontendAction/dashBoard/products">Services <i class="fa fa-caret-down fa-lg caret_custom" aria-hidden="true" ></i></a>
+			<a class="nav-link js-scroll-trigger" href="#">Services <i class="fa fa-caret-down fa-lg caret_custom" aria-hidden="true" ></i></a>
 			</c:when>
             <c:otherwise>
-            <a class="nav-link js-scroll-trigger" href="${digify}/frontendAction/dashBoard/products">Services <i class="fa fa-caret-down fa-lg caret_custom" aria-hidden="true" ></i></a>
+            <a class="nav-link js-scroll-trigger" href="#">Services <i class="fa fa-caret-down fa-lg caret_custom" aria-hidden="true" ></i></a>
             </c:otherwise>
             </c:choose>
           <ul class="servicemenuli">
@@ -45,17 +45,17 @@
 			</a></li>
 		</c:if>
           </c:forEach>
-		<c:if test="${fn:length(allProducts) >= 10 }"><a style="text-decoration: underline; color: red;" href="${digify}/frontendAction/dashBoard/products">More ...</a></c:if>
+			<a style="text-decoration: underline; color: red;" href="${digify}/frontendAction/dashBoard/products">More ...</a>
 			</ul>
 		  </li>
           <li class="nav-item servicemenu">
           <c:choose>
             <c:when test="${page eq 'home'}">
-			<a class="nav-link js-scroll-trigger" href="${digify}/frontendAction/dashBoard/services">Products
+			<a class="nav-link js-scroll-trigger" href="#">Products
 			<i class="fa fa-caret-down fa-lg caret_custom" aria-hidden="true" ></i></a>
 			</c:when>
             <c:otherwise>
-            <a class="nav-link js-scroll-trigger" href="${digify}/frontendAction/dashBoard/services">Products
+            <a class="nav-link js-scroll-trigger" href="#">Products
 			<i class="fa fa-caret-down fa-lg caret_custom" aria-hidden="true" ></i></a>
             </c:otherwise>
             </c:choose>           
@@ -73,7 +73,7 @@
 			</a></li>
 			</c:if>
           </c:forEach>
-			<c:if test="${fn:length(allServices) >= 10 }"><a style="text-decoration: underline; color: red;" href="${digify}/frontendAction/dashBoard/services">More ...</a></c:if>
+			<a style="text-decoration: underline; color: red;" href="${digify}/frontendAction/dashBoard/services">More ...</a>
 			</ul>
 		  </li>
 		  <li class="nav-item">
