@@ -153,4 +153,5 @@ function showContnetServ(size,index){
 }
 $(document).ready(function() {
     $('.datepicker').datepicker();
+ 
 });

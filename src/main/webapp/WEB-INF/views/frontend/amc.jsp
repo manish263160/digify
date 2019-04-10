@@ -53,6 +53,6 @@
 	</div>
 
 <%@include file="../frontendfragments/frontEndFooter.jsp"%>
-</div>
+<jsp:include page="../includes/web_js.jsp" />
 </body>
 </html>

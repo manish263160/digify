@@ -4,6 +4,7 @@
 .logo-img{
 	height:32px;
 }
+
 .aboutus{
 font-size:16px;
 font-family:OpenSans-Light;
@@ -573,6 +574,11 @@ section .section-title {
 #contact{
 	padding-bottom:0px;
 }
+
+.size-default{
+	color:#fff !important;
+}
+
 .size-default, .size-default:hover{
 	border:1px solid #fff;
 	color:#fff;
@@ -899,9 +905,6 @@ figure.snip1192 .author h5 span {
 }
 
 /*sahil css*/
-.col-lg-12 {
-    padding-bottom: 2%;
-    }
 .page-section2 {
     background-color: white !important;
 }
@@ -971,10 +974,7 @@ figure.snip1192 .author h5 span {
     padding: 70px 0 0px;
     }
 /*  ---------------------- These following chnages is done by manish ---------------------------------------   */
-    .cms-cta-wrapper.cms-style-default:before {
-    height: 50%;
-    width: 30%;
-    }
+    
     .cms-cta-wrapper.cms-style-default .cms-cta-text:before {
     background-color: #fff;
     content: "";
@@ -1020,5 +1020,31 @@ figure.snip1192 .author h5 span {
     border: none;
     margin-bottom: 0.4rem;
 }
+.cms-cta-wrapper.cms-style-default {
+    background-color: #0000fe;
+    padding: 17px 20px 56px 44px;
+    position: relative;
+}
+.cms-cta-wrapper.cms-style-default:before {
+    content: "";
+    height: 290px;
+    width: 193px;
+    background-image: url(../img/footer_woman.png);
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 0;
+    left: 9px;
+    background-size: 112px;
+    top: -71px;
+}
+.navbar-collapse {
+  overflow-y: auto;
+}
+ nav.navbar{
+   max-height: 100vh;
+   overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  }
+  
 /* ---------------END--------------------------------------------------------------------------------------------- */
 }

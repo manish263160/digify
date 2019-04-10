@@ -47,5 +47,6 @@ $( window ).on( "load", function() {
 		$(comboId).removeAttr('style');
 		}
 	});
+	
 	</script>
 </html>
