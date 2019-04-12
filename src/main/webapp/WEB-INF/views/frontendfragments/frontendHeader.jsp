@@ -25,10 +25,10 @@
           <li class="nav-item servicemenu">
           <c:choose>
             <c:when test="${page eq 'home'}">
-			<a class="nav-link " href="#">Services <i class="fa fa-caret-down fa-lg caret_custom" aria-hidden="true" ></i></a>
+			<a class="nav-link trigger" href="#">Services <i class="fa fa-caret-down fa-lg caret_custom" aria-hidden="true" ></i></a>
 			</c:when>
             <c:otherwise>
-            <a class="nav-link " href="#">Services <i class="fa fa-caret-down fa-lg caret_custom" aria-hidden="true" ></i></a>
+            <a class="nav-link trigger" href="#">Services <i class="fa fa-caret-down fa-lg caret_custom" aria-hidden="true" ></i></a>
             </c:otherwise>
             </c:choose>
           <ul class="servicemenuli">
@@ -51,11 +51,11 @@
           <li class="nav-item servicemenu">
           <c:choose>
             <c:when test="${page eq 'home'}">
-			<a class="nav-link " href="#">Products
+			<a class="nav-link trigger" href="#">Products
 			<i class="fa fa-caret-down fa-lg caret_custom" aria-hidden="true" ></i></a>
 			</c:when>
             <c:otherwise>
-            <a class="nav-link " href="#">Products
+            <a class="nav-link trigger" href="#">Products
 			<i class="fa fa-caret-down fa-lg caret_custom" aria-hidden="true" ></i></a>
             </c:otherwise>
             </c:choose>           

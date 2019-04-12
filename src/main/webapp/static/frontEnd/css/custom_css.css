@@ -5,6 +5,11 @@
 	height:32px;
 }
 
+.contact_map{
+	width: 600px;
+	height: 450px
+}
+
 .aboutus{
 font-size:16px;
 font-family:OpenSans-Light;
@@ -1045,6 +1050,27 @@ figure.snip1192 .author h5 span {
    overflow: auto;
   -webkit-overflow-scrolling: touch;
   }
-  
+.contact_map{
+	height: 344px;
+	width: 100%;
+	}
+	
+.contact-info {
+    margin-left: 0px;
+    margin-right: 0;
+    padding-left: 0; 
+    padding-right: 0;
+}
+.row-margin-bottom{
+	height: 50rem;
+    position: inherit;
+    display: block;
+    text-align: center;
+}
+.row-margin-bottom #description{
+	float: left;
+    
+}
 /* ---------------END--------------------------------------------------------------------------------------------- */
 }
+

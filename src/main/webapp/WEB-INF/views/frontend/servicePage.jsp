@@ -34,7 +34,7 @@
 <!--             <div class="col-md-1"></div>             -->
         </div>
         <div class="row">
-        <div class="float-right offset-5 ">
+        <div class="float-right offset-4 ">
                <button class="btn btn-primary" style="width: 100%;"  onclick="openModel('${service}','$event')">Get Quotes</button>
             </div>
         </div>

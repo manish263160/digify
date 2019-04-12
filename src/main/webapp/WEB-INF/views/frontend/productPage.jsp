@@ -17,13 +17,13 @@
     </section> --%>
 	<div class="container product-page">
 		<div class="row row-margin-bottom">
-			<div class="col-md-12 no-padding lib-item" data-category="view">
+			<div class="col-md-12 col-sm-12 col-xs-12 no-padding lib-item" data-category="view">
 				<div class="lib-panel">
 					<div class="row box-shadow">
-						<div class="col-md-6">
+						<div class="col-md-6 col-sm-12 col-xs-12">
 							<img class="lib-img-show" src="${product.imageUrl }">
 						</div>
-						<div class="col-md-6 row-margin-bottom">
+						<div class="col-md-6 col-sm-12 col-xs-12 row-margin-bottom">
 							<div class="lib-row lib-header">
 								${product.productName }
 								<div class="lib-header-seperator"></div>
@@ -36,7 +36,7 @@
 			<!--             <div class="col-md-1"></div>             -->
 		</div>
 		 <div class="row">
-        <div class="float-right offset-5 ">
+        <div class="float-right offset-4 ">
                <button class="btn btn-primary" style="width: 100%;"  onclick="openModel('${product}','$event')">Get Quotes</button>
             </div>
         </div>
