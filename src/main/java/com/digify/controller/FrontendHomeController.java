@@ -27,7 +27,7 @@ import com.digify.utils.ApplicationProperties;
 @Controller
 @RequestMapping(value = { "/home" })
 @PreAuthorize("permitAll()")
-public class FrontendActionController {
+public class FrontendHomeController {
 
 	@Autowired ProductService productService;
 	@Autowired ApplicationProperties applicationProperties; 
