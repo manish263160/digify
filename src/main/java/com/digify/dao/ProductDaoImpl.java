@@ -8,7 +8,6 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
 
-import com.digify.model.HomepageContent;
 import com.digify.model.Products;
 import com.digify.model.RequestQuotes;
 import com.digify.model.Services;

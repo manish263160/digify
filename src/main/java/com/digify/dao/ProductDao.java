@@ -2,7 +2,6 @@ package com.digify.dao;
 
 import java.util.List;
 
-import com.digify.model.Products;
 import com.digify.model.RequestQuotes;
 
 public interface ProductDao {
