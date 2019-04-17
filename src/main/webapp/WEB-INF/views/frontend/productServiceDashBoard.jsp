@@ -23,7 +23,7 @@
 			<h4>
 				<b>${item.productName }</b>
 			</h4>
-			<p><a class="knowmorebtn" href="${digify}/frontendAction/productPage/${item.id}" >Get Details</a></p>
+			<p><a class="knowmorebtn" href="${digify}/home/productPage/${item.id}" >Get Details</a></p>
 		</div>
 	</div>
 	</div>
@@ -38,7 +38,7 @@
 			<h4>
 				<b>${item.serviceName }</b>
 			</h4>
-			<p><a class="knowmorebtn" href="${digify}/frontendAction/servicePage/${item.id}" >Get Details</a></p>
+			<p><a class="knowmorebtn" href="${digify}/home/servicePage/${item.id}" >Get Details</a></p>
 		</div>
 	</div>
 	</div>

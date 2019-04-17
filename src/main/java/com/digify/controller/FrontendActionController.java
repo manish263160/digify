@@ -25,7 +25,7 @@ import com.digify.service.UserService;
 import com.digify.utils.ApplicationProperties;
 
 @Controller
-@RequestMapping(value = { "/frontendAction" })
+@RequestMapping(value = { "/home" })
 @PreAuthorize("permitAll()")
 public class FrontendActionController {
 

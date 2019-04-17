@@ -144,7 +144,7 @@ public class UserDaoImpl extends DigifyJdbcTemplate implements UserDao{
 	@Override
 	public void insertUserRole(long id) {
 		String sql= "insert into user_roles(user_id , role_id) values (?,?)";
-		getJdbcTemplate().update(sql, new Object[] {id, USER_TYPE.USER.ID});
+		getJdbcTemplate().update(sql, new Object[] {id, USER_TYPE.ADMIN.ID});
 		
 	}
 

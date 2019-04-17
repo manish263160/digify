@@ -7,16 +7,11 @@
 				<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
 					<span class="ourstorydiv">OUR STORY</span>
 				</div>
-				<p class="col-lg-12 col-sm-12 col-md-12 col-xs-12 aboutuscontent">Digify Engineering Pvt. Ltd. maintain optimal
-					security is an integral part of any business that not only protects your employees, but your assets as well.</p>
-				<p class="col-lg-12 col-sm-12 col-md-12 col-xs-12 aboutuscontent">In any industrial building or a multi-campus
-					Building, you need a customised designed and technologically advanced security system . Make sure you get that with
-					Digify Engineering Pvt. Ltd., a leading provider of premium security solutions dedicated to protecting all sizes of
-					Infrastructure with the latest products and services designed to control access, reduce potential theft and
-					implement an effective risk management system.</p>
+				<b><p class="col-lg-12 col-sm-12 col-md-12 col-xs-12 aboutuscontent">Digify Engineering Pvt. Ltd. maintains an optimal security which is an integral part of any business that not only protects your employees but your assets as well.</p></b>
+				<b><p class="col-lg-12 col-sm-12 col-md-12 col-xs-12 aboutuscontent">In an industrial or multi-campus premises, you need a foremost and robust security system. We make sure you get that from Digify Engineering Pvt. Ltd., a prominent provider of premium security solutions with an unwavering dedication to protect all sizes of infrastructure with the latest products and services designed and embedded to control access, reduce potential theft and implement an effective risk management system</p></b>
 				</br>
 				<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-					<a class="knowmorebtn" href="${digify }/frontendAction/aboutUs">Know More</a>
+					<a class="knowmorebtn" href="${digify }/home/aboutUs">Know More</a>
 				</div>
 			</div>
 
@@ -43,7 +38,7 @@
 									<input type="email" placeholder="Your Email" class="form-control1" id="personEmail" name="personEmail">
 								</div>
 								<div class="form-group">
-									<input type="number" placeholder="Telephone" class="form-control1" id="mobile" name="mobile">
+									<input type="text" placeholder="Telephone" class="form-control1" id="mobile" name="mobile">
 								</div>
 								<div class="form-group">
 									<textarea type="text" placeholder="Quote Details" class="form-control1" id="quoteDetails" name="quoteDetails"></textarea>

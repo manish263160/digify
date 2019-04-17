@@ -40,7 +40,7 @@
 									</div>
 									<div class="content">
 										<p>
-											660/2119, Shivaji Park <br>Gurgaon-122001
+											40-C, Ground Floor, Amrapali Corporate Hub, IMT Manesar, Sector-2, Gurugram-122050
 										</p>
 									</div>
 								</li>
@@ -72,7 +72,7 @@
 										<i class="fa fa-phone"></i>
 									</div>
 									<div class="content">
-										<p>[Tel] : 0124-6512448</p>
+										<p>[Tel] : 0124-4014785, 9599662884</p>
 									</div>
 								</li>
 							</ul>
@@ -106,9 +106,10 @@
 						</form>
 					</div>
 					<div class="col-md-6 col-sm-6 col-xs-12">
-						<iframe
-							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13238.854480712705!2d77.01760520298848!3d28.494015126621985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d19e9173dc0b5%3A0x81e7afe494cf5f09!2sAshok+Vihar+Phase+III+Extension%2C+Gurugram%2C+Haryana+122017!5e0!3m2!1sen!2sin!4v1490943648557"
-							class="contact_map" frameborder="0" style="border: 0" allowfullscreen=""></iframe>
+<!-- 						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13238.854480712705!2d77.01760520298848!3d28.494015126621985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d19e9173dc0b5%3A0x81e7afe494cf5f09!2sAshok+Vihar+Phase+III+Extension%2C+Gurugram%2C+Haryana+122017!5e0!3m2!1sen!2sin!4v1490943648557" -->
+<!-- 							class="contact_map" frameborder="0" style="border: 0" allowfullscreen=""></iframe> -->
+							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3510.8611232308795!2d76.93260451549135!3d28.36304800297632!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d3c338fe0e69b%3A0xdd3f980b882c5858!2sDigify+Enginnering+Pvt.Ltd.!5e0!3m2!1sen!2sin!4v1554979647870!5m2!1sen!2sin" 
+							class="contact_map" frameborder="0" style="border:0" allowfullscreen></iframe> 
 					</div>
 				</div>
 			</div>
@@ -126,7 +127,7 @@
 			 event.preventDefault();
 			  var form_data = $("#contact_form").serialize();
 			  $.ajax({
-				    url: '${digify }/frontendAction/contactUsSubmit',
+				    url: '${digify }/home/contactUsSubmit',
 				    type: 'POST',
 				    data : form_data,
 				    success: function(result) {

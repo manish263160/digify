@@ -15,12 +15,12 @@
 		</div>
 
 		<div class="section">
-			<p class="caption">All ${ tableName eq 'services' ? 'Gate Management System' : tableName} Images that uploaded by ${user.name }</p>
+			<p class="caption">All ${tableName eq 'products' ? 'services' : tableName eq 'services' ? 'products' : tableName} Images that uploaded by ${user.name }</p>
 			<div class="row">
 				<p class="col s3">
 					<a href="${digify}/admin/product/add/addProductView/${tableName}"
 						class="btn-floating btn-large waves-effect waves-light green accent-3 tooltipped" data-position="bottom"
-						data-delay="50" data-tooltip="Upload product"> <i class="mdi-content-add ">Upload ${ tableName eq 'services' ? 'Gate Management System' : tableName} Image</i>
+						data-delay="50" data-tooltip="Upload product"> <i class="mdi-content-add ">Upload ${ tableName eq 'products' ? 'services' : tableName eq 'services' ? 'products' : tableName} Image</i>
 					</a>
 				</p>
 			</div>
@@ -42,7 +42,7 @@
 				<c:when test="${ not empty list && tableName eq 'products'}">
 
 					<p class="caption">
-						<b>product Image List</b>
+						<b>Services Image List</b>
 					</p>
 						<div class="row" >
 					<c:forEach items="${list }" var="l" varStatus="loop">
@@ -71,7 +71,7 @@
 				<c:when test="${ not empty list && tableName eq 'services'}">
 
 					<p class="caption">
-						<b> Gate Management System Image List</b>
+						<b> Products Image List</b>
 					</p>
 						<div class="row">
 					<c:forEach items="${list }" var="l" varStatus="loop">

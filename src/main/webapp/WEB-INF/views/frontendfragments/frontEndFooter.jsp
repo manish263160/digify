@@ -13,7 +13,7 @@
 									<div class="text" style="color:;">Don't Hesitate To Contact Us Any Time.</div>
 								</div>
 								<div class="col-lg-4 col-sm-4 col-md-4 col-xs-4 cms-cta-button text-center-md">
-									<a href="${digify}/frontendAction/contactUs" class=" btn btn size-default"> Contact Us </a>
+									<a href="${digify}/home/contactUs" class=" btn btn size-default"> Contact Us </a>
 								</div>
 							</div>
 						</div>
@@ -41,7 +41,7 @@
 										</div>
 										
 										<div class="media-body">
-											<span>Visit Us</span> ${address }
+											<b><span>Visit Us</span></b> ${address }
 										</div>
 									</div>
 								</div>
@@ -51,7 +51,7 @@
 											<span class="lnr lnr-envelope"><img class="footerimg" src="${digify}/static/frontEnd/img/email.png" /></span>
 										</div>
 										<div class="media-body">
-											<span>Email Us</span> <a href="mailto:info@digify.net.in">info@digify.net.in</a>
+											<b><span>Email Us</span></b> <a style="color: #828282; text-decoration: none;" href="mailto:info@digify.net.in">info@digify.net.in</a>
 										</div>
 									</div>
 								</div>
@@ -61,7 +61,7 @@
 											<span class="lnr lnr-phone"><img class="footerimg" src="${digify}/static/frontEnd/img/call_0.png" /></span>
 										</div>
 										<div class="media-body">
-											<span>Call Us</span> <a href="tel:0124-6512448">0124-4014785, 9599662884</a>
+											<b><span>Call Us</span></b> <a style="color: #828282; text-decoration: none;" href="tel:0124-6512448">0124-4014785, 9599662884</a>
 										</div>
 
 									</div>
@@ -82,7 +82,7 @@
 											<div class="media">
 												<div class="media-left">
 													<img class="logo-img" src="${digify}/static/frontEnd/img/logo.png">
-													<div class="media-body">Digify Engineering Pvt. Ltd. maintain an optimal security which is an integral part of any business that not only protects your employees but your assets as well.</div>
+													<div class="media-body">Digify Engineering Pvt. Ltd. maintains an optimal security which is an integral part of any business that not only protects your employees but your assets as well..</div>
 												</div>
 											</div>
 										</div>
@@ -95,11 +95,11 @@
 											<ul id="menu-navigation" class="menu p-0">
 												<li id="menu-item-121"
 													class="menu-item menu-item-type-custom menu-item-object-custom no_group menu-item-121" data-depth="0">
-													<a href="${digify }/frontendAction/aboutUs" class=""><span class="menu-title">About Us</span></a>
+													<a href="${digify }/home/aboutUs" class=""><span class="menu-title">About Us</span></a>
 												</li>
 												<li id="menu-item-122"
 													class="menu-item menu-item-type-custom menu-item-object-custom no_group menu-item-122" data-depth="0">
-													<a href="${digify }/frontendAction/dashBoard/products" class=""><span class="menu-title">Product</span></a>
+													<a href="${digify }/home/dashBoard/products" class=""><span class="menu-title">Product</span></a>
 												</li>
 												<!-- <li id="menu-item-123"
 													class="menu-item menu-item-type-custom menu-item-object-custom no_group menu-item-123" data-depth="0">
@@ -107,11 +107,11 @@
 												</li> -->
 												<%-- <li id="menu-item-124"
 													class="menu-item menu-item-type-custom menu-item-object-custom no_group menu-item-124" data-depth="0">
-													<a href="${digify }/frontendAction/team" class=""><span class="menu-title">Team</span></a>
+													<a href="${digify }/home/team" class=""><span class="menu-title">Team</span></a>
 												</li> --%>
 												<li id="menu-item-126"
 													class="menu-item menu-item-type-custom menu-item-object-custom no_group menu-item-126" data-depth="0">
-													<a href="${digify }/frontendAction/faq" class=""><span class="menu-title">FAQs</span></a>
+													<a href="${digify }/home/faq" class=""><span class="menu-title">FAQs</span></a>
 												</li>
 											</ul>
 										</div>
@@ -119,14 +119,14 @@
 								</div>
 							<div class="cshero-footer-top3 col-xs-12 col-sm-6 col-md-3 col-lg-3">
 								<aside id="nav_menu-3" class="widget widget_nav_menu">
-									<h3 class="widget-title">GMS</h3>
+									<h3 class="widget-title">Products</h3>
 									<div class="menu-menu-services-footer-container">
 										<ul id="menu-menu-services-footer" class="menu p-0">
 											<c:forEach items="${allServices }" var="services" varStatus="loop">
 												<c:if test="${loop.count < 6 }">
 													<li id="menu-item-${loop.count}"
 														class="menu-item menu-item-type-custom menu-item-object-custom no_group menu-item-503"><a
-														class="servicemenulink" href="${digify}/frontendAction/servicePage/${services.id}"><span
+														class="servicemenulink" href="${digify}/home/servicePage/${services.id}"><span
 															class="menu-title">${services.serviceName}</span></a></li>
 												</c:if>
 											</c:forEach>

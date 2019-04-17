@@ -26,9 +26,9 @@
 								href="${digify}/admin/home/${item.name}/${item.viewFolder}/${item.id}"><i class="${item.icon}"></i>${item.displayName}</a>
 						</c:forEach>
 						<li class="bold ${active eq 'products'? 'active':'' }"><a href="${digify}/admin/product"
-							class="waves-effect waves-cyan"><i class="mdi-editor-format-list-numbered"></i> Product </a></li>
+							class="waves-effect waves-cyan"><i class="mdi-editor-format-list-numbered"></i> Services </a></li>
 						<li class="bold ${active eq 'services'? 'active':'' }"><a href="${digify}/services"
-							class="waves-effect waves-cyan"><i class="mdi-maps-local-offer"></i>GMS</a></li>
+							class="waves-effect waves-cyan"><i class="mdi-maps-local-offer"></i>Products</a></li>
 					</security:authorize>
 					<security:authorize access="isAuthenticated()">
 						<li><a href="${digify}/logout">Logout</a></li>
@@ -86,9 +86,9 @@
 					</li>
 
 					<li class="bold ${active eq 'products'? 'active':'' }"><a href="${digify}/admin/product/products"
-						class="waves-effect waves-cyan"><i class="mdi-editor-format-list-numbered"></i> Product </a></li>
+						class="waves-effect waves-cyan"><i class="mdi-editor-format-list-numbered"></i> Services </a></li>
 					<li class="bold ${active eq 'services'? 'active':'' }"><a href="${digify}/admin/product/services"
-						class="waves-effect waves-cyan"><i class="mdi-maps-local-offer"></i>GMS</a></li>
+						class="waves-effect waves-cyan"><i class="mdi-maps-local-offer"></i>Products</a></li>
 				</security:authorize>
 			</ul>
 		</aside>

@@ -55,7 +55,7 @@
 						<input type="email" placeholder="Your Email" class="form-control1" id="personEmail" name="personEmail">
 					</div>
 					<div class="form-group">
-						<input type="number" placeholder="Telephone" class="form-control1" id="mobile" name="mobile">
+						<input type="text" placeholder="Telephone" class="form-control1" id="mobile" name="mobile">
 					</div>
 					<div class="form-group">
 						<textarea type="text" placeholder="Quote Details" class="form-control1" id="quoteDetails" name="quoteDetails"></textarea>

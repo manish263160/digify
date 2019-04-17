@@ -14,14 +14,18 @@
             <c:otherwise><a class="nav-link js-scroll-trigger" href="${digify}/">Home</a></c:otherwise>
             </c:choose>
           </li>
-          <li class="nav-item">
-            <c:choose>
-            <c:when test="${page eq 'home'}">
-			<a class="nav-link js-scroll-trigger" href="#aboutus">About Us</a>
-			</c:when>
-            <c:otherwise><a class="nav-link js-scroll-trigger" href="${digify }/frontendAction/aboutUs">About Us</a></c:otherwise>
-            </c:choose>
-          </li>
+          <li class="nav-item servicemenu">
+			<a class="nav-link trigger" href="#">About Us <i
+						class="fa fa-caret-down fa-lg caret_custom" aria-hidden="true"></i></a>
+					<ul class="servicemenuli about">
+						<li class="servicemenuliin about"><a class="servicemenulink about"
+							href="${digify }/home/aboutUs"><span>&nbsp;</span>Company
+								profile</a></li>
+						<li class="servicemenuliin about"><a class="servicemenulink about"
+							href="#"><span>&nbsp;</span>Area
+								of Operations</a></li>
+					</ul>
+				</li>
           <li class="nav-item servicemenu">
           <c:choose>
             <c:when test="${page eq 'home'}">
@@ -33,7 +37,7 @@
             </c:choose>
           <ul class="servicemenuli">
           <c:forEach items="${allProducts }" var="products" varStatus="loop">
-		<c:if test="${loop.count lt 10 }">	<li class="servicemenuliin"><a class="servicemenulink" href="${digify}/frontendAction/productPage/${products.id}" ><span><img src="${products.iconImgUrl}"/></span>
+		<c:if test="${loop.count lt 10 }">	<li class="servicemenuliin"><a class="servicemenulink text_deco_none" href="${digify}/home/productPage/${products.id}" ><span><img src="${products.iconImgUrl}"/></span>
 		<c:choose>
 			<c:when test="${ fn:length(products.productName) gt 20}">
 			${ fn:substring(products.productName, 0, 20)}...
@@ -45,7 +49,7 @@
 			</a></li>
 		</c:if>
           </c:forEach>
-			<a style="text-decoration: underline; color: red;" href="${digify}/frontendAction/dashBoard/products">More ...</a>
+			<a style="text-decoration: underline; color: red;" href="${digify}/home/dashBoard/products">More ...</a>
 			</ul>
 		  </li>
           <li class="nav-item servicemenu">
@@ -61,7 +65,7 @@
             </c:choose>           
           <ul class="servicemenuli">
 			<c:forEach items="${allServices }" var="services" varStatus="loop">
-			<c:if test="${loop.count < 10 }"><li class="servicemenuliin"><a class="servicemenulink" href="${digify}/frontendAction/servicePage/${services.id}"><span><img src="${services.iconImgUrl}"/></span>
+			<c:if test="${loop.count < 10 }"><li class="servicemenuliin"><a class="servicemenulink text_deco_none" href="${digify}/home/servicePage/${services.id}"><span><img src="${services.iconImgUrl}"/></span>
 			<c:choose>
 			<c:when test="${ fn:length(services.serviceName) gt 20}">
 			${ fn:substring(services.serviceName, 0, 20)}...
@@ -73,14 +77,14 @@
 			</a></li>
 			</c:if>
           </c:forEach>
-			<a style="text-decoration: underline; color: red;" href="${digify}/frontendAction/dashBoard/services">More ...</a>
+			<a style="text-decoration: underline; color: red;" href="${digify}/home/dashBoard/services">More ...</a>
 			</ul>
 		  </li>
 		  <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="${digify}/frontendAction/amc">AMC</a>
+            <a class="nav-link js-scroll-trigger" href="${digify}/home/amc">AMC</a>
           </li>
 		  <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="${digify}/frontendAction/contactUs">Contact Us</a>
+            <a class="nav-link js-scroll-trigger" href="${digify}/home/contactUs">Contact Us</a>
           </li>
 		 <!--  <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#contact"><div class="callimg"></div></a>

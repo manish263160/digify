@@ -36,6 +36,7 @@ $("#quotes_form").validate({
 		},
 		mobile : {
 			required : true,
+			number: true,
 			maxlength : 10
 		},
 		quoteDetails : {
@@ -118,18 +119,17 @@ $('.our-client').owlCarousel({
 	  margin: 10,
 	  nav: false,
 	  dots: false,
-	  autoWidth:true,
 	  autoplay: true,
 	  autoplayHoverPause: true,
 	  responsive: {
-	    0: {
-	      items: 1
-	    },
+	   400: {
+		   items: 2
+	   },
 	    600: {
-	      items: 2
+	      items: 3
 	    },
 	    1000: {
-	      items: 3
+	      items: 6
 	    }
 	  }
 	});

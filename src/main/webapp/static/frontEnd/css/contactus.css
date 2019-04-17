@@ -142,16 +142,17 @@ a, a:hover, a:focus {
     margin-top: 13px;
 }
 .contact-info {
-    border: 1px solid #EEEEEE;
+       border: 1px solid #EEEEEE;
     margin-left: -15px;
     margin-right: -15px;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 10px;
+    padding-left: 34px;
+    padding-right: 16px;
+    padding-top: 13px;
     padding-bottom: 30px;
     background: #fff;
     margin-bottom: 80px;
-}
+    height: 50%;
+    }
 .contact-info ul li:last-child {
     border-bottom: 0;
 }
@@ -161,7 +162,7 @@ a, a:hover, a:focus {
 }
 
 .contact-info ul li {
-    padding-top: 15px;
+    padding-top: 0px;
     padding-bottom: 0;
     border-bottom: 1px solid #EEEEEE;
 }
