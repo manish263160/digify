@@ -131,4 +131,16 @@ public class FrontendHomeController {
 		model.addAttribute("amc", true);
  		return "frontend/amc";
 	}
+	@RequestMapping(value = { "/areaofOperations" }, method = { RequestMethod.GET })
+	public String areaofOperations(ModelMap model) {
+		model = productService.setProductservice(model);
+		String viewsFolder = BASIC_STRINGS.ABOUTUS.getStringName();
+		Long id = new Long(2);
+		List<HomepageContent> list =adminService.getAllHomeComponentList(id, viewsFolder);
+		model.addAttribute("list", list);
+		model.addAttribute("aoo", true);
+ 		return "frontend/areaOfoperation";
+	}
+	
+	
 }

@@ -19,11 +19,9 @@
 						class="fa fa-caret-down fa-lg caret_custom" aria-hidden="true"></i></a>
 					<ul class="servicemenuli about">
 						<li class="servicemenuliin about"><a class="servicemenulink about"
-							href="${digify }/home/aboutUs"><span>&nbsp;</span>Company
-								profile</a></li>
+							href="${digify }/home/aboutUs"><span>&nbsp;</span>Company profile</a></li>
 						<li class="servicemenuliin about"><a class="servicemenulink about"
-							href="#"><span>&nbsp;</span>Area
-								of Operations</a></li>
+							href="${digify }/home/areaofOperations"><span>&nbsp;</span>Area of Operations</a></li>
 					</ul>
 				</li>
           <li class="nav-item servicemenu">

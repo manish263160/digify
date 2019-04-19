@@ -45,4 +45,9 @@
 	<link href="${digify}/static/frontEnd/vendor/fontawesome-free/css/fontawesome.min.css" rel="stylesheet">
 </c:if>
 
+<c:if test="${ aoo eq true }">
+<link href="${digify}/static/frontEnd/css/AO.css" rel="stylesheet">
+<link href="${digify}/static/frontEnd/css/AO1.css" rel="stylesheet">
+</c:if>
+
 <link href="${digify}/static/frontEnd/css/custom_css.css" rel="stylesheet">

@@ -1,7 +1,8 @@
 # Don't track content of these folders
 node_modules/
 src/main/webapp/static/uploaded_content/
-	
+target/
+target/*	
 .gitignore
 
 
