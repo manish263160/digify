@@ -24,50 +24,63 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.stereotype.Component;
 
 import com.digify.model.User;
+import com.digify.model.UserCart;
+import com.digify.service.EcommerceService;
 import com.digify.service.UserService;
+import com.digify.utils.EcommerceUtils;
 import com.digify.utils.GenUtilities;
 
 
-
 @Component("myAuthenticationSuccessHandler")
-public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSuccessHandler{
-	private static final Logger logger = Logger.getLogger(MySimpleUrlAuthenticationSuccessHandler.class);
-	
-	private static final String CLASS_NAME= "MySimpleUrlAuthenticationSuccessHandler.";
-	 
+public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+    private static final Logger logger = Logger.getLogger(MySimpleUrlAuthenticationSuccessHandler.class);
+
+    private static final String CLASS_NAME = "MySimpleUrlAuthenticationSuccessHandler.";
+
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
-//    @Autowired SocialLoginService socialloginservice;
-    @Autowired UserService userservice;
+    //    @Autowired SocialLoginService socialloginservice;
+    @Autowired
+    UserService userservice;
+    
+    @Autowired
+    EcommerceService ecommerceService;
+
     @Override
-    public void onAuthenticationSuccess(HttpServletRequest request, 
-      HttpServletResponse response, Authentication authentication) throws IOException {
+    public void onAuthenticationSuccess(HttpServletRequest request,
+                                        HttpServletResponse response, Authentication authentication) throws IOException {
         handle(request, response, authentication);
-        clearAuthenticationAttributes(request);
+        clearAuthenticationAttributes(request ,authentication);
     }
- 
-    protected void handle(HttpServletRequest request, 
-      HttpServletResponse response, Authentication authentication) throws IOException {
-        String targetUrl = determineTargetUrl(request,authentication);
- 
+
+    protected void handle(HttpServletRequest request,
+                          HttpServletResponse response, Authentication authentication) throws IOException {
+        String targetUrl = determineTargetUrl(request, authentication);
+
         if (response.isCommitted()) {
-        	logger.info( CLASS_NAME + "handle():: Response has already been committed. Unable to redirect to " + targetUrl);
+            logger.info(CLASS_NAME + "handle():: Response has already been committed. Unable to redirect to " + targetUrl);
             return;
         }
         Map<String, List<String>> params = getQueryParams(targetUrl);
-        logger.info( "param::::::::::::::::::"+params);
-        
+        logger.info("param::::::::::::::::::" + params);
+
 //        response.sendRedirect(targetUrl);
         redirectStrategy.sendRedirect(request, response, targetUrl);
-        
-        
+
+
     }
- 
-    /** Builds the target URL according to the logic defined in the main class Javadoc. */
+
+    /**
+     * Builds the target URL according to the logic defined in the main class Javadoc.
+     */
     protected String determineTargetUrl(HttpServletRequest request, Authentication authentication) {
-       boolean isUser = false;
+        boolean isUser = false;
         boolean isAdmin = false;
-        logger.info( "inside the target URL1"+request.getParameter("targetUrl")+","+ request.getHeader("referer"));
-        String targetUrl = request.getParameter("targetUrl");
+        logger.info("inside the target URL1" + request.getParameter("targetUrl") + "," + request.getHeader("referer"));
+        HttpSession session = request.getSession();
+        String targetUrl = "";
+        if (session != null) {
+            targetUrl = (String) session.getAttribute("url_prior_login");
+        }
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         for (GrantedAuthority grantedAuthority : authorities) {
             if (grantedAuthority.getAuthority().equals("ROLE_USER")) {
@@ -77,41 +90,44 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
                 isAdmin = true;
                 break;
             }
-        
-        
-        if(targetUrl!=null && targetUrl.equalsIgnoreCase("default")){
-        	return request.getHeader("referer");
         }
-        else if(targetUrl!=null && targetUrl.length()>0 ){
-        	return targetUrl;
-        }
-        else {
-        	User user=GenUtilities.getLoggedInUser();
-//      
-        }
-        }
-        
         if (isUser) {
-            return "/user/userHomepage";
+            if (targetUrl != null && targetUrl.length() > 0) {
+                session.removeAttribute("url_prior_login");
+                return targetUrl;
+            } else {
+                return "/";
+            }
         } else if (isAdmin) {
             return "/admin/dashboard";
         } else {
             throw new IllegalStateException();
         }
-        
+
     }
- 
-    protected void clearAuthenticationAttributes(HttpServletRequest request) {
+
+    protected void clearAuthenticationAttributes(HttpServletRequest request, Authentication authentication) {
         HttpSession session = request.getSession(false);
         if (session == null) {
             return;
         }
         session.removeAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
+        if(authentication.getPrincipal() instanceof User) {
+        User user = (User)authentication.getPrincipal();
+        UserCart userCart = ecommerceService.getUserCart(user.getId());
+        user.setUserCart(userCart);
+        UserCart myCart = EcommerceUtils.getCartInSession(request);
+//        if(myCart.getListOfProducts() ==null && myCart.getListOfProducts().isEmpty())
+        myCart.setListOfProducts(userCart.getListOfProducts()); 
+//        if(myCart.getListOfService() == null && myCart.getListOfService().isEmpty())
+        	myCart.setListOfService(userCart.getListOfService());
+        }
     }
- 
+
     public void setRedirectStrategy(RedirectStrategy redirectStrategy) {
         this.redirectStrategy = redirectStrategy;
     }
+
     protected RedirectStrategy getRedirectStrategy() {
         return redirectStrategy;
     }

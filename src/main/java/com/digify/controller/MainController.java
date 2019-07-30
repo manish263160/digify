@@ -49,253 +49,280 @@ import com.digify.service.UserService;
 import com.digify.utils.AESEncrypter;
 import com.digify.utils.ApplicationConstants;
 import com.digify.utils.ApplicationProperties;
-import com.digify.utils.GenUtilities;
 
 @Controller
 @PreAuthorize("permitAll()")
-@RequestMapping(value = { "/" })
+@RequestMapping(value = {"/"})
 public class MainController {
-	private static final Logger logger = Logger.getLogger(MainController.class);
-	@Autowired
-	private ApplicationProperties applicationProperties;
-	@Autowired
-	private MailingService mailService;
-	private @Autowired VelocityEngine velocityEngine;
-	@Autowired
-	private UserService userService;
-	@Autowired
-	ProductService productService;
+    private static final Logger logger = Logger.getLogger(MainController.class);
+    @Autowired
+    private ApplicationProperties applicationProperties;
+    @Autowired
+    private MailingService mailService;
+    private @Autowired
+    VelocityEngine velocityEngine;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    ProductService productService;
 
-	@Autowired
-	AdminService adminService;
-	
-	
-	@Value("${mail.username}")
-	private String senderMailId;
+    @Autowired
+    AdminService adminService;
 
-	@RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
-	public String welcomePage(ModelMap model) {
-		model.addAttribute("title", "Welcome");
-		model.addAttribute("page", "home");
-		model.addAttribute("message", "This is welcome page!");
-		model= productService.setProductservice(model);
-		List<HomepageContent> homePageContnet = adminService.getAllHomeComponentList(null,null);
-		String address = "";
-		for (HomepageContent hompg : homePageContnet) {
-			if(hompg.getHomeContentId() == 3) {
-				address = hompg.getContentDescription();
-			}
-		}
-		model.addAttribute("address", address);
-		model.addAttribute("homePageContnet", homePageContnet);
-		
-		LinkedList<HomepageContent> carouselList  = homePageContnet.stream().filter(predicate -> predicate.getViewFolder().equals(BASIC_STRINGS.CAROUSEL.getStringName())).collect(Collectors.toCollection(() -> new LinkedList<HomepageContent>()));
-		/*for (HomepageContent list : carouselList) {
-			list.setImageUrl(list.getImageUrl().replaceAll(BASIC_STRINGS.LOCALURL.getStringName(), ""));
-			list.setImageUrl(list.getImageUrl().replaceAll(BASIC_STRINGS.PRODUCTION.getStringName(), ""));
-		}*/
-		model.addAttribute("carouselList", carouselList);
-		return "welcomePage";
-	}
+    @Value("${mail.username}")
+    private String senderMailId;
 
+    @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
+    public String welcomePage(ModelMap model) {
+        model.addAttribute("title", "Welcome");
+        model.addAttribute("page", "home");
+        model.addAttribute("message", "This is welcome page!");
+        model = productService.setProductservice(model);
+        List<HomepageContent> homePageContnet = adminService.getAllHomeComponentList(null, null);
+        String address = "";
+        for (HomepageContent hompg : homePageContnet) {
+            if (hompg.getHomeContentId() == 3) {
+                address = hompg.getContentDescription();
+            }
+        }
+        model.addAttribute("address", address);
+        model.addAttribute("homePageContnet", homePageContnet);
 
-	
-	 /*------------------------USer registration related ----------------------------------------*/	
-		@RequestMapping(value = { "/bookedservice" }, method = { RequestMethod.GET })
-		public String bookedservice(Model model, HttpServletRequest request) {
+        LinkedList<HomepageContent> carouselList = homePageContnet.stream()
+                .filter(predicate -> predicate.getViewFolder().equals(BASIC_STRINGS.CAROUSEL.getStringName()))
+                .collect(Collectors.toCollection(() -> new LinkedList<HomepageContent>()));
+        /*
+         * for (HomepageContent list : carouselList) {
+         * list.setImageUrl(list.getImageUrl().replaceAll(BASIC_STRINGS.LOCALURL.
+         * getStringName(), ""));
+         * list.setImageUrl(list.getImageUrl().replaceAll(BASIC_STRINGS.PRODUCTION.
+         * getStringName(), "")); }
+         */
+        model.addAttribute("carouselList", carouselList);
+        return "welcomePage";
+    }
+
+    /*------------------------USer registration related ----------------------------------------*/
+    @RequestMapping(value = {"/bookedservice"}, method = {RequestMethod.GET})
+    public String bookedservice(Model model, HttpServletRequest request) {
 //			User user = GenUtilities.getLoggedInUser();
-			List<UserBookingDetails> bookedservice = userService.getUserBookingDetails(); 
-			model.addAttribute("active", "bookedservice");
-			model.addAttribute("themecolor", this.applicationProperties.getProperty("themecolor"));
-			model.addAttribute("list", bookedservice);
-			return "bookedservice";
-		}
+        List<UserBookingDetails> bookedservice = userService.getUserBookingDetails();
+        model.addAttribute("active", "bookedservice");
+        model.addAttribute("themecolor", this.applicationProperties.getProperty("themecolor"));
+        model.addAttribute("list", bookedservice);
+        return "bookedservice";
+    }
 
-		@RequestMapping(value = { "/userregistration" }, method = { RequestMethod.GET })
-		public String register(@RequestParam(name = "error", required = false) String error, @ModelAttribute User user,
-				ModelMap map, HttpServletRequest request) {
-			logger.debug("register start");
-			map.addAttribute("error", error);
-			return "user/registrationpage";
-		}
+    @RequestMapping(value = {"/userregistration"}, method = {RequestMethod.GET})
+    public String register(@RequestParam(name = "error", required = false) String error, @ModelAttribute User user,
+                           ModelMap map, HttpServletRequest request) {
+        logger.debug("register start");
+        map.addAttribute("error", error);
+        return "user/registrationpage";
+    }
 
-		@RequestMapping(value = { "/insertUser" }, method = { RequestMethod.POST })
-		public String insertUser(@ModelAttribute User user, ModelMap map, HttpServletRequest request) {
-			logger.debug("register start");
+    @RequestMapping(value = {"/insertUser"}, method = {RequestMethod.POST})
+    public String insertUser(@ModelAttribute User user, ModelMap map, HttpServletRequest request) {
+        logger.debug("register start");
 
-			try {
-				this.userService.insertUser(user);
-				return "user/userRegSuccess";
-			} catch (GenericException arg5) {
-				System.out.println(arg5.getMessage());
-				return "redirect:userregistration?error=" + arg5.getMessage();
-			}
-		}
+        try {
+            this.userService.insertUser(user);
+            return "user/userRegSuccess";
+        } catch (GenericException arg5) {
+            System.out.println(arg5.getMessage());
+            return "redirect:userregistration?error=" + arg5.getMessage();
+        }
+    }
 
-		@RequestMapping(value = { "/activateUser" }, method = { RequestMethod.GET })
-		public String activateUser(@RequestParam String token, HttpServletRequest request) {
-			try {
-				if (GenUtilities.getLoggedInUser() != null) {
-					request.logout();
-					SecurityContextHolder.getContext().setAuthentication((Authentication) null);
-				}
+    @RequestMapping(value = {"/activateUser/{token}"}, method = {RequestMethod.GET})
+    public String activateUser(@PathVariable String token, HttpServletRequest request, ModelMap model) {
+        try {
+//			if (GenUtilities.getLoggedInUser() != null) {
+//				request.logout();
+//				SecurityContextHolder.getContext().setAuthentication((Authentication) null);
+//			}
+            String msg = this.userService.activateUser(token);
+            String returnMsg = "";
+            String colorClass = "green";
+            String heading = "";
+            if (msg.equals(BASIC_STRINGS.ALREADY_ACTIVATED_LOGIN.getStringName())) {
+                returnMsg = "You are already Activated please login.";
+                heading = "Already  Activated";
 
-				String e = this.userService.activateUser(token);
-				return "redirect:/login?message=" + e;
-			} catch (Exception arg3) {
-				arg3.printStackTrace();
-				logger.error("::activateUser: Exception occurred!!");
-				return "redirect:/login";
-			}
-		}
+            } else if (msg.equals(BASIC_STRINGS.ACTIVATED.getStringName())) {
+                returnMsg = "You are successfully Activated please login.";
+                heading = "Successfully Activated";
+            } else if (msg.equals(BASIC_STRINGS.INVALID_TOKEN.getStringName())) {
+                returnMsg = "You token has expired.";
+                heading = "Activation Fails";
+                colorClass = "red";
+            }
+            model.addAttribute("heading", heading);
+            model.addAttribute("msg", returnMsg);
+            model.addAttribute("colorClass", colorClass);
+            return "user/activateMsgPage";
+        } catch (Exception arg3) {
+            arg3.printStackTrace();
+            logger.error("::activateUser: Exception occurred!!");
+            model.addAttribute("error", arg3.getMessage());
+            return "redirect:/login";
+        }
+    }
 
-	@RequestMapping(value = { "/loginpage" }, method = { RequestMethod.GET })
-	public ModelAndView loginPage(@RequestParam(value = "error", required = false) String error,
-			@RequestParam(value = "logout", required = false) String logout) {
-		ModelAndView model = new ModelAndView();
-		if (error != null) {
-			model.addObject("error", "Invalid Credentials provided.");
-		}
+    @RequestMapping(value = {"/loginpage"}, method = {RequestMethod.GET})
+    public ModelAndView loginPage(@RequestParam(value = "error", required = false) String error,
+                                  @RequestParam(value = "logout", required = false) String logout) {
+        ModelAndView model = new ModelAndView();
+        if (error != null) {
+            model.addObject("error", "Invalid Credentials provided.");
+        }
 
-		if (logout != null) {
-			model.addObject("message", "Logged out successfully.");
-		}
+        if (logout != null) {
+            model.addObject("message", "Logged out successfully.");
+        }
 
-		model.setViewName("loginPage");
-		return model;
-	}
+        model.setViewName("loginPage");
+        return model;
+    }
 
-	@RequestMapping(value = { "/login" }, method = { RequestMethod.GET })
-	public String login(ModelMap model, HttpServletRequest request) {
-		logger.debug("start has been done");
-		model.addAttribute("themecolor", this.applicationProperties.getProperty("themecolor"));
-		model.addAttribute("error", request.getParameter("error"));
-		return "login";
-	}
+    @RequestMapping(value = {"/login"}, method = {RequestMethod.GET})
+    public String login(ModelMap model, HttpServletRequest request) {
+        logger.debug("start has been done");
+        String referrer = request.getHeader("Referer");
+        if (referrer != null) {
+            request.getSession().setAttribute("url_prior_login", referrer);
+        }
+        model.addAttribute("themecolor", this.applicationProperties.getProperty("themecolor"));
+        model.addAttribute("error", request.getParameter("error"));
+        return "login";
+    }
 
-	@RequestMapping(value = { "/logout" }, method = { RequestMethod.GET })
-	public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		if (auth != null) {
-			(new SecurityContextLogoutHandler()).logout(request, response, auth);
-		}
+    @RequestMapping(value = {"/logout"}, method = {RequestMethod.GET})
+    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null) {
+            (new SecurityContextLogoutHandler()).logout(request, response, auth);
+        }
 
-		return "redirect:/loginpage?logout";
-	}
+        return "redirect:/loginpage?logout";
+    }
 
-	@RequestMapping(value = { "/admin" }, method = { RequestMethod.GET })
-	public String adminPage(Model model) {
-		return "welcomePage";
-	}
+    @RequestMapping(value = {"/admin"}, method = {RequestMethod.GET})
+    public String adminPage(Model model) {
+        return "welcomePage";
+    }
 
-	@RequestMapping(value = { "/403" }, method = { RequestMethod.GET })
-	public String accessDenied(Model model, Principal principal) {
-		if (principal != null) {
-			model.addAttribute("message",
-					"Hi " + principal.getName() + "<br> You do not have permission to access this page!");
-		} else {
-			model.addAttribute("msg", "You do not have permission to access this page!");
-		}
+    @RequestMapping(value = {"/403"}, method = {RequestMethod.GET})
+    public String accessDenied(Model model, Principal principal) {
+        if (principal != null) {
+            model.addAttribute("message",
+                    "Hi " + principal.getName() + "<br> You do not have permission to access this page!");
+        } else {
+            model.addAttribute("msg", "You do not have permission to access this page!");
+        }
 
-		return "403Page";
-	}
+        return "403Page";
+    }
 
-	@RequestMapping(value = { "/forgotpassword" }, method = { RequestMethod.POST })
-	@ResponseBody
-	public String deleteImages(@RequestParam("email") String email,
-			@RequestParam(value = "newpassword", required = false) String newpassword, HttpServletRequest request)
-			throws IOException {
-		try {
-			logger.debug("email for forgot password===" + email + " newpassword =" + newpassword);
-			User existuser = userService.checkUserByEmailorID(email);
-			boolean bool = false;
-			if (existuser == null) {
-				return "NOT_FOUND";
-			} else {
+    @RequestMapping(value = {"/forgotpassword"}, method = {RequestMethod.POST})
+    @ResponseBody
+    public String deleteImages(@RequestParam("email") String email,
+                               @RequestParam(value = "newpassword", required = false) String newpassword, HttpServletRequest request)
+            throws IOException {
+        try {
+            logger.debug("email for forgot password===" + email + " newpassword =" + newpassword);
+            User existuser = userService.checkUserByEmailorID(email);
+            boolean bool = false;
+            if (existuser == null) {
+                return "NOT_FOUND";
+            } else {
 //				 bool= userService.resetPassword(isemailExist,newpassword);
-				try {
-					String plainText = System.currentTimeMillis() + "##" + existuser.getId();
-					String token = AESEncrypter.encrypt(plainText);
-					String url = applicationProperties.getProperty("appUrl");
-					url += "/generateNewPass/" + URLEncoder.encode(token, "UTF-8");
-					logger.debug("url for mail ===" + url);
-					userService.insertPassGenToken(existuser.getId(), token);
-					Map<String, Object> storemap = new HashMap<String, Object>();
-					storemap.put("fromUserName", ApplicationConstants.TEAM_NAME);
-					storemap.put("url", url);
-					String text = VelocityEngineUtils.mergeTemplateIntoString(velocityEngine,
-							"email_Templates/forgotPasswordEmail.vm", "UTF-8", storemap);
+                try {
+                    String plainText = System.currentTimeMillis() + "##" + existuser.getId();
+                    String token = AESEncrypter.encrypt(plainText);
+                    String url = applicationProperties.getProperty("appUrl");
+                    url += "/generateNewPass/" + URLEncoder.encode(token, "UTF-8");
+                    logger.debug("url for mail ===" + url);
+                    userService.insertPassGenToken(existuser.getId(), token);
+                    Map<String, Object> storemap = new HashMap<String, Object>();
+                    storemap.put("fromUserName", ApplicationConstants.TEAM_NAME);
+                    storemap.put("url", url);
+                    String text = VelocityEngineUtils.mergeTemplateIntoString(velocityEngine,
+                            "email_Templates/forgotPasswordEmail.vm", "UTF-8", storemap);
 
-					mailService.sendMail(senderMailId, new String[] { existuser.getEmail() }, null, "Forgot Password",
-							text);
-					return "success";
-				} catch (Exception e) {
-					logger.error("::runProfileIncompleteCron()  exception ==" + e);
-					return "fail";
-				}
+                    mailService.sendMail(senderMailId, new String[]{existuser.getEmail()}, null, "Forgot Password",
+                            text);
+                    return "success";
+                } catch (Exception e) {
+                    logger.error("::runProfileIncompleteCron()  exception ==" + e);
+                    return "fail";
+                }
 
-			}
+            }
 
-		} catch (EmptyResultDataAccessException arg6) {
-			logger.error(" EmptyResultDataAccessException");
-			return "fail";
-		} catch (DataAccessException arg7) {
-			logger.error(" DataAccessException");
-			return "fail";
-		}
-	}
-	@RequestMapping(value = { "/generateNewPass/{token}" }, method = { RequestMethod.GET })
-	public String generateNewPass(@PathVariable String token, Model model, HttpServletRequest request) throws Exception {
-		String error="";
-		try {
-			String accesstoken=AESEncrypter.decrypt(token);
-			String getaccess=URLDecoder.decode(accesstoken, "UTF-8");
-			String userId=getaccess.split("##")[1];
-			logger.debug("userId===="+userId);
-			if(userId!=null){
-			String getpassGenToken=userService.getpassGenToken(Long.parseLong(userId));
-			if(getpassGenToken.equals(token)){
-				model.addAttribute("userId", AESEncrypter.encrypt(userId));
-				return "user/newGenratePassword";
-				
-			}else{
-				error="Your Token is expire, Please try again.";
-				return "redirect:/login?error="+URLEncoder.encode(error,"UTF-8");
-			}
-			}else{
-				error="Something went wrong, Please try again.";
-				return "redirect:/login.htm?error="+URLEncoder.encode(error,"UTF-8");
-			}
-		} catch (UnsupportedEncodingException e) {
-			logger.error(e.getMessage());
-			error="Your Token is expire, Please try again.";
-			return "redirect:/login?error="+error;
-		}
-	}
-	
-	@RequestMapping(value = { "/newGenPassword/{userId}" }, method = { RequestMethod.GET})
-	@ResponseBody
-	public boolean newGenPassword(@PathVariable("userId") String userId,@RequestParam(value="newpassword",required=false) String newpassword,HttpServletRequest request) throws Exception {
-		String getuserId="";
-		if(userId != null){
-			getuserId=AESEncrypter.decrypt(userId);
-			User user=userService.checkUserByEmailorID(getuserId);
-			boolean bool= userService.resetPassword(user,newpassword);
-			
-			return bool;
-		}
-		
-		return false;
-		
-	}
-	
-	@RequestMapping(value="/requestQuotes" , method = { RequestMethod.POST } )
-	@ResponseBody
-	public boolean requestQuotes(@ModelAttribute RequestQuotes requestQuotes) {
-		logger.info("come into==requestQuotes");
-		boolean retrn = productService.insertQuotes(requestQuotes);
-		return retrn;
-	}
-	
-    
+        } catch (EmptyResultDataAccessException arg6) {
+            logger.error(" EmptyResultDataAccessException");
+            return "fail";
+        } catch (DataAccessException arg7) {
+            logger.error(" DataAccessException");
+            return "fail";
+        }
+    }
+
+    @RequestMapping(value = {"/generateNewPass/{token}"}, method = {RequestMethod.GET})
+    public String generateNewPass(@PathVariable String token, Model model, HttpServletRequest request)
+            throws Exception {
+        String error = "";
+        try {
+            String accesstoken = AESEncrypter.decrypt(token);
+            String getaccess = URLDecoder.decode(accesstoken, "UTF-8");
+            String userId = getaccess.split("##")[1];
+            logger.debug("userId====" + userId);
+            if (userId != null) {
+                String getpassGenToken = userService.getpassGenToken(Long.parseLong(userId));
+                if (getpassGenToken.equals(token)) {
+                    model.addAttribute("userId", AESEncrypter.encrypt(userId));
+                    return "user/newGenratePassword";
+
+                } else {
+                    error = "Your Token is expire, Please try again.";
+                    return "redirect:/login?error=" + URLEncoder.encode(error, "UTF-8");
+                }
+            } else {
+                error = "Something went wrong, Please try again.";
+                return "redirect:/login.htm?error=" + URLEncoder.encode(error, "UTF-8");
+            }
+        } catch (UnsupportedEncodingException e) {
+            logger.error(e.getMessage());
+            error = "Your Token is expire, Please try again.";
+            return "redirect:/login?error=" + error;
+        }
+    }
+
+    @RequestMapping(value = {"/newGenPassword/{userId}"}, method = {RequestMethod.GET})
+    @ResponseBody
+    public boolean newGenPassword(@PathVariable("userId") String userId,
+                                  @RequestParam(value = "newpassword", required = false) String newpassword, HttpServletRequest request)
+            throws Exception {
+        String getuserId = "";
+        if (userId != null) {
+            getuserId = AESEncrypter.decrypt(userId);
+            User user = userService.checkUserByEmailorID(getuserId);
+            boolean bool = userService.resetPassword(user, newpassword);
+
+            return bool;
+        }
+
+        return false;
+
+    }
+
+    @RequestMapping(value = "/requestQuotes", method = {RequestMethod.POST})
+    @ResponseBody
+    public boolean requestQuotes(@ModelAttribute RequestQuotes requestQuotes) {
+        logger.info("come into==requestQuotes");
+        boolean retrn = productService.insertQuotes(requestQuotes);
+        return retrn;
+    }
+
 }

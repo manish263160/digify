@@ -25,8 +25,8 @@ $("#invoice-line").sparkline([5, 6, 7, 9, 9, 5, 3, 2, 2, 4, 6, 7, 5, 6, 7, 9, 9,
     maxSpotColor: '#4caf50',
     spotColor: '#E1D0FF',
     spotRadius: 4,
-    
-   // //tooltipFormat: $.spformat('{{value}}', 'tooltip-class')
+
+    // //tooltipFormat: $.spformat('{{value}}', 'tooltip-class')
 });
 
 
@@ -111,8 +111,6 @@ $("#project-line-4").sparkline([9, 5, 3, 2, 2, 4, 6, 7, 5, 6, 7, 9, 5, 6, 7, 9, 
 });
 
 
-
-
 // Sales chart (Sider Bar Chat)
 $("#sales-line-1").sparkline([5, 6, 7, 9, 9, 5, 3, 2, 2, 4, 6], {
     type: 'line',
@@ -184,10 +182,10 @@ $("#line-chart-sample").sparkline([5, 6, 7, 9, 9, 5, 3, 2, 2, 4, 6, 7, 5, 6, 7, 
 });
 
 
-$("#pie-chart-sample").sparkline([50,60,80,110], {
+$("#pie-chart-sample").sparkline([50, 60, 80, 110], {
     type: 'pie',
     width: '150',
     height: '150',
     //tooltipFormat: $.spformat('{{value}}', 'tooltip-class'),
-    sliceColors: ['#f4511e','#ffea00','#c6ff00','#00e676','#1de9b6','#00e5ff','#651fff','#f50057']
+    sliceColors: ['#f4511e', '#ffea00', '#c6ff00', '#00e676', '#1de9b6', '#00e5ff', '#651fff', '#f50057']
 });

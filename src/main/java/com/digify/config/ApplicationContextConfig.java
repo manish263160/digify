@@ -1,5 +1,5 @@
 package com.digify.config;
- 
+
 import java.io.IOException;
 import java.util.Properties;
 
@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
@@ -29,109 +30,113 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import com.digify.utils.ApplicationProperties;
 
- 
+
 @Configuration
 @ComponentScan("com.digify.*")
 @EnableTransactionManagement
 // Load to Environment.
-@EnableWebMvc 
+@EnableWebMvc
 @EnableAsync
 @EnableScheduling
 @PropertySource("classpath:application.properties")
 public class ApplicationContextConfig {
- 
-	private static final Logger logger = Logger.getLogger(ApplicationContextConfig.class);
-  // The Environment class serves as the property holder
-  // and stores all the properties loaded by the @PropertySource
-  @Autowired
-  private Environment env;
- 
-  @Bean
-  public ResourceBundleMessageSource messageSource() {
-      ResourceBundleMessageSource rb = new ResourceBundleMessageSource();
-      // Load property in src/resources/message.properties
-      rb.setBasenames(new String[] { "messages" });
-      rb.setUseCodeAsDefaultMessage(true);
-      return rb;
-  }
- 
-  @Bean(name = "viewResolver")
-  public InternalResourceViewResolver getViewResolver() {
-      InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-      viewResolver.setPrefix("/WEB-INF/views/");
-      viewResolver.setSuffix(".jsp");
-      return viewResolver;
-  }
- 
-  @Bean(name = "dataSource")
-  public DataSource getDataSource() {
-      DriverManagerDataSource dataSource = new DriverManagerDataSource();
- 
-      // See: datasouce-cfg.properties
-      dataSource.setDriverClassName(env.getProperty("ds.database-driver"));
-      dataSource.setUrl(env.getProperty("ds.url"));
-      dataSource.setUsername(env.getProperty("ds.username"));
-      dataSource.setPassword(env.getProperty("ds.password"));
- 
-      logger.debug("## getDataSource: " + dataSource);
- 
-      return dataSource;
-  }
- 
-  // Transaction Manager
-  @Autowired
-  @Bean(name = "transactionManager")
-  public DataSourceTransactionManager getTransactionManager(DataSource dataSource) {
-      DataSourceTransactionManager transactionManager = new DataSourceTransactionManager(dataSource);
- 
-      return transactionManager;
-  }
- 
-  @Bean(initMethod="init")
-  public ApplicationProperties  getMyBean() {
-   return new ApplicationProperties();
-  }
-  
-  @Bean(name = "multipartResolver")
-  public CommonsMultipartResolver multipartResolver() {
-      CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-      multipartResolver.setMaxUploadSize(200000000);
-      return new CommonsMultipartResolver();
-  }
-  
-  @Bean
-  public VelocityEngine velocityEngine() throws VelocityException, IOException{
-  	VelocityEngineFactoryBean factory = new VelocityEngineFactoryBean();
-  	Properties props = new Properties();
-  	props.put("resource.loader", "class");
-  	props.put("class.resource.loader.class", 
-  			  "org.apache.velocity.runtime.resource.loader." + 
-  			  "ClasspathResourceLoader");
-  	factory.setVelocityProperties(props);
-  	
-  	return factory.createVelocityEngine();
-  }
-  
-  @Bean
-  public JavaMailSender getMailSender(){
-      JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-       
-      //Using gmail
-      mailSender.setHost(env.getProperty("mail.host"));
-      mailSender.setPort((Integer.parseInt(env.getProperty("mail.port"))));
-      mailSender.setUsername(env.getProperty("mail.username"));
-      mailSender.setPassword(env.getProperty("mail.password"));
-       
-      Properties javaMailProperties = new Properties();
-      javaMailProperties.put("mail.smtp.starttls.enable", "true");
-      javaMailProperties.put("mail.smtp.auth", "true");
-      javaMailProperties.put("mail.transport.protocol", "smtp");
-      javaMailProperties.put("mail.debug", "true");//Prints out everything on screen
-       
-      mailSender.setJavaMailProperties(javaMailProperties);
-      return mailSender;
-  }
 
+    private static final Logger logger = Logger.getLogger(ApplicationContextConfig.class);
+    // The Environment class serves as the property holder
+    // and stores all the properties loaded by the @PropertySource
+    @Autowired
+    private Environment env;
+
+    @Bean
+    public ResourceBundleMessageSource messageSource() {
+        ResourceBundleMessageSource rb = new ResourceBundleMessageSource();
+        // Load property in src/resources/message.properties
+        rb.setBasenames(new String[]{"messages"});
+        rb.setUseCodeAsDefaultMessage(true);
+        return rb;
+    }
+
+    @Bean(name = "viewResolver")
+    public InternalResourceViewResolver getViewResolver() {
+        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+        viewResolver.setPrefix("/WEB-INF/views/");
+        viewResolver.setSuffix(".jsp");
+        return viewResolver;
+    }
+
+    @Bean(name = "dataSource")
+    public DataSource getDataSource() {
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+
+        // See: datasouce-cfg.properties
+        dataSource.setDriverClassName(env.getProperty("ds.database-driver"));
+        dataSource.setUrl(env.getProperty("ds.url"));
+        dataSource.setUsername(env.getProperty("ds.username"));
+        dataSource.setPassword(env.getProperty("ds.password"));
+
+        logger.debug("## getDataSource: " + dataSource);
+
+        return dataSource;
+    }
+
+    // Transaction Manager
+    @Autowired
+    @Bean(name = "transactionManager")
+    public DataSourceTransactionManager getTransactionManager(DataSource dataSource) {
+        DataSourceTransactionManager transactionManager = new DataSourceTransactionManager(dataSource);
+
+        return transactionManager;
+    }
+
+    @Bean(initMethod = "init")
+    public ApplicationProperties getMyBean() {
+        return new ApplicationProperties();
+    }
+
+    @Bean(name = "multipartResolver")
+    public CommonsMultipartResolver multipartResolver() {
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+        multipartResolver.setMaxUploadSize(200000000);
+        return new CommonsMultipartResolver();
+    }
+
+    @Bean
+    public VelocityEngine velocityEngine() throws VelocityException, IOException {
+        VelocityEngineFactoryBean factory = new VelocityEngineFactoryBean();
+        Properties props = new Properties();
+        props.put("resource.loader", "class");
+        props.put("class.resource.loader.class",
+                "org.apache.velocity.runtime.resource.loader." +
+                        "ClasspathResourceLoader");
+        factory.setVelocityProperties(props);
+
+        return factory.createVelocityEngine();
+    }
+
+    @Bean
+    public JavaMailSender getMailSender() {
+        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+
+        //Using gmail
+        mailSender.setHost(env.getProperty("mail.host"));
+        mailSender.setPort((Integer.parseInt(env.getProperty("mail.port"))));
+        mailSender.setUsername(env.getProperty("mail.username"));
+        mailSender.setPassword(env.getProperty("mail.password"));
+
+        Properties javaMailProperties = new Properties();
+        javaMailProperties.put("mail.smtp.starttls.enable", "true");
+        javaMailProperties.put("mail.smtp.auth", "true");
+        javaMailProperties.put("mail.transport.protocol", "smtp");
+        javaMailProperties.put("mail.debug", "true");//Prints out everything on screen
+
+        mailSender.setJavaMailProperties(javaMailProperties);
+        return mailSender;
+    }
+
+    @Bean
+	public static PropertySourcesPlaceholderConfigurer propertyConfigInDev() {
+		return new PropertySourcesPlaceholderConfigurer();
+	}
  /* @Bean
   public Cronjob Cronjob() {
 	  Cronjob className = new Cronjob();

@@ -11,103 +11,99 @@ import org.springframework.jdbc.core.RowMapper;
 
 public class ApplicationProperties extends DigifyJdbcTemplate {
 
-	private static final Logger logger = Logger.getLogger(ApplicationProperties.class);
+    private static final Logger logger = Logger.getLogger(ApplicationProperties.class);
 
-	private class ApplicationProperty {
-		private String key;
-		private String value;
+    private class ApplicationProperty {
+        private String key;
+        private String value;
 
-		/**
-		 * @return the key
-		 */
-		public String getKey() {
-			return key;
-		}
+        /**
+         * @return the key
+         */
+        public String getKey() {
+            return key;
+        }
 
-		/**
-		 * @param key
-		 *            the key to set
-		 */
-		public void setKey(String key) {
-			this.key = key;
-		}
+        /**
+         * @param key the key to set
+         */
+        public void setKey(String key) {
+            this.key = key;
+        }
 
-		public String getValue() {
-			return value;
-		}
+        public String getValue() {
+            return value;
+        }
 
-		public void setValue(String value) {
-			this.value = value;
-		}
-	}
+        public void setValue(String value) {
+            this.value = value;
+        }
+    }
 
-	private Map<String, String> properties = new HashMap<String, String>();
-	// private static List<String> swearWords=new ArrayList<String>();
+    private Map<String, String> properties = new HashMap<String, String>();
+    // private static List<String> swearWords=new ArrayList<String>();
 
-	/**
-	 * loads all properties
-	 */
+    /**
+     * loads all properties
+     */
 
-	public void init() {
-		logger.info("ApplicationProperties.init() LOADING ALL PROPERTIES...");
+    public void init() {
+        logger.info("ApplicationProperties.init() LOADING ALL PROPERTIES...");
 
-		try {
-			String sql = "select ap.name,ap.value from application_properties ap";
-			List<ApplicationProperty> allPropertiesFromDb = getJdbcTemplate().query(sql,
-					new RowMapper<ApplicationProperty>() {
-						public ApplicationProperty mapRow(ResultSet rs, int rowNum) throws SQLException {
-							ApplicationProperty applicationProperty = new ApplicationProperty();
-							applicationProperty.setKey(rs.getString("name"));
-							applicationProperty.setValue(rs.getString("value"));
-							return applicationProperty;
-						}
-					});
+        try {
+            String sql = "select ap.name,ap.value from application_properties ap";
+            List<ApplicationProperty> allPropertiesFromDb = getJdbcTemplate().query(sql,
+                    new RowMapper<ApplicationProperty>() {
+                        public ApplicationProperty mapRow(ResultSet rs, int rowNum) throws SQLException {
+                            ApplicationProperty applicationProperty = new ApplicationProperty();
+                            applicationProperty.setKey(rs.getString("name"));
+                            applicationProperty.setValue(rs.getString("value"));
+                            return applicationProperty;
+                        }
+                    });
 
-			properties.clear();
+            properties.clear();
 
-			for (ApplicationProperty applicationProperty : allPropertiesFromDb) {
-				properties.put(applicationProperty.getKey(), applicationProperty.getValue());
-			}
+            for (ApplicationProperty applicationProperty : allPropertiesFromDb) {
+                properties.put(applicationProperty.getKey(), applicationProperty.getValue());
+            }
 
-		} catch (Exception e) {
-			e.printStackTrace();
-			logger.info(new StringBuilder().append("Error in ApplicationProperties.").append(". init()"));
-		}
-		logger.info("ApplicationProperties.init() LOADING ALL PROPERTIES... DONE");
-	}
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.info(new StringBuilder().append("Error in ApplicationProperties.").append(". init()"));
+        }
+        logger.info("ApplicationProperties.init() LOADING ALL PROPERTIES... DONE");
+    }
 
-	/**
-	 * method to get property by passing propertyName
-	 * 
-	 * @param propertyName
-	 *            -application property name
-	 * @return propertyValue
-	 */
-	public String getProperty(String propertyName) {
-		logger.debug("ApplicationProperties.getProperty() looking property: " + propertyName);
+    /**
+     * method to get property by passing propertyName
+     *
+     * @param propertyName -application property name
+     * @return propertyValue
+     */
+    public String getProperty(String propertyName) {
+        logger.debug("ApplicationProperties.getProperty() looking property: " + propertyName);
 
-		String propertyValue = properties.get(propertyName);
-		logger.debug("ApplicationProperties.getProperty() property value: " + propertyValue);
+        String propertyValue = properties.get(propertyName);
+        logger.debug("ApplicationProperties.getProperty() property value: " + propertyValue);
 
-		return propertyValue;
-	}
+        return propertyValue;
+    }
 
-	/**
-	 * overridden method to get property by passing propertyName and Default
-	 * 
-	 * @param propertyName-application
-	 *            property name
-	 * @param Default-default
-	 *            property
-	 * @return propertyValue
-	 */
-	public String getProperty(String propertyName, String Default) {
-		logger.debug("ApplicationProperties.getProperty(Default) looking property: " + propertyName);
+    /**
+     * overridden method to get property by passing propertyName and Default
+     *
+     * @param propertyName-application property name
+     * @param Default-default          property
+     * @return propertyValue
+     */
+    public String getProperty(String propertyName, String Default) {
+        logger.debug("ApplicationProperties.getProperty(Default) looking property: " + propertyName);
 
-		String propertyValue = properties.get(propertyName) == null ? Default : properties.get(propertyName);
-		logger.debug("ApplicationProperties.getProperty(Default) property value: " + propertyValue);
+        String propertyValue = properties.get(propertyName) == null ? Default : properties.get(propertyName);
+        logger.debug("ApplicationProperties.getProperty(Default) property value: " + propertyValue);
 
-		return propertyValue;
-	}
+        return propertyValue;
+    }
 
 }

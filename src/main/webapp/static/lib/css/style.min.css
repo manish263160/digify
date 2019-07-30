@@ -1586,7 +1586,7 @@ tr.group:hover {
 
 .profile-image-login {
 	width: 100px;
-	height: 100px !important
+	/* height: 100px !important */
 }
 
 .login-text {

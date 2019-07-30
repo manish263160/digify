@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.digify.service;
 
@@ -15,14 +15,14 @@ import com.digify.model.RequestQuotes;
  */
 public interface ProductService {
 
-	<T> List<T> getAllProductServices(String tableName);
+    <T> List<T> getAllProductServices(String tableName);
 
-	<T> T getProductServiceById(long contentId, String tableName);
+    <T> T getProductServiceById(long contentId, String tableName);
 
-	boolean deleteContent(long contentId, String imageName, String tableName);
+    boolean deleteContent(long contentId, String imageName, String tableName);
 
-	boolean insertQuotes(RequestQuotes requestQuotes);
-	
-	ModelMap setProductservice(ModelMap model);
+    boolean insertQuotes(RequestQuotes requestQuotes);
+
+    ModelMap setProductservice(ModelMap model);
 
 }

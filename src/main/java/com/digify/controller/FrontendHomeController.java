@@ -25,122 +25,130 @@ import com.digify.service.UserService;
 import com.digify.utils.ApplicationProperties;
 
 @Controller
-@RequestMapping(value = { "/home" })
+@RequestMapping(value = {"/home"})
 @PreAuthorize("permitAll()")
 public class FrontendHomeController {
 
-	@Autowired ProductService productService;
-	@Autowired ApplicationProperties applicationProperties; 
-	@Autowired UserService userService; 
-	@Autowired AdminService adminService;
-	
-	@RequestMapping(value = { "/productPage/{id}" }, method = { RequestMethod.GET })
-	public String productPage(ModelMap model, HttpServletRequest request , @PathVariable("id") Long id) {
-		String tableName = BASIC_STRINGS.PRODUCTS.getStringName();
-		Products product= productService.getProductServiceById(id, tableName);
-		String prdctDesc = product.getProductDescription();
-		if(! StringUtils.isEmpty(prdctDesc )) {
-		prdctDesc = prdctDesc.replace("\n", "").replace("\r", "");
-		product.setProductDescription(prdctDesc);
-		}
-		model = productService.setProductservice(model);
-		model.addAttribute("product", product);
-		model.addAttribute("table", tableName);
-		
-		return "frontend/productPage";
-	}
-	@RequestMapping(value = { "/servicePage/{id}" }, method = { RequestMethod.GET })
-	public String servicePage(ModelMap model, HttpServletRequest request , @PathVariable("id") Long id) {
-		String tableName = BASIC_STRINGS.SERVICES.getStringName();
-		Services service= productService.getProductServiceById(id, tableName);
-		String serviceDesc = service.getServiceDescription();
-		if(! StringUtils.isEmpty(serviceDesc )) {
-			serviceDesc = serviceDesc.replace("\n", "").replace("\r", "");
-			service.setServiceDescription(serviceDesc);
-		}
-		model = productService.setProductservice(model);
-		model.addAttribute("service", service);
-		model.addAttribute("table", tableName);
-		return "frontend/servicePage";
-	}
-	
-	@RequestMapping(value = { "/aboutUs" }, method = { RequestMethod.GET })
-	public String aboutUs(ModelMap model) {
-		model = productService.setProductservice(model);
-		String viewsFolder = BASIC_STRINGS.ABOUTUS.getStringName();
-		Long id = new Long(2);
-		List<HomepageContent> list =adminService.getAllHomeComponentList(id, viewsFolder);
-		model.addAttribute("list", list);
-		model.addAttribute("about", true);
- 		return "frontend/aboutUs";
-	}
-	
-	@RequestMapping(value = { "/dashBoard/{dashboardFor}" }, method = { RequestMethod.GET })
-	public String dashBoard(ModelMap model , @PathVariable("dashboardFor") String dashboardFor) {
-		model = productService.setProductservice(model);
-		if(dashboardFor.equals(BASIC_STRINGS.PRODUCTS.getStringName())) {
-		List<Products> allProducts = productService.getAllProductServices(BASIC_STRINGS.PRODUCTS.getStringName());
-		model.addAttribute("allProducts", allProducts);
-		}else if(dashboardFor.equals(BASIC_STRINGS.SERVICES.getStringName())) {
-			List<Services> allServices = productService.getAllProductServices(BASIC_STRINGS.SERVICES.getStringName());	
-			model.addAttribute("allServices", allServices);
-		}
-		model.addAttribute("table", dashboardFor);
- 		return "frontend/productServiceDashBoard";
-	}
-	
-	@RequestMapping(value = { "/contactUs" }, method = { RequestMethod.GET })
-	public String contactUs(ModelMap model) {
-		model = productService.setProductservice(model);
-		Long id = new Long(3);
-		String viewsFolder = BASIC_STRINGS.CONTACTUS.getStringName();
-		List<HomepageContent> list =adminService.getAllHomeComponentList(id, viewsFolder);
-		model.addAttribute("list", list);
-		model.addAttribute("fromcontact", true);
- 		return "frontend/contactUs";
-	}
-	
-	
-	@RequestMapping(value = { "/contactUsSubmit" }, method = { RequestMethod.POST })
-	@ResponseBody
-	public boolean contactUsSubmit(ModelMap model ,@RequestParam String name , @RequestParam String email ,
-			@RequestParam String subject ,@RequestParam String message ,@RequestParam String dateOfContact ,@RequestParam String mobileNo  ) {		
-		boolean retrn = userService.contactUsSubmit(name,email , subject , message , dateOfContact , mobileNo);
-		return retrn;
-	}
-	
-	@RequestMapping(value = { "/faq" }, method = { RequestMethod.GET })
-	public String faqPage(ModelMap model) {
-		model = productService.setProductservice(model);
+    @Autowired
+    ProductService productService;
+    @Autowired
+    ApplicationProperties applicationProperties;
+    @Autowired
+    UserService userService;
+    @Autowired
+    AdminService adminService;
+
+    @RequestMapping(value = {"/productPage/{id}"}, method = {RequestMethod.GET})
+    public String productPage(ModelMap model, HttpServletRequest request, @PathVariable("id") Long id) {
+        String tableName = BASIC_STRINGS.PRODUCTS.getStringName();
+        Products product = productService.getProductServiceById(id, tableName);
+        String prdctDesc = product.getProductDescription();
+        if (!StringUtils.isEmpty(prdctDesc)) {
+            prdctDesc = prdctDesc.replace("\n", "").replace("\r", "");
+            product.setProductDescription(prdctDesc);
+        }
+        model = productService.setProductservice(model);
+        model.addAttribute("product", product);
+        model.addAttribute("table", tableName);
+
+        return "frontend/productPage";
+    }
+
+    @RequestMapping(value = {"/servicePage/{id}"}, method = {RequestMethod.GET})
+    public String servicePage(ModelMap model, HttpServletRequest request, @PathVariable("id") Long id) {
+        String tableName = BASIC_STRINGS.SERVICES.getStringName();
+        Services service = productService.getProductServiceById(id, tableName);
+        String serviceDesc = service.getServiceDescription();
+        if (!StringUtils.isEmpty(serviceDesc)) {
+            serviceDesc = serviceDesc.replace("\n", "").replace("\r", "");
+            service.setServiceDescription(serviceDesc);
+        }
+        model = productService.setProductservice(model);
+        model.addAttribute("service", service);
+        model.addAttribute("table", tableName);
+        return "frontend/servicePage";
+    }
+
+    @RequestMapping(value = {"/aboutUs"}, method = {RequestMethod.GET})
+    public String aboutUs(ModelMap model) {
+        model = productService.setProductservice(model);
+        String viewsFolder = BASIC_STRINGS.ABOUTUS.getStringName();
+        Long id = new Long(2);
+        List<HomepageContent> list = adminService.getAllHomeComponentList(id, viewsFolder);
+        model.addAttribute("list", list);
+        model.addAttribute("about", true);
+        return "frontend/aboutUs";
+    }
+
+    @RequestMapping(value = {"/dashBoard/{dashboardFor}"}, method = {RequestMethod.GET})
+    public String dashBoard(ModelMap model, @PathVariable("dashboardFor") String dashboardFor) {
+        model = productService.setProductservice(model);
+        if (dashboardFor.equals(BASIC_STRINGS.PRODUCTS.getStringName())) {
+            List<Products> allProducts = productService.getAllProductServices(BASIC_STRINGS.PRODUCTS.getStringName());
+            model.addAttribute("allProducts", allProducts);
+        } else if (dashboardFor.equals(BASIC_STRINGS.SERVICES.getStringName())) {
+            List<Services> allServices = productService.getAllProductServices(BASIC_STRINGS.SERVICES.getStringName());
+            model.addAttribute("allServices", allServices);
+        }
+        model.addAttribute("table", dashboardFor);
+        return "frontend/productServiceDashBoard";
+    }
+
+    @RequestMapping(value = {"/contactUs"}, method = {RequestMethod.GET})
+    public String contactUs(ModelMap model) {
+        model = productService.setProductservice(model);
+        Long id = new Long(3);
+        String viewsFolder = BASIC_STRINGS.CONTACTUS.getStringName();
+        List<HomepageContent> list = adminService.getAllHomeComponentList(id, viewsFolder);
+        model.addAttribute("list", list);
+        model.addAttribute("fromcontact", true);
+        return "frontend/contactUs";
+    }
+
+
+    @RequestMapping(value = {"/contactUsSubmit"}, method = {RequestMethod.POST})
+    @ResponseBody
+    public boolean contactUsSubmit(ModelMap model, @RequestParam String name, @RequestParam String email,
+                                   @RequestParam String subject, @RequestParam String message, @RequestParam String dateOfContact, @RequestParam String mobileNo) {
+        boolean retrn = userService.contactUsSubmit(name, email, subject, message, dateOfContact, mobileNo);
+        return retrn;
+    }
+
+    @RequestMapping(value = {"/faq"}, method = {RequestMethod.GET})
+    public String faqPage(ModelMap model) {
+        model = productService.setProductservice(model);
 //		Long id = new Long(3);
 //		String viewsFolder = BASIC_STRINGS.CONTACTUS.getStringName();
 //		List<HomepageContent> list =adminService.getAllHomeComponentList(id, viewsFolder);
 //		model.addAttribute("list", list);
-		model.addAttribute("faq", true);
- 		return "frontend/faq";
-	}
-	@RequestMapping(value = { "/team" }, method = { RequestMethod.GET })
-	public String teamPage(ModelMap model) {
-		model = productService.setProductservice(model);
-		model.addAttribute("team", true);
- 		return "frontend/team";
-	}
-	@RequestMapping(value = { "/amc" }, method = { RequestMethod.GET })
-	public String amcPage(ModelMap model) {
-		model = productService.setProductservice(model);
-		model.addAttribute("amc", true);
- 		return "frontend/amc";
-	}
-	@RequestMapping(value = { "/areaofOperations" }, method = { RequestMethod.GET })
-	public String areaofOperations(ModelMap model) {
-		model = productService.setProductservice(model);
-		String viewsFolder = BASIC_STRINGS.ABOUTUS.getStringName();
-		Long id = new Long(2);
-		List<HomepageContent> list =adminService.getAllHomeComponentList(id, viewsFolder);
-		model.addAttribute("list", list);
-		model.addAttribute("aoo", true);
- 		return "frontend/areaOfoperation";
-	}
-	
-	
+        model.addAttribute("faq", true);
+        return "frontend/faq";
+    }
+
+    @RequestMapping(value = {"/team"}, method = {RequestMethod.GET})
+    public String teamPage(ModelMap model) {
+        model = productService.setProductservice(model);
+        model.addAttribute("team", true);
+        return "frontend/team";
+    }
+
+    @RequestMapping(value = {"/amc"}, method = {RequestMethod.GET})
+    public String amcPage(ModelMap model) {
+        model = productService.setProductservice(model);
+        model.addAttribute("amc", true);
+        return "frontend/amc";
+    }
+
+    @RequestMapping(value = {"/areaofOperations"}, method = {RequestMethod.GET})
+    public String areaofOperations(ModelMap model) {
+        model = productService.setProductservice(model);
+        String viewsFolder = BASIC_STRINGS.ABOUTUS.getStringName();
+        Long id = new Long(2);
+        List<HomepageContent> list = adminService.getAllHomeComponentList(id, viewsFolder);
+        model.addAttribute("list", list);
+        model.addAttribute("aoo", true);
+        return "frontend/areaOfoperation";
+    }
+
+
 }

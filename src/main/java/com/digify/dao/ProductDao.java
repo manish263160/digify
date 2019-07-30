@@ -6,10 +6,10 @@ import com.digify.model.RequestQuotes;
 
 public interface ProductDao {
 
-	<T> List<T> getAllProductServices(Long id, String tableName);
+    <T> List<T> getAllProductServices(Long id, String tableName);
 
-	<T> T getProductServiceById(Long contentId, String tableName);
+    <T> T getProductServiceById(Long contentId, String tableName);
 
-	boolean insertQuotes(RequestQuotes requestQuotes);
+    boolean insertQuotes(RequestQuotes requestQuotes);
 
 }

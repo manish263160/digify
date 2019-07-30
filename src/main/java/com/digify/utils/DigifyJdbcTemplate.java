@@ -9,32 +9,30 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 /**
- * 
  * @author manishm
- * 
+ * <p>
  * Wrapper class for DataSource
- *
  */
 public class DigifyJdbcTemplate {
-	
+
     private static final Logger logger = Logger.getLogger(DigifyJdbcTemplate.class);
-	
-	@Autowired private DataSource dataSource;
 
-	/**
-	 * @return
-	 */
-	protected JdbcTemplate getJdbcTemplate() {
-		return new JdbcTemplate(dataSource);
-	}
+    @Autowired
+    private DataSource dataSource;
 
-	/**
-	 * @return
-	 */
-	protected NamedParameterJdbcTemplate getNamedParameterJdbcTemplate() {
-		return new NamedParameterJdbcTemplate(dataSource);
-	}
+    /**
+     * @return
+     */
+    protected JdbcTemplate getJdbcTemplate() {
+        return new JdbcTemplate(dataSource);
+    }
 
-	
-	
+    /**
+     * @return
+     */
+    protected NamedParameterJdbcTemplate getNamedParameterJdbcTemplate() {
+        return new NamedParameterJdbcTemplate(dataSource);
+    }
+
+
 }

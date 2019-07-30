@@ -1,21 +1,22 @@
 @CHARSET "UTF-8";
-.input-field div.error{
+.input-field div.error {
     position: relative;
     top: -1rem;
     left: 0rem;
     font-size: 0.8rem;
-    color:#FF4081;
+    color: #FF4081;
     -webkit-transform: translateY(0%);
     -ms-transform: translateY(0%);
     -o-transform: translateY(0%);
     transform: translateY(0%);
-  }
-  
-  .equal_height_img{
-  width: 100% !important;
-  height: 10rem !important;s
-  }
-  
-  .richText-editor ul li{
-      list-style-type: disc !important;
-  }
+}
+
+.equal_height_img {
+    width: 100% !important;
+    height: 10rem !important;
+    s
+}
+
+.richText-editor ul li {
+    list-style-type: disc !important;
+}

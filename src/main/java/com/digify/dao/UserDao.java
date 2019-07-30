@@ -6,47 +6,48 @@ import com.digify.model.User;
 import com.digify.model.UserBookingDetails;
 
 public interface UserDao {
-User findUserByMobile(String mobileno);
+    User findUserByMobile(String mobileno);
 
-void saveUser(User user);
+    void saveUser(User user);
 
-void updateUser(User user);
+    void updateUser(User user);
 
-void deleteUserById(long id);
+    void deleteUserById(long id);
 
-List<User> findAllUsers();
+    List<User> findAllUsers();
 
-void deleteAllUsers();
+    void deleteAllUsers();
 
-public boolean isUserExist(User user);
+    public boolean isUserExist(User user);
 
-User getUserByUserName(String userName, String password);
+    User getUserByUserName(String userName, String password);
 
-List<String> getUserRoles(Long userId);
+    List<String> getUserRoles(Long userId);
 
-void insertUserRole(long id);
+    void insertUserRole(long id);
 
-boolean insertPotentialCuastomer(String name, String phone);
+    boolean insertPotentialCuastomer(String name, String phone);
 
-User findById(long id);
+    User findById(long id);
 
-List<UserBookingDetails> getUserBookingDetails();
+    List<UserBookingDetails> getUserBookingDetails();
 
-void activateUser(long userId);
+    void activateUser(long userId);
 
-User getRegistrationTokenAndStatus(long userId);
+    User getRegistrationTokenAndStatus(long userId);
 
-long insertUser(User user);
+    long insertUser(User user);
 
-User checkUserByEmailorID(String emailorID);
 
-boolean insertPassGenToken(Long userId, String token);
+    boolean insertPassGenToken(Long userId, String token);
 
-String getpassGenToken(long userId);
+    User checkUserByEmailorID(String emailorID);
 
-boolean contactUsSubmit(String name, String email, String subject, String message, String dateOfContact, String mobileNo);
+    String getpassGenToken(long userId);
 
-boolean resetPassword(User user, String newpassword);
+    boolean contactUsSubmit(String name, String email, String subject, String message, String dateOfContact, String mobileNo);
+
+    boolean resetPassword(User user, String newpassword);
 
 
 }
