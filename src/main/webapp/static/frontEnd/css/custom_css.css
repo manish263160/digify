@@ -1,10 +1,17 @@
 @charset "ISO-8859-1";
 
 /*new css */
+a.logo-class{
+	vertical-align: top;
+    display: inline-block;
+}
 .logo-img {
     height: 32px;
 }
-
+.caption {
+    display: block;
+    font-size: 10px;
+}
 .contact_map {
     width: 600px;
     height: 450px

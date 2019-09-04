@@ -23,8 +23,10 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 mainnav3" id="mainNav">
     <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="${digify}/"><img class="logo-img"
-                                                                         src="${digify}/static/frontEnd/img/logo.png"/></a>
+        <a class="navbar-brand js-scroll-trigger logo-class" href="${digify}/">
+        <img class="logo-img" src="${digify}/static/frontEnd/img/logo.png"/>
+        <span class="caption">TM Application Number: 4270746</span>
+        </a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
